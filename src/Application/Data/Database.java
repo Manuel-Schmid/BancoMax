@@ -7,12 +7,13 @@ import java.sql.*;
 
 public class Database {
 
-    static String jdbcURL = "jdbc:mysql://83.77.103.210:3306/bancomax";
-    // http://83.77.103.210/:3306/bancomax
+    static String jdbcURL = "jdbc:mysql://127.0.0.1:3306/bancomax";
+    // 127.0.0.1:3306
+    // http://83.77.103.210:3306/bancomax
     // http://83.77.103.210/phpmyadmin:3306/bancomax
     // db_ip:3306/dbName
-    static String username = "BMAdmin";
-    static String password = "BancoMax";
+    static String username = "BMadmin";
+    static String password = "When83+wet++";
 
     static Connection conn = null;
     static Statement stmt = null;
