@@ -13,7 +13,7 @@ public class Security {
 
     public static byte[] createSalt() {
         SecureRandom random = new SecureRandom();
-        byte[] salt = new byte[16];
+        byte[] salt = new byte[10];
         random.nextBytes(salt);
         return salt;
     }

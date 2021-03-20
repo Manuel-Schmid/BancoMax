@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.AdminController">
    <padding>
       <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
@@ -62,6 +61,7 @@
                   <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
+            <Button layoutX="6.0" layoutY="539.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="25.0" prefWidth="60.0" text="Zurück" />
          </children>
       </AnchorPane>
    </left>
@@ -116,6 +116,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label fx:id="lblError" layoutX="66.0" layoutY="332.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
          </children>
       </AnchorPane>
    </right>

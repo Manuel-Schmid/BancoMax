@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.util.Arrays;
@@ -18,31 +19,30 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception{
         primaryStage = stage;
+        primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("Views/StandBy.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("BancoMax");
+        primaryStage.getIcons().add(new Image("Application/Media/logo256.png"));
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    // 127.0.0.1:3306
-    // http://83.77.103.210:3306/bancomax
-    // http://83.77.103.210/phpmyadmin:3306/bancomax
-    // db_ip:3306/dbName
-
     // Main
     public static void main(String[] args) throws Exception {
-        // Database.connectToDatabase();
-        // Database.viewTableUser();
+        Database.connectToDatabase();
         launch(args);
 
+        // INSERT card
+//        byte[] PINsalt = Security.createSalt();
+//        byte[] PINhash = Security.hash("1234", PINsalt);
+//        Database.insertCard("5678", "DebitCard", PINhash, PINsalt, 2);
+
+//        // INSERT admin
 //        byte[] salt = Security.createSalt();
-//        System.out.println("Salt: " + Arrays.toString(salt));
+//        byte[] hash = Security.hash("xxxxx", salt);
 //
-//        System.out.println(Arrays.toString(Security.hash("xasdf", salt)));
-//        System.out.println(Arrays.toString(Security.hash("xasdf", salt)));
-//        System.out.println(Arrays.toString(Security.hash("Many", salt)));
-//        System.out.println(Arrays.toString(Security.hash("Many", salt)));
+//         Database.insertAdmin(hash, salt);
 
     }
 

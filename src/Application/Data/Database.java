@@ -5,6 +5,7 @@ import Application.Utility.ConsoleColors;
 import Application.Utility.Salutation;
 
 import java.sql.*;
+import java.util.Arrays;
 
 public class Database {
 
@@ -45,22 +46,90 @@ public class Database {
             System.out.println("XXX successful");
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (stmt != null || conn != null) {
-                    conn.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     }
 
     // INSERTS
 
-    // INSERT INTO `bancomax`.`card` (`cardNr`, `cardtype`, -- Credit card, Debit card, Charge card, ATM card, Stored-value card, Fleet card, Other `PINhash`, `PINsalt`, `FK_accountID`) VALUES ('9867543567876548', 'Credit card', '748395', '19820347', '1')
+    public static void insertCard(String cardNr, String cardtype, byte[] PINhash, byte[] PINsalt, int accountID) {
+        try {
+            String query = "INSERT INTO `bancomax`.`card` (`cardNr`, `cardtype`, `PINhash`, `PINsalt`, `FK_accountID`) VALUES ('"+cardNr+"', '"+cardtype+"', ?, ?, '"+accountID+"')";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setBytes(1, PINhash);
+            pstmt.setBytes(2, PINsalt);
+            pstmt.execute();
+            System.out.println("INSERT INTO 'card' successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void insertAdmin(byte[] passwordHash, byte[] passwordSalt) {
+        try {
+            String query = "INSERT INTO `bancomax`.`admin`(`passwordHash`, `passwordSalt`) VALUES (?,?);";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setBytes(1, passwordHash);
+            pstmt.setBytes(2, passwordSalt);
+            pstmt.execute();
+            System.out.println("INSERT INTO 'admin' successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     // SELECTS
+
+    public static byte[] getAdminSalt() {
+        String query = "SELECT passwordSalt FROM bancomax.admin WHERE adminID = 1;";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getBytes(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static byte[] getAdminHash() {
+        String query = "SELECT passwordHash FROM bancomax.admin WHERE adminID = 1;";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getBytes(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static byte[] getSalt(String cardNr) {
+        String query = "SELECT PINsalt FROM bancomax.card WHERE cardNr = '"+cardNr+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getBytes(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static byte[] getHash(String cardNr) {
+        String query = "SELECT PINhash FROM bancomax.card WHERE cardNr = '"+cardNr+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getBytes(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public static void viewTableUser() {
         String query = "SELECT * FROM bancomax.user;";
