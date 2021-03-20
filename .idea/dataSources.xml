@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="BancoMax" uuid="cca7879e-892e-4349-9637-dfcd22d77eb7">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="BancoMax" uuid="e8131283-f824-4684-9657-38da4bbed87a">
+      <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/bancomax</jdbc-url>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://83.77.103.210:3306/bancomax</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
-      <driver-properties>
-        <property name="serverTimezone" value="UTC" />
-      </driver-properties>
     </data-source>
   </component>
 </project>

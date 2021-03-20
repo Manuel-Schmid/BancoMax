@@ -1,31 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.LoginController">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="388.0" style="-fx-background-color: #090B10;" BorderPane.alignment="CENTER">
          <children>
+            <Label fx:id="lblPassword" layoutX="22.0" layoutY="528.0" text="Passwort" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
             <ImageView fitHeight="228.0" fitWidth="220.0" layoutX="61.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Media/B.png" />
                </image>
             </ImageView>
+            <Button fx:id="btnAdmin" layoutX="181.0" layoutY="552.0" mnemonicParsing="false" onAction="#onAdminClick" prefHeight="25.0" prefWidth="101.0" text="Admin-Ansicht" visible="false" />
+            <ImageView fx:id="btnSettings" layoutX="17.0" layoutY="539.0" onMouseClicked="#onSettingsClick">
+               <image>
+                  <Image url="@../Media/settings.png" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="pfPassword" layoutX="21.0" layoutY="553.0" visible="false" />
          </children>
       </AnchorPane>
    </left>
    <right>
       <AnchorPane prefHeight="600.0" prefWidth="517.0" style="-fx-background-color: #0F111A;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="122.0" fitWidth="121.0" layoutX="183.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="122.0" fitWidth="121.0" layoutX="194.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Media/lock.png" />
                </image>
             </ImageView>
+            <GridPane layoutX="96.0" layoutY="234.0" prefHeight="238.0" prefWidth="316.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="145.888916015625" minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="112.77780151367188" minHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Kartennummer" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label text="PIN" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets top="2.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="98.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
          </children>
       </AnchorPane>
    </right>

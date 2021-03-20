@@ -1,5 +1,6 @@
 package Application.Data;
 
+import Application.Main;
 import Application.Utility.ConsoleColors;
 import Application.Utility.Salutation;
 
@@ -7,6 +8,7 @@ import java.sql.*;
 
 public class Database {
 
+    // static String jdbcURL = "jdbc:mariadb://83.77.103.210:3306/bancomax";
     static String jdbcURL = "jdbc:mysql://127.0.0.1:3306/bancomax";
     // 127.0.0.1:3306
     // http://83.77.103.210:3306/bancomax
@@ -21,7 +23,8 @@ public class Database {
     public static void connectToDatabase() throws Exception {
         try {
             // Register JDBC Driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Main.class.forName("com.mysql.cj.jdbc.Driver");
+            // Main.class.forName("org.mariadb.jdbc.Driver");
             // Open a Connection
             System.out.println("Connecting to  database ...");
             conn  = DriverManager.getConnection(jdbcURL, username, password);
@@ -54,6 +57,8 @@ public class Database {
     }
 
     // INSERTS
+
+    // INSERT INTO `bancomax`.`card` (`cardNr`, `cardtype`, -- Credit card, Debit card, Charge card, ATM card, Stored-value card, Fleet card, Other `PINhash`, `PINsalt`, `FK_accountID`) VALUES ('9867543567876548', 'Credit card', '748395', '19820347', '1')
 
     // SELECTS
 
