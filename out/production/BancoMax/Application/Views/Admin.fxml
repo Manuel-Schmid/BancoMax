@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.AdminController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#paneClicked" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.AdminController">
    <padding>
       <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>
@@ -111,12 +111,13 @@
                   <TextField fx:id="tfAccountID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <Button fx:id="btnCreateCard" layoutX="112.0" layoutY="363.0" mnemonicParsing="false" onAction="#onCreateCardClick" text="Erstellen">
+            <Button layoutX="112.0" layoutY="363.0" mnemonicParsing="false" onAction="#onCreateCardClick" text="Erstellen">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label fx:id="lblError" layoutX="66.0" layoutY="332.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
+            <Label fx:id="lblError" alignment="CENTER_RIGHT" layoutX="66.0" layoutY="332.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
+            <Label fx:id="lblSuccess" alignment="CENTER" layoutX="66.0" layoutY="332.0" prefHeight="17.0" prefWidth="183.0" text="Karte erfolgreich erstellt" textFill="#00ff2c" visible="false" />
          </children>
       </AnchorPane>
    </right>

@@ -1,6 +1,8 @@
 package Application;
 
+import Application.Data.AccountInfo;
 import Application.Data.Database;
+import Application.Data.UserInfo;
 import Application.Utility.Security;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -32,11 +34,6 @@ public class Main extends Application {
     public static void main(String[] args) throws Exception {
         Database.connectToDatabase();
         launch(args);
-
-        // INSERT card
-//        byte[] PINsalt = Security.createSalt();
-//        byte[] PINhash = Security.hash("1234", PINsalt);
-//        Database.insertCard("5678", "DebitCard", PINhash, PINsalt, 2);
 
 //        // INSERT admin
 //        byte[] salt = Security.createSalt();

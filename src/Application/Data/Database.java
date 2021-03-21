@@ -5,7 +5,7 @@ import Application.Utility.ConsoleColors;
 import Application.Utility.Salutation;
 
 import java.sql.*;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Database {
 
@@ -125,6 +125,69 @@ public class Database {
             if (rs.next()) {
                 return rs.getBytes(1);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String[] getUserInfo(String cardNr) {
+        String query = "SELECT u.userID, u.firstName, u.lastName, u.salutation FROM bancomax.card as c JOIN account as a ON c.FK_accountID = a.accountID JOIN user as u ON a.FK_userID = u.userID WHERE c.cardNr = '"+cardNr+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) { // Iterates through the whole ResultSet line by line
+                int userID = rs.getInt("userID");
+                String firstName = rs.getString("firstName");
+                String lastName = rs.getString("lastName");
+                String salutation = rs.getString("salutation");
+                return new String[] { String.valueOf(userID), firstName, lastName, salutation };
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String[] getAccountInfo(String cardNr) {
+        String query = "SELECT a.accountID, a.IBAN, a.bank FROM bancomax.card as c JOIN account as a ON c.FK_accountID = a.accountID WHERE c.cardNr = '"+cardNr+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) { // Iterates through the whole ResultSet line by line
+                int accountID = rs.getInt("accountID");
+                String IBAN = rs.getString("IBAN");
+                String bank = rs.getString("bank");
+                return new String[] { String.valueOf(accountID), IBAN, bank };
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ArrayList<String> getAllCardNrs() {
+        String query = "SELECT cardNr FROM bancomax.card;";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<String> cardNrs = new ArrayList<>();
+            while (rs.next()) {
+                cardNrs.add(rs.getString(1));
+            }
+            return cardNrs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ArrayList<Integer> getAllAccountIDs() {
+        String query = "SELECT accountID FROM bancomax.account;";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<Integer> accountIDs = new ArrayList<>();
+            while (rs.next()) {
+                accountIDs.add(rs.getInt(1));
+            }
+            return accountIDs;
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -1,6 +1,8 @@
 package Application.Controllers;
 
+import Application.Data.AccountInfo;
 import Application.Data.Database;
+import Application.Data.UserInfo;
 import Application.Main;
 import Application.Utility.Security;
 import Application.Utility.Utils;
@@ -11,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -54,8 +55,8 @@ public class LoginController {
                     BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Admin.fxml"));
                     Main.primaryStage.setScene(new Scene(pane));
                     Main.primaryStage.show();
-                } else { // Falsche Kombination
-                    lblAdminError.setText("Falsche Kombination!");
+                } else { // Falsches Passwort
+                    lblAdminError.setText("Falsches Passwort!");
                     lblAdminError.setVisible(true);
                 }
             } catch (Exception e) {
@@ -82,10 +83,13 @@ public class LoginController {
             lblError.setVisible(true);
         } else {
             try {
-                byte[] salt = Database.getSalt(tfCardNr.getText());
+                String cardNr = tfCardNr.getText();
+                byte[] salt = Database.getSalt(cardNr);
                 byte[] hash = Security.hash(tfPIN.getText(), salt);
-                byte[] expHash = Database.getHash(tfCardNr.getText());
+                byte[] expHash = Database.getHash(cardNr);
                 if (Arrays.equals(hash, expHash)) { // Richtige Kombination
+                    UserInfo.setUser(cardNr);
+                    AccountInfo.setAccount(cardNr);
                     BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Master.fxml"));
                     Main.primaryStage.setScene(new Scene(pane));
                     Main.primaryStage.show();
@@ -93,8 +97,8 @@ public class LoginController {
                     lblError.setText("Falsche Kombination!");
                     lblError.setVisible(true);
                 }
-            } catch (Exception e) {
-                lblError.setText("Falsche Kombination!");
+            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+                lblError.setText("Fehler!");
                 lblError.setVisible(true);
             }
         }
