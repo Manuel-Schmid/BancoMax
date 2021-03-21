@@ -97,7 +97,7 @@ public class LoginController {
                     lblError.setText("Falsche Kombination!");
                     lblError.setVisible(true);
                 }
-            } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            } catch (Exception e) {
                 lblError.setText("Fehler!");
                 lblError.setVisible(true);
             }

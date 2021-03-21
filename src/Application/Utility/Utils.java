@@ -1,13 +1,15 @@
 package Application.Utility;
 
+import java.math.BigInteger;
+
 public class Utils {
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
         }
         try {
-            int i = Integer.parseInt(strNum);
-        } catch (NumberFormatException nfe) {
+            BigInteger number = new BigInteger(strNum);
+        } catch (Exception e) {
             return false;
         }
         return true;

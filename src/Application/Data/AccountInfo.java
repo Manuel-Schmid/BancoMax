@@ -1,7 +1,5 @@
 package Application.Data;
 
-import Application.Utility.Salutation;
-
 public class AccountInfo {
 
     private static int accountID;
