@@ -77,6 +77,17 @@ public class Database {
         }
     }
 
+    public static void insertUser(String firstName, String lastName, Salutation salutation) {
+        try {
+            String query = "INSERT INTO `bancomax`.`user` (`firstName`, `lastName`, `salutation`) VALUES ('"+firstName+"', '"+lastName+"', '"+salutation+"');";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.execute();
+            System.out.println("INSERT INTO 'user' successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // SELECTS
 
     public static byte[] getAdminSalt() {
@@ -148,6 +159,22 @@ public class Database {
         return null;
     }
 
+    public static String[] getCardInfo(String cardNr) {
+        String query = "SELECT c.cardID, c.cardNr, c.cardType FROM bancomax.card as c WHERE c.cardNr = '"+cardNr+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) { // Iterates through the whole ResultSet line by line
+                int cardID = rs.getInt("cardID");
+                String cardNumber = rs.getString("cardNr");
+                String cardtype = rs.getString("cardtype");
+                return new String[] { String.valueOf(cardID), cardNumber, cardtype };
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static String[] getAccountInfo(String cardNr) {
         String query = "SELECT a.accountID, a.IBAN, a.bank FROM bancomax.card as c JOIN account as a ON c.FK_accountID = a.accountID WHERE c.cardNr = '"+cardNr+"';";
         try (Statement stmt = conn.createStatement()) {
@@ -188,6 +215,21 @@ public class Database {
                 accountIDs.add(rs.getInt(1));
             }
             return accountIDs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static ArrayList<Integer> getAllUserIDs() {
+        String query = "SELECT userID FROM bancomax.user;";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            ArrayList<Integer> userIDs = new ArrayList<>();
+            while (rs.next()) {
+                userIDs.add(rs.getInt(1));
+            }
+            return userIDs;
         } catch (SQLException e) {
             e.printStackTrace();
         }

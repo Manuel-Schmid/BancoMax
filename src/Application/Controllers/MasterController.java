@@ -1,6 +1,6 @@
 package Application.Controllers;
 
-import Application.Data.UserInfo;
+import Application.Data.Info;
 import Application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +16,7 @@ public class MasterController {
     @FXML
     private Label lblWelcome;
 
-    String welcome = "Welcome " + UserInfo.getSalutation() + " " + UserInfo.getLastName();
+    String welcome = "Welcome " + Info.getSalutation() + " " + Info.getLastName();
 
     public void onBackToLogin(ActionEvent actionEvent) throws IOException {
         BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Login.fxml"));
@@ -26,6 +26,6 @@ public class MasterController {
 
     @FXML
     public void initialize() {
-        lblWelcome.setText("Willkommen " + UserInfo.getSalutation() + " " + UserInfo.getLastName());
+        lblWelcome.setText("Willkommen " + Info.getSalutation() + " " + Info.getLastName());
     }
 }

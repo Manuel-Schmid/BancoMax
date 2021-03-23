@@ -1,8 +1,7 @@
 package Application;
 
-import Application.Data.AccountInfo;
 import Application.Data.Database;
-import Application.Data.UserInfo;
+import Application.Utility.Salutation;
 import Application.Utility.Security;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main extends Application {
 

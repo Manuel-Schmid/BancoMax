@@ -1,8 +1,11 @@
 package Application.Utility;
 
 import java.math.BigInteger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Utils {
+
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
             return false;
@@ -13,5 +16,9 @@ public class Utils {
             return false;
         }
         return true;
+    }
+
+    public static String getCurrentTimeStamp() {
+        return new SimpleDateFormat("dd.MM.yyyy HH:mm").format(new Date());
     }
 }

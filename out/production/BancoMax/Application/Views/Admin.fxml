@@ -25,7 +25,7 @@
             </Label>
             <GridPane layoutX="48.0" layoutY="212.0">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
@@ -55,13 +55,38 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="tfIBAN" GridPane.columnIndex="1" />
+                  <TextField fx:id="tfBalance" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="tfBank" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="tfUserID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="IBAN" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Saldo (CHF)" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Bank" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="UserID" textFill="WHITE" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
             <Button layoutX="6.0" layoutY="539.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="25.0" prefWidth="60.0" text="Zurück" />
+            <Button layoutX="111.0" layoutY="365.0" mnemonicParsing="false" onAction="#onCreateAccountClick" text="Erstellen">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </left>
@@ -124,23 +149,19 @@
    <center>
       <AnchorPane prefHeight="542.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane layoutX="29.0" layoutY="210.0">
+            <GridPane layoutX="29.0" layoutY="211.0">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
+                  <RowConstraints />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label textFill="WHITE" GridPane.halignment="CENTER">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
                   <Label textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="16.0" />
@@ -156,10 +177,29 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="tfFirstName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="tfLastName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="tfSalutation" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Vorname" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Name" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Anrede" textFill="WHITE" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
             <Label layoutX="44.0" layoutY="144.0" text="Neuen User erstellen" textFill="WHITE">
@@ -172,6 +212,13 @@
                   <Font size="17.0" />
                </font>
             </Button>
+            <Button layoutX="98.0" layoutY="367.0" mnemonicParsing="false" onAction="#onCreateUserClick" text="Erstellen">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblError1" alignment="CENTER_RIGHT" layoutX="47.0" layoutY="334.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
+            <Label fx:id="lblSuccess1" alignment="CENTER" layoutX="46.0" layoutY="334.0" prefHeight="17.0" prefWidth="183.0" text="User erfolgreich erstellt" textFill="#00ff2c" visible="false" />
          </children>
       </AnchorPane>
    </center>
