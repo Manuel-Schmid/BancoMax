@@ -1,6 +1,5 @@
 package Application.Utility;
 
-import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,7 +10,7 @@ public class Utils {
             return false;
         }
         try {
-            BigInteger number = new BigInteger(strNum);
+            Double number = Double.parseDouble(strNum);
         } catch (Exception e) {
             return false;
         }

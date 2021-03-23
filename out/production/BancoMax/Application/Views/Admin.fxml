@@ -87,6 +87,8 @@
                   <Font size="14.0" />
                </font>
             </Button>
+            <Label fx:id="lblError2" alignment="CENTER_RIGHT" layoutX="56.0" layoutY="340.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
+            <Label fx:id="lblSuccess2" alignment="CENTER" layoutX="55.0" layoutY="340.0" prefHeight="17.0" prefWidth="183.0" text="User erfolgreich erstellt" textFill="#00ff2c" visible="false" />
          </children>
       </AnchorPane>
    </left>

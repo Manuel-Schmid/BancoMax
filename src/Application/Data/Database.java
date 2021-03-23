@@ -4,6 +4,7 @@ import Application.Main;
 import Application.Utility.ConsoleColors;
 import Application.Utility.Salutation;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -83,6 +84,17 @@ public class Database {
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.execute();
             System.out.println("INSERT INTO 'user' successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void insertAccount(String IBAN, double balance, String bank, int userID) {
+        try {
+            String query = "INSERT INTO `bancomax`.`account`(`IBAN`,`balanceInCHF`,`bank`,`FK_userID`) VALUES ('"+IBAN+"', '"+balance+"', '"+bank+"', '"+userID+"');";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.execute();
+            System.out.println("INSERT INTO 'account' successful");
         } catch (Exception e) {
             e.printStackTrace();
         }

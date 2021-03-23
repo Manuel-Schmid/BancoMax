@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Objects;
@@ -32,12 +33,13 @@ public class AdminController {
     private TextField tfCardNr, tfCardtype, tfPIN, tfAccountID;
     // success & error
     @FXML
-    private Label lblSuccess, lblSuccess1, lblError, lblError1;
+    private Label lblSuccess, lblSuccess1, lblSuccess2, lblError, lblError1, lblError2;
 
     private boolean success = false;
 
     @FXML
-    private void onCreateCardClick(ActionEvent actionEvent) {
+    private void onCreateCardClick() {
+        hideSuccess();
         try {
             if(tfCardNr.getText().isEmpty() || tfCardtype.getText().isEmpty() || tfPIN.getText().isEmpty() || tfAccountID.getText().isEmpty()) {
                 lblError.setText("Alle Felder müssen ausgefüllt sein!");
@@ -59,7 +61,7 @@ public class AdminController {
                 lblSuccess.setVisible(true);
                 success = true;
             }
-        } catch (NumberFormatException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+        } catch (Exception e) {
             lblSuccess.setVisible(false);
             lblError.setText("Fehler!");
             lblError.setVisible(true);
@@ -67,7 +69,8 @@ public class AdminController {
     }
 
     @FXML
-    private void onCreateUserClick(ActionEvent actionEvent) {
+    private void onCreateUserClick() {
+        hideSuccess();
         try {
             if(tfFirstName.getText().isEmpty() || tfLastName.getText().isEmpty() || tfSalutation.getText().isEmpty()) {
                 lblError1.setText("Alle Felder müssen ausgefüllt sein!");
@@ -90,23 +93,51 @@ public class AdminController {
     }
 
     @FXML
-    private void paneClicked(MouseEvent mouseEvent) {
+    private void onCreateAccountClick() {
+        hideSuccess();
+        try {
+            if(tfIBAN.getText().isEmpty() || tfBalance.getText().isEmpty() || tfBank.getText().isEmpty() || tfUserID.getText().isEmpty()) {
+                lblError2.setText("Alle Felder müssen ausgefüllt sein!");
+                lblError2.setVisible(true);
+            } else if (!Utils.isNumeric(tfBalance.getText()) || !Utils.isNumeric(tfUserID.getText()) || tfIBAN.getText().length() > 21) {
+                lblError2.setText("Falsches Format!");
+                lblError2.setVisible(true);
+            }  else if (!Objects.requireNonNull(Database.getAllUserIDs()).contains(Integer.parseInt(tfUserID.getText()))) {
+                lblError.setText("UserID existiert nicht!");
+                lblError.setVisible(true);
+            } else { // Success
+                Database.insertAccount(tfIBAN.getText(), Double.parseDouble(tfBalance.getText()), tfBank.getText(), Integer.parseInt(tfUserID.getText()));
+                lblError2.setVisible(false);
+                lblSuccess2.setVisible(true);
+                success = true;
+            }
+        } catch (Exception e) {
+            lblSuccess2.setVisible(false);
+            lblError2.setText("Fehler!");
+            lblError2.setVisible(true);
+        }
+    }
+
+    @FXML
+    private void paneClicked() {
+        hideSuccess();
+    }
+
+    private void hideSuccess() {
         if(success) {
             lblSuccess.setVisible(false);
             lblSuccess1.setVisible(false);
+            lblSuccess2.setVisible(false);
             success = false;
         }
     }
 
     @FXML
-    private void onBackToLogin(ActionEvent actionEvent) throws IOException {
+    private void onBackToLogin() throws IOException {
         BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Login.fxml"));
         Main.primaryStage.setScene(new Scene(pane));
         Main.primaryStage.show();
     }
 
-    @FXML
-    private void onCreateAccountClick(ActionEvent actionEvent) {
 
-    }
 }
