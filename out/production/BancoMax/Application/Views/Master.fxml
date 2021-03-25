@@ -17,14 +17,14 @@
                   <Image url="@../Media/lettering.png" />
                </image>
             </ImageView>
-            <Button layoutX="54.0" layoutY="248.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="181.0" text="PIN ändern" />
+            <Button layoutX="54.0" layoutY="248.0" mnemonicParsing="false" onAction="#onPinChange" prefHeight="45.0" prefWidth="181.0" text="PIN ändern" />
             <Label layoutX="101.0" layoutY="197.0" text="Verwalten:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="53.0" layoutY="311.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="181.0" text="Kontoinformationen anzeigen" />
-            <Button layoutX="21.0" layoutY="555.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="25.0" prefWidth="60.0" text="Zurück" />
+            <Button layoutX="53.0" layoutY="311.0" mnemonicParsing="false" onAction="#onShowAccountInfo" prefHeight="45.0" prefWidth="181.0" text="Kontoinformationen anzeigen" />
+            <Button layoutX="21.0" layoutY="544.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="36.0" prefWidth="119.0" text="Zurück" />
          </children></AnchorPane>
    </left>
    <right>

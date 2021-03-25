@@ -100,6 +100,21 @@ public class Database {
         }
     }
 
+    // UPDATES
+
+    public static void changePIN(int cardID, byte[] PINhash, byte[] PINsalt) {
+        try {
+            String query = "UPDATE `bancomax`.`card` SET `PINhash` = ?, `PINsalt` = ? WHERE `cardID` = '"+cardID+"';";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setBytes(1, PINhash);
+            pstmt.setBytes(2, PINsalt);
+            pstmt.execute();
+            System.out.println("UPDATE ON 'card' successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // SELECTS
 
     public static byte[] getAdminSalt() {

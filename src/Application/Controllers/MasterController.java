@@ -25,7 +25,19 @@ public class MasterController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         lblWelcome.setText("Willkommen " + Info.getSalutation() + " " + Info.getLastName());
+    }
+
+    @FXML
+    private void onShowAccountInfo() {
+
+    }
+
+    @FXML
+    private void onPinChange() throws IOException {
+        BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/PinChange.fxml"));
+        Main.primaryStage.setScene(new Scene(pane));
+        Main.primaryStage.show();
     }
 }
