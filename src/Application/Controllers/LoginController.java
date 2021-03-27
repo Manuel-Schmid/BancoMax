@@ -2,17 +2,14 @@ package Application.Controllers;
 
 import Application.Data.Database;
 import Application.Data.Info;
-import Application.Main;
+import Application.Utility.Navigation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
 
 import java.util.Arrays;
 
@@ -38,9 +35,7 @@ public class LoginController {
                 byte[] hash = Security.hash(pfPassword.getText(), salt);
                 byte[] expHash = Database.getAdminHash();
                 if (Arrays.equals(hash, expHash)) { // Richtige Kombination
-                    BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Admin.fxml"));
-                    Main.primaryStage.setScene(new Scene(pane));
-                    Main.primaryStage.show();
+                    Navigation.switchToView("Admin");
                 } else { // Falsches Passwort
                     lblAdminError.setText("Falsches Passwort!");
                     lblAdminError.setVisible(true);
@@ -75,9 +70,7 @@ public class LoginController {
                 byte[] expHash = Database.getHash(cardNr);
                 if (Arrays.equals(hash, expHash)) { // Richtige Kombination
                     Info.setInfo(cardNr);
-                    BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Master.fxml"));
-                    Main.primaryStage.setScene(new Scene(pane));
-                    Main.primaryStage.show();
+                    Navigation.switchToView("Master");
                 } else { // Falsche Kombination
                     lblError.setText("Falsche Kombination!");
                     lblError.setVisible(true);

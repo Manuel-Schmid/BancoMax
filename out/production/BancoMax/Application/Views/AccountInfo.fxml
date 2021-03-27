@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.AccountInfoController">
+   <top>
+      <AnchorPane prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="66.0" fitWidth="284.0" layoutX="33.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Media/lettering.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <AnchorPane prefHeight="95.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#toMaster" prefHeight="36.0" prefWidth="119.0" text="Zurück" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane layoutX="57.0" layoutY="76.0" prefHeight="173.0" prefWidth="772.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="145.888916015625" minHeight="10.0" prefHeight="39.777791341145836" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="145.888916015625" minHeight="10.0" prefHeight="50.222208658854164" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="123.33331298828125" minHeight="10.0" prefHeight="81.11111450195314" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="lblAccount" text="Konto:" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBank" text="Bank:" textFill="WHITE" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBalanceDate" text="Aktueller Saldo per XX.XX.20XX" textFill="WHITE" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBalance" text="CHF XXXXX.XX" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <Button layoutX="709.0" layoutY="383.0" mnemonicParsing="false" onAction="#onLastTransactions" prefHeight="37.0" prefWidth="129.0" text="Letzte Bewegungen" />
+            <Button layoutX="709.0" layoutY="331.0" mnemonicParsing="false" onAction="#onPrintReceipt" prefHeight="37.0" prefWidth="129.0" text="Beleg drucken" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

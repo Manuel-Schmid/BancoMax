@@ -1,6 +1,7 @@
 package Application.Controllers;
 
 import Application.Main;
+import Application.Utility.Navigation;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,8 +14,6 @@ public class StandByController {
 
     @FXML
     void openLoginView(MouseEvent mouseEvent) throws IOException {
-        BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Login.fxml"));
-        Main.primaryStage.setScene(new Scene(pane));
-        Main.primaryStage.show();
+        Navigation.switchToView("Login");
     }
 }

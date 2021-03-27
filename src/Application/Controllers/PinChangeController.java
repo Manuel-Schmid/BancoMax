@@ -3,9 +3,9 @@ package Application.Controllers;
 import Application.Data.Database;
 import Application.Data.Info;
 import Application.Main;
+import Application.Utility.Navigation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -60,9 +60,7 @@ public class PinChangeController {
     }
 
     public void onCancel() throws IOException {
-        BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Master.fxml"));
-        Main.primaryStage.setScene(new Scene(pane));
-        Main.primaryStage.show();
+        Navigation.switchToView("Master");
     }
 
     @FXML

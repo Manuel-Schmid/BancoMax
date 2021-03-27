@@ -17,7 +17,7 @@ public class Utils {
         return true;
     }
 
-    public static String getCurrentTimeStamp() {
-        return new SimpleDateFormat("dd.MM.yyyy HH:mm").format(new Date());
+    public static String getCurrentTimeStamp(String pattern) {
+        return new SimpleDateFormat(pattern).format(new Date()); // dd.MM.yyyy HH:mm
     }
 }

@@ -218,6 +218,19 @@ public class Database {
         return null;
     }
 
+    public static Double getBalance(String cardNr) {
+        String query = "SELECT a.balanceInCHF FROM bancomax.card as c JOIN account as a ON c.FK_accountID = a.accountID WHERE c.cardNr = '"+cardNr+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getDouble(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static ArrayList<String> getAllCardNrs() {
         String query = "SELECT cardNr FROM bancomax.card;";
         try (Statement stmt = conn.createStatement()) {

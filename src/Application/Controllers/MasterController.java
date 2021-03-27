@@ -1,13 +1,10 @@
 package Application.Controllers;
 
 import Application.Data.Info;
-import Application.Main;
+import Application.Utility.Navigation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
@@ -19,9 +16,7 @@ public class MasterController {
     String welcome = "Welcome " + Info.getSalutation() + " " + Info.getLastName();
 
     public void onBackToLogin(ActionEvent actionEvent) throws IOException {
-        BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Login.fxml"));
-        Main.primaryStage.setScene(new Scene(pane));
-        Main.primaryStage.show();
+        Navigation.switchToView("Login");
     }
 
     @FXML
@@ -30,14 +25,12 @@ public class MasterController {
     }
 
     @FXML
-    private void onShowAccountInfo() {
-
+    private void onShowAccountInfo() throws IOException {
+        Navigation.switchToView("AccountInfo");
     }
 
     @FXML
     private void onPinChange() throws IOException {
-        BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/PinChange.fxml"));
-        Main.primaryStage.setScene(new Scene(pane));
-        Main.primaryStage.show();
+        Navigation.switchToView("PinChange");
     }
 }

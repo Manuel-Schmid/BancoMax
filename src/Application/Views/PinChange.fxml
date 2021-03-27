@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#paneClicked" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.PinChangeController">
    <top>
       <AnchorPane prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -73,7 +72,7 @@
             </GridPane>
             <Button layoutX="545.0" layoutY="324.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="119.0" text="Bestätigen" />
             <Label fx:id="lblError" alignment="CENTER" layoutX="493.0" layoutY="300.0" prefHeight="17.0" prefWidth="170.0" text="Bitte alle Felder ausfüllen!" textFill="RED" visible="false" />
-            <Label fx:id="lblSuccess" alignment="CENTER" layoutX="495.0" layoutY="298.0" prefHeight="17.0" prefWidth="169.0" text="User erfolgreich erstellt" textFill="#00ff2c" visible="false" />
+            <Label fx:id="lblSuccess" alignment="CENTER" layoutX="495.0" layoutY="298.0" prefHeight="17.0" prefWidth="169.0" text="PIN erfolgreich geändert" textFill="#00ff2c" visible="false" />
          </children>
       </AnchorPane>
    </center>

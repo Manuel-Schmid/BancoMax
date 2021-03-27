@@ -1,23 +1,15 @@
 package Application.Controllers;
 
 import Application.Data.Database;
-import Application.Main;
+import Application.Utility.Navigation;
 import Application.Utility.Salutation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.Objects;
 
 public class AdminController {
@@ -117,7 +109,7 @@ public class AdminController {
             lblError2.setVisible(true);
         }
     }
-
+    
     @FXML
     private void paneClicked() {
         hideSuccess();
@@ -134,10 +126,6 @@ public class AdminController {
 
     @FXML
     private void onBackToLogin() throws IOException {
-        BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/Login.fxml"));
-        Main.primaryStage.setScene(new Scene(pane));
-        Main.primaryStage.show();
+        Navigation.switchToView("Login");
     }
-
-
 }

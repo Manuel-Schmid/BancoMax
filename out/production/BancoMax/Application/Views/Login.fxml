@@ -79,7 +79,7 @@
                      </GridPane.margin>
                   </TextField>
                   <TextField fx:id="tfPIN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#onLoginClick" prefHeight="25.0" prefWidth="98.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#onLoginClick" prefHeight="29.0" prefWidth="104.0" text="Login" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Label fx:id="lblError" alignment="CENTER" layoutX="255.0" layoutY="370.0" prefHeight="17.0" prefWidth="155.0" text="Bitte alle Felder ausfüllen!" textFill="RED" visible="false" />

@@ -38,6 +38,7 @@ public class Main extends Application {
         Database.connectToDatabase();
         launch(args);
 
+
 //        // INSERT admin
 //        byte[] salt = Security.createSalt();
 //        byte[] hash = Security.hash("xxxxx", salt);
