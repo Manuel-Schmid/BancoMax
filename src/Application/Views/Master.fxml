@@ -30,9 +30,9 @@
    <right>
       <AnchorPane prefHeight="600.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="57.0" layoutY="249.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="181.0" text="Bezug CHF" />
-            <Button layoutX="58.0" layoutY="310.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="181.0" text="Bezug Euro" />
-            <Button layoutX="57.0" layoutY="408.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="181.0" text="Expressbezug:                        CHF 50 ohne Beleg" wrapText="true" />
+            <Button layoutX="57.0" layoutY="249.0" mnemonicParsing="false" onAction="#onWithdrawCHF" prefHeight="45.0" prefWidth="181.0" text="Bezug CHF" />
+            <Button layoutX="58.0" layoutY="310.0" mnemonicParsing="false" onAction="#onWithdrawEuro" prefHeight="45.0" prefWidth="181.0" text="Bezug Euro" />
+            <Button layoutX="57.0" layoutY="408.0" mnemonicParsing="false" onAction="#onWithdrawExpress" prefHeight="45.0" prefWidth="181.0" text="Expressbezug:                        CHF 50 ohne Beleg" wrapText="true" />
             <Label layoutX="104.0" layoutY="204.0" text="Geldbezug" textFill="WHITE">
                <font>
                   <Font size="20.0" />

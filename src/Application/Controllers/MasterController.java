@@ -1,6 +1,8 @@
 package Application.Controllers;
 
 import Application.Data.Info;
+import Application.Data.WithdrawalInfo;
+import Application.Utility.Currency;
 import Application.Utility.Navigation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,5 +34,23 @@ public class MasterController {
     @FXML
     private void onPinChange() throws IOException {
         Navigation.switchToView("PinChange");
+    }
+
+    @FXML
+    private void onWithdrawCHF() throws IOException {
+        WithdrawalInfo.getInstance().setCurrency(Currency.CHF);
+        Navigation.switchToView("Withdrawal");
+    }
+
+    @FXML
+    private void onWithdrawEuro() throws IOException {
+        WithdrawalInfo.getInstance().setCurrency(Currency.Euro);
+        Navigation.switchToView("Withdrawal");
+    }
+
+    @FXML
+    private void onWithdrawExpress() {
+        // WithdrawalInfo.getInstance().setCurrency(Currency.CHF);
+        // !!!
     }
 }
