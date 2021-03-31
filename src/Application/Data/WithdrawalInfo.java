@@ -22,7 +22,6 @@ public class WithdrawalInfo { // Singleton
 
     public void setAmount(double amount) {
         this.amount = amount;
-        System.out.println(this.amount);
     }
 
     public Currency getCurrency() {

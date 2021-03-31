@@ -21,7 +21,6 @@ public class WithdrawalController {
     @FXML
     private TextField tfAmount;
     private boolean success = false;
-    private boolean btnSelected = false;
 
     @FXML
     private void initialize() {
@@ -97,5 +96,4 @@ public class WithdrawalController {
             }
         }
     }
-
 }

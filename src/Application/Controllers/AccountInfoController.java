@@ -19,7 +19,7 @@ public class AccountInfoController {
         lblAccount.setText("Konto: " + Info.getIBAN());
         lblBank.setText("Bank: " + Info.getBank());
         lblBalanceDate.setText("Aktueller Saldo per " + Utils.getCurrentTimeStamp("dd.MM.yyyy")); // !!!
-        lblBalance.setText("CHF " + Utils.formatMoney(Database.getBalance(Info.getCardNr()))); // !!!
+        lblBalance.setText("CHF " + Utils.formatMoney(Database.getBalance(Info.getAccountID()))); // !!!
     }
 
     @FXML

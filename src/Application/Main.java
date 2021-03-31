@@ -1,8 +1,11 @@
 package Application;
 
+import Application.Data.CurrencyAPI;
 import Application.Data.Database;
 import Application.Utility.Salutation;
 import Application.Utility.Security;
+import com.mysql.cj.xdevapi.JsonParser;
+import com.mysql.cj.xdevapi.JsonString;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +16,7 @@ import javafx.stage.Stage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,6 +42,7 @@ public class Main extends Application {
         Database.connectToDatabase();
         launch(args);
 
+        System.out.println(CurrencyAPI.getExRate());
 
 //        // INSERT admin
 //        byte[] salt = Security.createSalt();

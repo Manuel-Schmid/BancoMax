@@ -62,6 +62,11 @@
                   </Label>
                </children>
             </GridPane>
+            <Label fx:id="lblError" layoutX="227.0" layoutY="213.0" prefHeight="118.0" prefWidth="457.0" text="Ihr Kontostand ist zu niedrig für diesen Bezug!" textFill="#f7003e" visible="false" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </center>

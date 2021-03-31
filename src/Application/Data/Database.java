@@ -2,9 +2,9 @@ package Application.Data;
 
 import Application.Main;
 import Application.Utility.ConsoleColors;
+import Application.Utility.Operation;
 import Application.Utility.Salutation;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -115,6 +115,23 @@ public class Database {
         }
     }
 
+    public static void updateBalance(Operation operation, double amountInCHF, int accountID) {
+        try {
+            double newBalance;
+            if (operation == Operation.deposit) { // deposit
+                newBalance = getBalance(accountID) + amountInCHF;
+            } else { // withdraw
+                newBalance = getBalance(accountID) - amountInCHF;
+            }
+            String query = "UPDATE bancomax.account SET balanceInCHF = '"+newBalance+"' WHERE `accountID` = '"+accountID+"';";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.execute();
+            System.out.println("UPDATE ON 'account.balance' successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     // SELECTS
 
     public static byte[] getAdminSalt() {
@@ -218,8 +235,8 @@ public class Database {
         return null;
     }
 
-    public static Double getBalance(String cardNr) {
-        String query = "SELECT a.balanceInCHF FROM bancomax.card as c JOIN account as a ON c.FK_accountID = a.accountID WHERE c.cardNr = '"+cardNr+"';";
+    public static Double getBalance(int accountID) {
+        String query = "SELECT a.balanceInCHF FROM bancomax.card as c JOIN account as a ON c.FK_accountID = a.accountID WHERE a.accountID = '"+accountID+"';";
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             if (rs.next()) {
@@ -274,6 +291,31 @@ public class Database {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean checkMoneystock(int[] banknotes, String currency) {
+        String query = "SELECT thousand, twoHundred, hundred, fifty, twenty, ten FROM bancomax.moneystock WHERE currency = '"+currency+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) { // Iterates through the whole ResultSet line by line
+                int thousand = rs.getInt("thousand");
+                int twoHundred = rs.getInt("twoHundred");
+                int hundred = rs.getInt("hundred");
+                int fifty = rs.getInt("fifty");
+                int twenty = rs.getInt("twenty");
+                int ten = rs.getInt("ten");
+                int[] stock = { thousand, twoHundred, hundred, fifty, twenty, ten };
+                for (int i = 0; i < banknotes.length; i++) {
+                    if (banknotes[i] > stock[i]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static void viewTableUser() {
