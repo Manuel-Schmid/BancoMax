@@ -42,7 +42,7 @@ public class Main extends Application {
         Database.connectToDatabase();
         launch(args);
 
-        System.out.println(CurrencyAPI.getExRate());
+//        System.out.println(CurrencyAPI.getExRate());
 
 //        // INSERT admin
 //        byte[] salt = Security.createSalt();
