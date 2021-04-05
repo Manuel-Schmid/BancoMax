@@ -2,6 +2,7 @@ package Application.Data;
 
 import Application.Main;
 import Application.Utility.ConsoleColors;
+import Application.Utility.Currency;
 import Application.Utility.Operation;
 import Application.Utility.Salutation;
 
@@ -127,6 +128,31 @@ public class Database {
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.execute();
             System.out.println("UPDATE ON 'account.balance' successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateMoneyStock(Operation operation, int[] banknotes, Currency currency) {
+        try {
+            int[] stock = getMoneystock(currency);
+            for (int i = 0; i < banknotes.length; i++) {
+                if (operation == Operation.withdraw) {
+                    stock[i] -= banknotes[i];
+                } else {
+                    stock[i] += banknotes[i];
+                }
+            }
+            String query = "UPDATE bancomax.moneystock SET thousand = ?, twoHundred = ?, hundred = ?, fifty = ?, twenty = ?, ten = ? WHERE currency = '"+currency+"';";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setInt(1, stock[0]);
+            pstmt.setInt(2, stock[1]);
+            pstmt.setInt(3, stock[2]);
+            pstmt.setInt(4, stock[3]);
+            pstmt.setInt(5, stock[4]);
+            pstmt.setInt(6, stock[5]);
+            pstmt.execute();
+            System.out.println("UPDATE ON 'moneystock' successful");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -287,6 +313,25 @@ public class Database {
                 userIDs.add(rs.getInt(1));
             }
             return userIDs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static int[] getMoneystock(Currency currency) {
+        String query = "SELECT thousand, twoHundred, hundred, fifty, twenty, ten FROM bancomax.moneystock WHERE currency = '"+currency+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) { // Iterates through the whole ResultSet line by line
+                int thousand = rs.getInt("thousand");
+                int twoHundred = rs.getInt("twoHundred");
+                int hundred = rs.getInt("hundred");
+                int fifty = rs.getInt("fifty");
+                int twenty = rs.getInt("twenty");
+                int ten = rs.getInt("ten");
+                return new int[] { thousand, twoHundred, hundred, fifty, twenty, ten };
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

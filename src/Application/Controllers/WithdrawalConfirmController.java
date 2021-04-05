@@ -33,11 +33,22 @@ public class WithdrawalConfirmController {
 
     @FXML
     private void onCancel() throws IOException {
+        WithdrawalInfo.getInstance().setAmount(0);
         Navigation.switchToView("Master");
     }
 
     @FXML
     private void confirm() throws Exception {
+        withdraw();
+    }
+
+    @FXML
+    private void confirmReceipt() {
+        withdraw();
+        // print receipt !!!
+    }
+
+    private void withdraw() {
         int[] banknotes = payout((int) WithdrawalInfo.getInstance().getAmount());
         boolean enoughInStock = Database.checkMoneystock(banknotes, WithdrawalInfo.getInstance().getCurrency().toString()); // error handling if moneyStock allows the withdrawal
         double amount = WithdrawalInfo.getInstance().getAmount();
@@ -56,19 +67,11 @@ public class WithdrawalConfirmController {
             lblError.setText("Ihr Kontostand ist zu niedrig für diesen Bezug!");
             lblError.setVisible(true);
         } else {
-            // Abzug vom Konto
-            Database.updateBalance(Operation.withdraw, amountInCHF, Info.getAccountID());
+            Database.updateBalance(Operation.withdraw, amountInCHF, Info.getAccountID()); // Abzug vom Konto
+            Database.updateMoneyStock(Operation.withdraw, banknotes, WithdrawalInfo.getInstance().getCurrency()); // Abzug vom MoneyStock
             // Auszahlung
             printWithdrawal(banknotes);
         }
-    }
-
-    @FXML
-    private void confirmReceipt() {
-        // error handling if moneyStock allows the withdrawal
-        // is the balance high enough?
-        // auszahlung
-        // print receipt
     }
 
     private int[] payout(int restAmount) {
