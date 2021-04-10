@@ -82,7 +82,7 @@
                </children>
             </GridPane>
             <Button layoutX="6.0" layoutY="539.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="25.0" prefWidth="60.0" text="Zurück" />
-            <Button layoutX="111.0" layoutY="365.0" mnemonicParsing="false" onAction="#onCreateAccountClick" text="Erstellen">
+            <Button layoutX="111.0" layoutY="367.0" mnemonicParsing="false" onAction="#onCreateAccountClick" text="Erstellen">
                <font>
                   <Font size="14.0" />
                </font>
@@ -138,13 +138,14 @@
                   <TextField fx:id="tfAccountID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <Button layoutX="112.0" layoutY="363.0" mnemonicParsing="false" onAction="#onCreateCardClick" text="Erstellen">
+            <Button layoutX="112.0" layoutY="365.0" mnemonicParsing="false" onAction="#onCreateCardClick" text="Erstellen">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
             <Label fx:id="lblError" alignment="CENTER_RIGHT" layoutX="66.0" layoutY="332.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
             <Label fx:id="lblSuccess" alignment="CENTER" layoutX="66.0" layoutY="332.0" prefHeight="17.0" prefWidth="183.0" text="Karte erfolgreich erstellt" textFill="#00ff2c" visible="false" />
+            <Button layoutX="135.0" layoutY="443.0" mnemonicParsing="false" onAction="#clear" prefHeight="28.0" prefWidth="124.0" text="Clear All" />
          </children>
       </AnchorPane>
    </right>
@@ -209,12 +210,12 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <Button layoutX="72.0" layoutY="491.0" mnemonicParsing="false" text="Geld auffüllen">
+            <Button layoutX="72.0" layoutY="491.0" mnemonicParsing="false" onAction="#restock" text="Geld auffüllen">
                <font>
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button layoutX="98.0" layoutY="367.0" mnemonicParsing="false" onAction="#onCreateUserClick" text="Erstellen">
+            <Button layoutX="98.0" layoutY="366.0" mnemonicParsing="false" onAction="#onCreateUserClick" text="Erstellen">
                <font>
                   <Font size="14.0" />
                </font>

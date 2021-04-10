@@ -5,6 +5,7 @@ import Application.Utility.Navigation;
 import Application.Utility.Salutation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -125,7 +126,33 @@ public class AdminController {
     }
 
     @FXML
+    private void restock() {
+        // ...
+    }
+
+    @FXML
     private void onBackToLogin() throws IOException {
         Navigation.switchToView("Login");
+    }
+
+    @FXML
+    private void clear() {
+        tfIBAN.clear();
+        tfBalance.clear();
+        tfBank.clear();
+        tfUserID.clear();
+        tfFirstName.clear();
+        tfLastName.clear();
+        tfSalutation.clear();
+        tfCardNr.clear();
+        tfCardtype.clear();
+        tfPIN.clear();
+        tfAccountID.clear();
+        lblSuccess.setVisible(false);
+        lblSuccess1.setVisible(false);
+        lblSuccess2.setVisible(false);
+        lblError.setVisible(false);
+        lblError1.setVisible(false);
+        lblError2.setVisible(false);
     }
 }

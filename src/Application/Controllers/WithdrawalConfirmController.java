@@ -40,11 +40,13 @@ public class WithdrawalConfirmController {
     @FXML
     private void confirm() throws Exception {
         withdraw();
+        Navigation.switchToView("TransactionSuccess");
     }
 
     @FXML
-    private void confirmReceipt() {
+    private void confirmReceipt() throws Exception {
         withdraw();
+        Navigation.switchToView("TransactionSuccess");
         // print receipt !!!
     }
 

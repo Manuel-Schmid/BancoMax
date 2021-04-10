@@ -51,7 +51,7 @@ public class MasterController {
     }
 
     @FXML
-    private void onWithdrawExpress() {
+    private void onWithdrawExpress() throws IOException {
         WithdrawalInfo.getInstance().setCurrency(Currency.CHF);
         WithdrawalInfo.getInstance().setAmount(50);
         int[] banknotes = {0, 0, 0, 1, 0, 0};
@@ -68,8 +68,9 @@ public class MasterController {
             Database.updateBalance(Operation.withdraw, amountInCHF, Info.getAccountID()); // Abzug vom Konto
             Database.updateMoneyStock(Operation.withdraw, banknotes, Currency.CHF); // Abzug vom MoneyStock
 
-            // Auszahlung
+            // Auszahlung & Transaktion erfolgreich
             System.out.println("Sie heben einen Betrag von " + WithdrawalInfo.getInstance().getAmount() + " " + WithdrawalInfo.getInstance().getCurrency() + " ab.");
+            Navigation.switchToView("TransactionSuccess");
         }
     }
 }
