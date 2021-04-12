@@ -1,0 +1,36 @@
+.list-view:focused {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5, 4, 3;
+}
+
+.list-view {
+    -fx-padding: 0px;
+    -fx-end-margin: 0px;
+    -fx-start-margin: 0px;
+    -fx-font-size: 16px;
+}
+
+.list-view .list-cell {
+    -fx-text-fill: white;
+}
+
+.centered-list .list-cell {
+    -fx-alignment: center ;
+}
+
+.right-list .list-cell {
+    -fx-alignment: center-right ;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: #161a1d; /* 131313*/
+}
+
+.list-view .list-cell:odd {
+    -fx-background-color: #1A1E23;
+}
+
+.list-view .list-cell:empty {
+    -fx-background-color: #100f0f;
+}

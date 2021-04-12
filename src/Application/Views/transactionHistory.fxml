@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" stylesheets="@../Styles/transactionHistory-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.transactionHistoryController">
+   <center>
+      <ListView fx:id="actionList" prefHeight="345.0" prefWidth="168.0" style="-fx-background-color: #0F111A;" styleClass="centered-list" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <AnchorPane prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: #090B10;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="19.0" layoutY="12.0" prefHeight="30.0" prefWidth="277.0" text="Ihre letzten Transaktionen:" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <right>
+      <ListView fx:id="amountList" prefHeight="345.0" prefWidth="166.0" style="-fx-background-color: #0F111A;" styleClass="right-list" BorderPane.alignment="CENTER_RIGHT" />
+   </right>
+   <left>
+      <ListView fx:id="timestampList" prefHeight="345.0" prefWidth="166.0" style="-fx-background-color: #0F111A;" styleClass="centered-list" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>

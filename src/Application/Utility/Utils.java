@@ -1,5 +1,6 @@
 package Application.Utility;
 
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,6 +21,10 @@ public class Utils {
 
     public static String getCurrentTimeStamp(String pattern) {
         return new SimpleDateFormat(pattern).format(new Date()); // dd.MM.yyyy HH:mm
+    }
+
+    public static String formatTimestamp(Timestamp tmstmp) {
+        return new SimpleDateFormat("dd.MM.yyyy HH:mm").format(tmstmp);
     }
 
     public static String formatMoney(double num) {

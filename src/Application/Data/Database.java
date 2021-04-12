@@ -1,10 +1,7 @@
 package Application.Data;
 
 import Application.Main;
-import Application.Utility.ConsoleColors;
-import Application.Utility.Currency;
-import Application.Utility.Operation;
-import Application.Utility.Salutation;
+import Application.Utility.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -385,20 +382,29 @@ public class Database {
         return false;
     }
 
-    public static void viewTableUser() {
-        String query = "SELECT * FROM bancomax.user;";
+    public static ArrayList<String> getTransactions(int cardID) {
+        String query = "SELECT timestamp, action, amountInCHF FROM bancomax.transaction WHERE FK_cardID = '"+cardID+"';";
+        ArrayList<String> transactions = new ArrayList<String>();
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) { // Iterates through the whole ResultSet line by line
-                int userID = rs.getInt("userID");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
-                Salutation salutation = Salutation.valueOf(rs.getString("salutation"));
-                System.out.println(userID + ", " + firstName + ", " + lastName + ", " + salutation);
+                Timestamp timestamp = rs.getTimestamp("timestamp");
+                String action = rs.getString("action");
+                Double amountInCHF = rs.getDouble("amountInCHF");
+
+                if (action.equals("Withdrawal")) {
+                    action = "Bezug";
+                } else {
+                    action = "Einzahlung";
+                }
+                String tmstmp = Utils.formatTimestamp(timestamp);
+                transactions.add(tmstmp + ";" + action + ";" + Utils.formatMoney(amountInCHF));
             }
+            return transactions;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return transactions;
     }
 
 
