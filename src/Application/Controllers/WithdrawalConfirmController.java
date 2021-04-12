@@ -71,6 +71,7 @@ public class WithdrawalConfirmController {
         } else {
             Database.updateBalance(Operation.withdraw, amountInCHF, Info.getAccountID()); // Abzug vom Konto
             Database.updateMoneyStock(Operation.withdraw, banknotes, WithdrawalInfo.getInstance().getCurrency()); // Abzug vom MoneyStock
+            Database.insertTransaction(Operation.withdraw, amountInCHF, Info.getCardID());
             // Auszahlung
             printWithdrawal(banknotes);
         }

@@ -2,8 +2,6 @@ package Application;
 
 import Application.Data.CurrencyAPI;
 import Application.Data.Database;
-import Application.Utility.Currency;
-import Application.Utility.Operation;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.util.Arrays;
+import java.sql.Timestamp;
+import java.util.Date;
+
 
 public class Main extends Application {
 

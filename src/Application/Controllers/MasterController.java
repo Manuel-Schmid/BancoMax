@@ -67,6 +67,7 @@ public class MasterController {
         } else {
             Database.updateBalance(Operation.withdraw, amountInCHF, Info.getAccountID()); // Abzug vom Konto
             Database.updateMoneyStock(Operation.withdraw, banknotes, Currency.CHF); // Abzug vom MoneyStock
+            Database.insertTransaction(Operation.withdraw, WithdrawalInfo.getInstance().getAmount(), Info.getCardID());
 
             // Auszahlung & Transaktion erfolgreich
             System.out.println("Sie heben einen Betrag von " + WithdrawalInfo.getInstance().getAmount() + " " + WithdrawalInfo.getInstance().getCurrency() + " ab.");

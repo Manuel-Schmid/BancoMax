@@ -8,6 +8,7 @@ import Application.Utility.Salutation;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Database {
 
@@ -100,6 +101,27 @@ public class Database {
             e.printStackTrace();
         }
     }
+
+    public static void insertTransaction(Operation operation, double amountInCHF, int cardID) {
+        try {
+            String action = "";
+            if (operation == Operation.withdraw) {
+                action = "Withdrawal";
+            } else {
+                action = "Deposit";
+            }
+            Date currentDate = new Date();
+            Timestamp tmstmp = new Timestamp(currentDate.getTime());
+
+            String query = "INSERT INTO bancomax.transaction (timestamp, action, amountInCHF, FK_cardID) VALUES ('"+tmstmp+"', '"+action+"', '"+amountInCHF+"', '"+cardID+"');";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     // UPDATES
 
