@@ -15,12 +15,16 @@ public class transactionHistoryController {
     @FXML
     private void initialize() {
         ArrayList<String> transactions = Database.getTransactions(Info.getCardID());
-        transactions.forEach((transaction) -> {
-            String[] arr = transaction.split(";");
-            timestampList.getItems().add(arr[0]);
-            actionList.getItems().add(arr[1]);
-            amountList.getItems().add(arr[2] + " CHF");
-        });
+        int counter = 1;
+        for (String transaction : transactions) {
+            if (counter <= 10) {
+                String[] arr = transaction.split(";");
+                timestampList.getItems().add(arr[0]);
+                actionList.getItems().add(arr[1]);
+                amountList.getItems().add(arr[2] + " CHF");
+                counter++;
+            } else { break; }
+        }
     }
 
 }
