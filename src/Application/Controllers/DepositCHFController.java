@@ -98,9 +98,14 @@ public class DepositCHFController {
     }
 
     @FXML
-    private void toMaster() throws IOException {
+    private void back() throws IOException {
+        if (DepositInfo.getInstance().isAdmin()) {
+            DepositInfo.getInstance().setAdmin(false);
+            Navigation.switchToView("Admin");
+        } else {
+            Navigation.switchToView("Master");
+        }
         DepositInfo.getInstance().setAmount(0);
-        Navigation.switchToView("Master");
     }
 
 }

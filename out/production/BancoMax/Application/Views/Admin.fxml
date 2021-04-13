@@ -81,7 +81,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Button layoutX="6.0" layoutY="539.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="25.0" prefWidth="60.0" text="Zurück" />
+            <Button layoutX="6.0" layoutY="539.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="25.0" prefWidth="60.0" text="Logout" />
             <Button layoutX="111.0" layoutY="367.0" mnemonicParsing="false" onAction="#onCreateAccountClick" text="Erstellen">
                <font>
                   <Font size="14.0" />
@@ -210,7 +210,7 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <Button layoutX="72.0" layoutY="491.0" mnemonicParsing="false" onAction="#restock" text="Geld auffüllen">
+            <Button fx:id="btnRestock" layoutX="72.0" layoutY="491.0" mnemonicParsing="false" onAction="#restock" text="Geld auffüllen">
                <font>
                   <Font size="17.0" />
                </font>
@@ -222,6 +222,17 @@
             </Button>
             <Label fx:id="lblError1" alignment="CENTER_RIGHT" layoutX="47.0" layoutY="334.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
             <Label fx:id="lblSuccess1" alignment="CENTER" layoutX="46.0" layoutY="334.0" prefHeight="17.0" prefWidth="183.0" text="User erfolgreich erstellt" textFill="#00ff2c" visible="false" />
+            <Button fx:id="btnRestockEuro" layoutX="137.0" layoutY="491.0" mnemonicParsing="false" onAction="#restockEuro" text="Euro auffüllen" visible="false">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRestockCHF" layoutX="5.0" layoutY="491.0" mnemonicParsing="false" onAction="#restockCHF" text="CHF auffüllen" visible="false">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblTransSuccessful" alignment="CENTER" layoutX="50.0" layoutY="464.0" prefHeight="17.0" prefWidth="183.0" text="Automat erfolreich nachgefüllt" textFill="#00ff2c" visible="false" />
          </children>
       </AnchorPane>
    </center>

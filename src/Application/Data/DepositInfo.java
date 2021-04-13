@@ -19,6 +19,8 @@ public class DepositInfo { // Singleton
     private int[] banknotes = new int[6];
     private Currency currency = Currency.CHF;
 
+    private boolean isAdmin = false;
+
     public int getAmount() {
         return amount;
     }
@@ -41,5 +43,13 @@ public class DepositInfo { // Singleton
 
     public void setBanknotes(int[] banknotes) {
         this.banknotes = banknotes;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

@@ -1,12 +1,10 @@
 package Application.Controllers;
 
 import Application.Data.Database;
-import Application.Utility.Navigation;
-import Application.Utility.Salutation;
-import Application.Utility.Security;
-import Application.Utility.Utils;
-import javafx.event.ActionEvent;
+import Application.Data.DepositInfo;
+import Application.Utility.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -26,9 +24,25 @@ public class AdminController {
     private TextField tfCardNr, tfCardtype, tfPIN, tfAccountID;
     // success & error
     @FXML
-    private Label lblSuccess, lblSuccess1, lblSuccess2, lblError, lblError1, lblError2;
+    private Label lblSuccess, lblSuccess1, lblSuccess2, lblError, lblError1, lblError2, lblTransSuccessful;
+    // Restock Buttons
+    @FXML
+    private Button btnRestock, btnRestockEuro, btnRestockCHF;
 
     private boolean success = false;
+    private static boolean wasSuccessful = false;
+
+    public static void setWasSuccessful(boolean b) {
+        wasSuccessful = b;
+    }
+
+    @FXML
+    private void initialize() {
+        if (wasSuccessful) {
+            wasSuccessful = false;
+            lblTransSuccessful.setVisible(true);
+        }
+    }
 
     @FXML
     private void onCreateCardClick() {
@@ -121,17 +135,35 @@ public class AdminController {
             lblSuccess.setVisible(false);
             lblSuccess1.setVisible(false);
             lblSuccess2.setVisible(false);
+            lblTransSuccessful.setVisible(false);
             success = false;
         }
     }
 
     @FXML
     private void restock() {
-        // ...
+        btnRestock.setVisible(false);
+        btnRestockEuro.setVisible(true);
+        btnRestockCHF.setVisible(true);
+    }
+
+    @FXML
+    private void restockEuro() throws IOException {
+        DepositInfo.getInstance().setCurrency(Currency.Euro);
+        DepositInfo.getInstance().setAdmin(true);
+        Navigation.switchToView("DepositEuro");
+    }
+
+    @FXML
+    private void restockCHF() throws IOException {
+        DepositInfo.getInstance().setCurrency(Currency.CHF);
+        DepositInfo.getInstance().setAdmin(true);
+        Navigation.switchToView("DepositCHF");
     }
 
     @FXML
     private void onBackToLogin() throws IOException {
+        DepositInfo.getInstance().setAdmin(false);
         Navigation.switchToView("Login");
     }
 
@@ -154,5 +186,6 @@ public class AdminController {
         lblError.setVisible(false);
         lblError1.setVisible(false);
         lblError2.setVisible(false);
+        lblTransSuccessful.setVisible(false);
     }
 }

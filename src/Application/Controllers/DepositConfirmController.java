@@ -13,11 +13,15 @@ import java.io.IOException;
 public class DepositConfirmController {
 
     @FXML
-    private Label lblAmount, lblText, lblError;
+    private Label lblAmount, lblText;
 
     @FXML
     private void initialize() {
-        lblText.setText("Sie sind dabei, den folgenden Betrag auf das Konto " + Info.getIBAN() + " zu überweisen");
+        if (DepositInfo.getInstance().isAdmin()) {
+            lblText.setText("Sie sind dabei, den BancoMax-Automaten als Administrator um den folgenden Betrag aufzufüllen:");
+        } else {
+            lblText.setText("Sie sind dabei, den folgenden Betrag auf das Konto " + Info.getIBAN() + " zu überweisen:");
+        }
         String formattedAmount = DepositInfo.getInstance().getCurrency() + " " + Utils.formatMoney(DepositInfo.getInstance().getAmount());
         lblAmount.setText(formattedAmount);
     }
@@ -34,8 +38,13 @@ public class DepositConfirmController {
 
     @FXML
     private void onCancel() throws IOException {
+        if (DepositInfo.getInstance().isAdmin()) {
+            DepositInfo.getInstance().setAdmin(false);
+            Navigation.switchToView("Admin");
+        } else {
+            Navigation.switchToView("Master");
+        }
         DepositInfo.getInstance().setAmount(0);
-        Navigation.switchToView("Master");
     }
 
     @FXML
@@ -48,9 +57,16 @@ public class DepositConfirmController {
         } else {
             amountInCHF = amount;
         }
-        Database.updateBalance(Operation.deposit, amountInCHF, Info.getAccountID()); // Einzahlung mit Konto verrechnen
         Database.updateMoneyStock(Operation.deposit, DepositInfo.getInstance().getBanknotes(), DepositInfo.getInstance().getCurrency()); // Einzahlung mit moneyStock verrechnen
-        Database.insertTransaction(Operation.deposit, amountInCHF, Info.getCardID());
-        Navigation.switchToView("TransactionSuccess");
+        if (!DepositInfo.getInstance().isAdmin()) {
+            Database.updateBalance(Operation.deposit, amountInCHF, Info.getAccountID()); // Einzahlung mit Konto verrechnen
+            Database.insertTransaction(Operation.deposit, amountInCHF, Info.getCardID()); // Transaktion verbuchen
+            Navigation.switchToView("TransactionSuccess");
+        } else {
+            DepositInfo.getInstance().setAdmin(false);
+            AdminController.setWasSuccessful(true);
+            Navigation.switchToView("Admin");
+        }
+
     }
 }

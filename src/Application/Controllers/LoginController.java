@@ -27,7 +27,7 @@ public class LoginController {
     @FXML
     void onAdminClick() {
         if(pfPassword.getText().isEmpty()) {
-            lblAdminError.setText("Bitte alle Felder ausfüllen!");
+            lblAdminError.setText("Bitte Passwort eingeben!");
             lblAdminError.setVisible(true);
         } else {
             try {

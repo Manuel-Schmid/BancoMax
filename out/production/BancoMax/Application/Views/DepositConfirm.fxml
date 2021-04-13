@@ -35,7 +35,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblText" layoutX="80.0" layoutY="60.0" prefHeight="70.0" prefWidth="709.0" text="Sie sind dabei, den folgenden Betrag auf das Konto CHXXXXXXXXXXXXXXXXX zu überweisen" textFill="WHITE" wrapText="true">
+            <Label fx:id="lblText" layoutX="80.0" layoutY="60.0" prefHeight="70.0" prefWidth="709.0" text="Sie sind dabei, den folgenden Betrag auf das Konto CHXXXXXXXXXXXXXXXXX zu überweisen:" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font>
@@ -61,11 +61,6 @@
                   </Label>
                </children>
             </GridPane>
-            <Label fx:id="lblError" layoutX="227.0" layoutY="213.0" prefHeight="118.0" prefWidth="457.0" text="Ihr Kontostand ist zu niedrig für diesen Bezug!" textFill="#f7003e" visible="false" wrapText="true">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
    </center>
