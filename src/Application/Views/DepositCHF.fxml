@@ -33,32 +33,32 @@
             </Label>
             <AnchorPane layoutX="1.0" layoutY="72.0" prefHeight="369.0" prefWidth="900.0">
                <children>
-                  <ImageView fitHeight="328.0" fitWidth="138.0" layoutX="32.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="1000" fitHeight="328.0" fitWidth="138.0" layoutX="32.0" layoutY="10.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/thousand.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="301.0" fitWidth="136.0" layoutX="183.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="200" fitHeight="301.0" fitWidth="136.0" layoutX="183.0" layoutY="11.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/twoHundred.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="278.0" fitWidth="131.0" layoutX="330.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="100" fitHeight="278.0" fitWidth="131.0" layoutX="330.0" layoutY="11.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/hundred.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="256.0" fitWidth="129.0" layoutX="474.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="50" fitHeight="256.0" fitWidth="129.0" layoutX="474.0" layoutY="10.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/fifty.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="237.0" fitWidth="125.0" layoutX="615.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="20" fitHeight="237.0" fitWidth="125.0" layoutX="615.0" layoutY="10.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/twenty.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="209.0" fitWidth="117.0" layoutX="751.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="10" fitHeight="209.0" fitWidth="117.0" layoutX="751.0" layoutY="10.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/ten.jpg" />
                      </image>

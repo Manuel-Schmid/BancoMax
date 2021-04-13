@@ -6,6 +6,7 @@ import Application.Utility.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,6 +56,44 @@ public class DepositCHFController {
             DepositInfo.getInstance().setBanknotes(notes);
             DepositInfo.getInstance().setAmount(sum);
             Navigation.switchToView("DepositConfirm");
+        }
+    }
+
+    @FXML
+    private void addNote(MouseEvent event) {
+        int note = Integer.parseInt(event.getPickResult().getIntersectedNode().getId()); // Id von ImageView auslesen
+        int count;
+        switch(note) {
+            case 1000:
+                try { count = Integer.parseInt(tfThousand.getText()); }
+                catch (Exception e) { count = 0; }
+                tfThousand.setText(String.valueOf(count + 1));
+                break;
+            case 200:
+                try { count = Integer.parseInt(tfTwoHundred.getText()); }
+                catch (Exception e) { count = 0; }
+                tfTwoHundred.setText(String.valueOf(count + 1));
+                break;
+            case 100:
+                try { count = Integer.parseInt(tfHundred.getText()); }
+                catch (Exception e) { count = 0; }
+                tfHundred.setText(String.valueOf(count + 1));
+                break;
+            case 50:
+                try { count = Integer.parseInt(tfFifty.getText()); }
+                catch (Exception e) { count = 0; }
+                tfFifty.setText(String.valueOf(count + 1));
+                break;
+            case 20:
+                try { count = Integer.parseInt(tfTwenty.getText()); }
+                catch (Exception e) { count = 0; }
+                tfTwenty.setText(String.valueOf(count + 1));
+                break;
+            case 10:
+                try { count = Integer.parseInt(tfTen.getText()); }
+                catch (Exception e) { count = 0; }
+                tfTen.setText(String.valueOf(count + 1));
+                break;
         }
     }
 

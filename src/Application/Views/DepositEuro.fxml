@@ -33,27 +33,27 @@
             </Label>
             <AnchorPane layoutY="74.0" prefHeight="370.0" prefWidth="900.0">
                <children>
-                  <ImageView fitHeight="149.0" fitWidth="305.0" layoutX="33.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="200" fitHeight="149.0" fitWidth="305.0" layoutX="33.0" layoutY="4.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/Euro/twoHundred.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="145.0" fitWidth="261.0" layoutX="345.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="50" fitHeight="145.0" fitWidth="261.0" layoutX="345.0" layoutY="4.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/Euro/fifty.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="134.0" fitWidth="258.0" layoutX="346.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="20" fitHeight="134.0" fitWidth="258.0" layoutX="346.0" layoutY="190.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/Euro/twenty.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="137.0" fitWidth="253.0" layoutX="616.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="10" fitHeight="137.0" fitWidth="253.0" layoutX="616.0" layoutY="4.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/Euro/ten.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="149.0" fitWidth="284.0" layoutX="33.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="100" fitHeight="149.0" fitWidth="284.0" layoutX="33.0" layoutY="190.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/Euro/hundred.jpg" />
                      </image>
