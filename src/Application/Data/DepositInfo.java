@@ -16,8 +16,8 @@ public class DepositInfo { // Singleton
 
     // default values
     private int amount = 0;
-    private Currency currency = Currency.CHF;
     private int[] banknotes = new int[6];
+    private Currency currency = Currency.CHF;
 
     public int getAmount() {
         return amount;
@@ -25,7 +25,6 @@ public class DepositInfo { // Singleton
 
     public void setAmount(int amount) {
         this.amount = amount;
-        System.out.println(this.amount);
     }
 
     public Currency getCurrency() {
@@ -42,6 +41,5 @@ public class DepositInfo { // Singleton
 
     public void setBanknotes(int[] banknotes) {
         this.banknotes = banknotes;
-        System.out.println(Arrays.toString(this.banknotes));
     }
 }

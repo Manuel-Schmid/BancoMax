@@ -406,37 +406,4 @@ public class Database {
         }
         return transactions;
     }
-
-
-
-    /*
-    // ---
-    public static ArrayList<String> getExample() throws Exception {
-        try {
-            Connection con = getConnection();
-            PreparedStatement selected = con.prepareStatement("SELECT firstName, PIN, lastName FROM user WHERE PIN = '523452129'");
-
-            ResultSet selectedData = selected.executeQuery();
-
-            ArrayList<String> list = new ArrayList<String>();
-            while(selectedData.next()) { // Runs as long as there is another result on the next line
-                System.out.print(selectedData.getString("PIN")+ " ");
-                System.out.print(selectedData.getString("firstName")+ " ");
-                System.out.println(selectedData.getString("lastName"));
-
-                list.add(selectedData.getString("lastName"));
-            }
-            System.out.println("All records selected");
-            return list;
-
-        } catch (Exception e) {
-            System.out.println(e);
-            return null; // in case an error happens
-        }
-        finally {
-            System.out.println("Select complete");
-        }
-    }
-    */
-
 }

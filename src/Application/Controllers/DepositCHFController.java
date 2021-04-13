@@ -50,16 +50,12 @@ public class DepositCHFController {
             for (TextField tf : fields) {
                 notes[counter] = Integer.parseInt(tf.getText());
                 counter++;
-            };
+            }
             int sum = notes[0] * 1000 + notes[1] * 200 + notes[2] * 100 + notes[3] * 50 + notes[4] * 20 + notes[5] * 10;
             DepositInfo.getInstance().setBanknotes(notes);
             DepositInfo.getInstance().setAmount(sum);
-            Navigation.switchToView("");
+            Navigation.switchToView("DepositConfirm");
         }
-
-
-//    lblError.setText("Nur Zahlen eingeben");
-//    DepositInfo.getInstance().setAmount();
     }
 
     @FXML
