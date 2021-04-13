@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TransactionHistoryController {
 
@@ -15,6 +16,7 @@ public class TransactionHistoryController {
     @FXML
     private void initialize() {
         ArrayList<String> transactions = Database.getTransactions(Info.getCardID());
+        Collections.reverse(transactions);
         int counter = 1;
         for (String transaction : transactions) {
             if (counter <= 10) {
