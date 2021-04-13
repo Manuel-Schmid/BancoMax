@@ -1,6 +1,7 @@
 package Application.Controllers;
 
 import Application.Data.Database;
+import Application.Data.DepositInfo;
 import Application.Data.Info;
 import Application.Data.WithdrawalInfo;
 import Application.Utility.Currency;
@@ -36,6 +37,18 @@ public class MasterController {
     @FXML
     private void onPinChange() throws IOException {
         Navigation.switchToView("PinChange");
+    }
+
+    @FXML
+    private void onDepositCHF() throws IOException {
+        DepositInfo.getInstance().setCurrency(Currency.CHF);
+        Navigation.switchToView("DepositCHF");
+    }
+
+    @FXML
+    private void onDepositEuro() throws IOException {
+        DepositInfo.getInstance().setCurrency(Currency.Euro);
+        Navigation.switchToView("DepositEuro");
     }
 
     @FXML

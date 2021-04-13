@@ -30,21 +30,28 @@
    <right>
       <AnchorPane prefHeight="600.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="57.0" layoutY="249.0" mnemonicParsing="false" onAction="#onWithdrawCHF" prefHeight="45.0" prefWidth="181.0" text="Bezug CHF" />
-            <Button layoutX="58.0" layoutY="310.0" mnemonicParsing="false" onAction="#onWithdrawEuro" prefHeight="45.0" prefWidth="181.0" text="Bezug Euro" />
-            <Button layoutX="57.0" layoutY="408.0" mnemonicParsing="false" onAction="#onWithdrawExpress" prefHeight="45.0" prefWidth="181.0" text="Expressbezug:                        CHF 50 ohne Beleg" wrapText="true" />
-            <Label layoutX="104.0" layoutY="204.0" text="Geldbezug" textFill="WHITE">
+            <Button layoutX="64.0" layoutY="338.0" mnemonicParsing="false" onAction="#onWithdrawCHF" prefHeight="45.0" prefWidth="181.0" text="Bezug CHF" />
+            <Button layoutX="65.0" layoutY="399.0" mnemonicParsing="false" onAction="#onWithdrawEuro" prefHeight="45.0" prefWidth="181.0" text="Bezug Euro" />
+            <Button layoutX="64.0" layoutY="497.0" mnemonicParsing="false" onAction="#onWithdrawExpress" prefHeight="45.0" prefWidth="181.0" text="Expressbezug:                        CHF 50 ohne Beleg" wrapText="true" />
+            <Label layoutX="111.0" layoutY="293.0" text="Geldbezug" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
             <Label fx:id="lblError" alignment="TOP_LEFT" layoutX="50.0" layoutY="470.0" prefHeight="69.0" prefWidth="192.0" text="error" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" />
+            <Button layoutX="64.0" layoutY="114.0" mnemonicParsing="false" onAction="#onDepositCHF" prefHeight="45.0" prefWidth="181.0" text="Einzahlung CHF" />
+            <Button layoutX="64.0" layoutY="174.0" mnemonicParsing="false" onAction="#onDepositEuro" prefHeight="45.0" prefWidth="181.0" text="Einzahlung Euro" />
+            <Label layoutX="89.0" layoutY="71.0" text="Geldeinzahlung" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </right>
    <center>
       <AnchorPane prefHeight="600.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="lblWelcome" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="286.0" prefHeight="30.0" prefWidth="290.0" text="Willkommen" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblWelcome" alignment="CENTER" contentDisplay="CENTER" layoutX="-4.0" layoutY="258.0" prefHeight="79.0" prefWidth="290.0" text="Willkommen" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font></Label>

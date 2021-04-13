@@ -7,7 +7,7 @@ import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
 
-public class transactionHistoryController {
+public class TransactionHistoryController {
 
     @FXML
     private ListView timestampList, actionList, amountList;
