@@ -18,9 +18,8 @@ public class MasterController {
     @FXML
     private Label lblWelcome, lblError;
 
-    String welcome = "Welcome " + Info.getSalutation() + " " + Info.getLastName();
-
-    public void onBackToLogin(ActionEvent actionEvent) throws IOException {
+    public void onBackToLogin() throws IOException {
+        Info.logout();
         Navigation.switchToView("Login");
     }
 
@@ -83,7 +82,6 @@ public class MasterController {
             Database.insertTransaction(Operation.withdraw, WithdrawalInfo.getInstance().getAmount(), Info.getCardID());
 
             // Auszahlung & Transaktion erfolgreich
-            System.out.println("Sie heben einen Betrag von " + WithdrawalInfo.getInstance().getAmount() + " " + WithdrawalInfo.getInstance().getCurrency() + " ab.");
             Navigation.switchToView("TransactionSuccess");
         }
     }

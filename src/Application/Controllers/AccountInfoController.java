@@ -11,8 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -38,14 +36,15 @@ public class AccountInfoController {
 
     @FXML
     private void onLastTransactions() throws IOException {
-        // show last transactions
+        // show lastTransactions-view
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(Main.primaryStage);
         BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/transactionHistory.fxml"));
-        dialog.setTitle("BancoMax - Last Transactions");
+        dialog.setTitle("BancoMax - Transaktionen");
         dialog.getIcons().add(new Image("Application/Media/logo256.png"));
         dialog.setScene(new Scene(pane));
+        dialog.setResizable(false);
         dialog.show();
     }
 

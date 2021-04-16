@@ -117,4 +117,15 @@ public class Info {
         Info.cardtype = cardtype;
     }
 
+    public static void logout() {
+        userID = 0;
+        firstName = "";
+        lastName = "";
+        accountID = 0;
+        IBAN = "";
+        bank = "";
+        cardID = 0;
+        cardNr = "";
+        cardtype = "";
+    }
 }

@@ -32,10 +32,6 @@ public class AdminController {
     private boolean success = false;
     private static boolean wasSuccessful = false;
 
-    public static void setWasSuccessful(boolean b) {
-        wasSuccessful = b;
-    }
-
     @FXML
     private void initialize() {
         if (wasSuccessful) {
@@ -187,5 +183,9 @@ public class AdminController {
         lblError1.setVisible(false);
         lblError2.setVisible(false);
         lblTransSuccessful.setVisible(false);
+    }
+
+    public static void setWasSuccessful(boolean b) {
+        wasSuccessful = b;
     }
 }

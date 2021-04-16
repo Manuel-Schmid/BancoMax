@@ -107,5 +107,4 @@ public class DepositCHFController {
         }
         DepositInfo.getInstance().setAmount(0);
     }
-
 }

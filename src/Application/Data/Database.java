@@ -36,19 +36,6 @@ public class Database {
         }
     }
 
-    private void example() {
-        try {
-            stmt = conn.createStatement();
-
-            String query = "";
-
-            stmt.executeUpdate(query);
-            System.out.println("XXX successful");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     // INSERTS
 
     public static void insertCard(String cardNr, String cardtype, byte[] PINhash, byte[] PINsalt, int accountID) {
@@ -58,7 +45,6 @@ public class Database {
             pstmt.setBytes(1, PINhash);
             pstmt.setBytes(2, PINsalt);
             pstmt.execute();
-            System.out.println("INSERT INTO 'card' successful");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,7 +57,6 @@ public class Database {
             pstmt.setBytes(1, passwordHash);
             pstmt.setBytes(2, passwordSalt);
             pstmt.execute();
-            System.out.println("INSERT INTO 'admin' successful");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,7 +67,6 @@ public class Database {
             String query = "INSERT INTO `bancomax`.`user` (`firstName`, `lastName`, `salutation`) VALUES ('"+firstName+"', '"+lastName+"', '"+salutation+"');";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.execute();
-            System.out.println("INSERT INTO 'user' successful");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,7 +77,6 @@ public class Database {
             String query = "INSERT INTO `bancomax`.`account`(`IBAN`,`balanceInCHF`,`bank`,`FK_userID`) VALUES ('"+IBAN+"', '"+balance+"', '"+bank+"', '"+userID+"');";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.execute();
-            System.out.println("INSERT INTO 'account' successful");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -129,7 +112,6 @@ public class Database {
             pstmt.setBytes(1, PINhash);
             pstmt.setBytes(2, PINsalt);
             pstmt.execute();
-            System.out.println("UPDATE ON 'card' successful");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -146,7 +128,6 @@ public class Database {
             String query = "UPDATE bancomax.account SET balanceInCHF = '"+newBalance+"' WHERE `accountID` = '"+accountID+"';";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.execute();
-            System.out.println("UPDATE ON 'account.balance' successful");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -171,7 +152,6 @@ public class Database {
             pstmt.setInt(5, stock[4]);
             pstmt.setInt(6, stock[5]);
             pstmt.execute();
-            System.out.println("UPDATE ON 'moneystock' successful");
         } catch (Exception e) {
             e.printStackTrace();
         }
