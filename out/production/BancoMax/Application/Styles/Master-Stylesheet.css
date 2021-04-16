@@ -1,0 +1,15 @@
+.menu-btn{
+    -fx-background-color: rgba(15, 17, 26, 0.32);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-font-size: 14px;
+}
+
+.menu-btn:hover{
+    -fx-background-color: rgba(15, 17, 26, 0.5);
+}
+
+.menu-btn:disabled{
+    -fx-opacity: 1;
+}
