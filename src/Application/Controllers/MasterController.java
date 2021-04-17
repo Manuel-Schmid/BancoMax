@@ -105,33 +105,37 @@ public class MasterController {
     @FXML
     private void manageHover() {
         if(active.equals("") || active.equals("2") || active.equals("3")) {
-            reverse();
+            reverse(false);
             animation(title1, manageBtns, rec1, "1");
         }
     }
     @FXML
     private void depositHover() {
         if(active.equals("") || active.equals("1") || active.equals("3")) {
-            reverse();
+            reverse(false);
             animation(title2, depositBtns, rec2, "2");
         }
     }
     @FXML
     private void withdrawHover() {
         if (active.equals("") || active.equals("1") || active.equals("2")) {
-            reverse();
+            reverse(false);
             animation(title3, withdrawBtns, rec3, "3");
         }
     }
-
-    private void reverse() {
+    @FXML
+    private void reverse(boolean menuExited) {
         if (active.equals("1")) {
-            reverseAnimation(title1, manageBtns, rec1);
+            reverseAnimation(title1, manageBtns, rec1, menuExited);
         } else if (active.equals("2")) {
-            reverseAnimation(title2, depositBtns, rec2);
+            reverseAnimation(title2, depositBtns, rec2, menuExited);
         } else if (active.equals("3")) {
-            reverseAnimation(title3, withdrawBtns, rec3);
+            reverseAnimation(title3, withdrawBtns, rec3, menuExited);
         }
+    }
+    @FXML
+    private void menuExited() {
+        reverse(true);
     }
 
     private void animation(Label title, AnchorPane buttons, Rectangle rec, String status) {
@@ -162,14 +166,14 @@ public class MasterController {
         });
     }
 
-    private void reverseAnimation(Label title, AnchorPane buttons, Rectangle rec) {
+    private void reverseAnimation(Label title, AnchorPane buttons, Rectangle rec, boolean menuExited) {
         active = "running";
         buttons.toBack();
         FadeTransition fadeIn = new FadeTransition(Duration.millis(500), title);
         fadeIn.setFromValue(0.0);
         fadeIn.setToValue(1.0);
         fadeIn.play();
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(500), buttons);
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(300), buttons);
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
         fadeOut.play();
@@ -186,7 +190,9 @@ public class MasterController {
 
         pt.setOnFinished((e) -> {
             buttons.setDisable(true);
-            active = "";
+            if (menuExited) {
+                active = "";
+            }
         });
     }
 

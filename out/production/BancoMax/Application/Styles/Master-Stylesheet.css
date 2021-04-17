@@ -13,3 +13,7 @@
 .menu-btn:disabled{
     -fx-opacity: 1;
 }
+
+.express{
+    -fx-font-size: 12px !important;
+}

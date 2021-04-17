@@ -2,6 +2,7 @@ package Application;
 
 import Application.Data.CurrencyAPI;
 import Application.Data.Database;
+import com.sun.javafx.css.StyleManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

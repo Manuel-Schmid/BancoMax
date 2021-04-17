@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@../Styles/Login-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" prefHeight="600.0" prefWidth="900.0" stylesheets="@../Styles/Login-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.LoginController">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="388.0" style="-fx-background-color: #090B10;" BorderPane.alignment="CENTER">
          <children>
@@ -24,7 +24,7 @@
                   <Image url="@../Media/logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnAdmin" alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" layoutY="549.0" mnemonicParsing="false" onAction="#onAdminClick" prefHeight="25.0" prefWidth="101.0" styleClass="admin-button" text="Admin-Ansicht" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="btnAdmin" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="181.0" layoutY="549.0" mnemonicParsing="false" onAction="#onAdminClick" prefHeight="25.0" prefWidth="101.0" styleClass="admin-button" text="Admin-Ansicht" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font></Button>
