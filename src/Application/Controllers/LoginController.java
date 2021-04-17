@@ -7,6 +7,8 @@ import Application.Utility.Navigation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
 import javafx.animation.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -38,10 +41,19 @@ public class LoginController {
     private HBox cover;
     @FXML
     private Rectangle btnLogin;
+    @FXML
+    private BorderPane root;
 
     @FXML
     private void initialize() {
         btnSettings.toFront();
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+        pfPassword.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                root.requestFocus();
+                firstTime.setValue(false);
+            }
+        });
     }
 
     @FXML

@@ -40,6 +40,8 @@ public class MasterController {
 
     @FXML
     private void onPinChange() throws IOException {
+        System.err.close();
+        System.setErr(System.out);
         Navigation.switchToView("PinChange");
     }
 

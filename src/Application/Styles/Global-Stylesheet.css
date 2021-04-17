@@ -10,13 +10,19 @@
 
 .btn:hover{
     -fx-background-color: transparent;
+    -fx-border-color: #930033;
 }
 
 .btn:focused{
-    -fx-background-color: #040507;
+    -fx-background-color: #090B10;
+    -fx-border-color: #3f464c;
 }
 
 .txtField{
     -fx-background-radius: 15px;
     -fx-padding: 4 0 4 13;
+}
+
+.jfx-text-field, .jfx-password-field {
+    -fx-text-inner-color: #b7b7b7;
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.WithdrawalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" stylesheets="@../Styles/Global-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.WithdrawalController">
    <top>
       <AnchorPane prefHeight="91.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,7 +27,7 @@
    <bottom>
       <AnchorPane prefHeight="95.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#toMaster" prefHeight="36.0" prefWidth="119.0" text="Zurück" />
+            <Button layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#toMaster" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Zurück" />
             <Button fx:id="btnConfirm" disable="true" layoutX="706.0" layoutY="1.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="37.0" prefWidth="129.0" text="Bestätigen" />
          </children>
       </AnchorPane>
@@ -51,17 +51,16 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button cancelButton="true" mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" text="50" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" text="200" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" text="80" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" text="500" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" text="100" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" text="1'000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Button cancelButton="true" layoutX="27.0" layoutY="27.0" mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" text="50" />
+                  <Button cancelButton="true" mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="50" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="200" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="80" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="500" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="100" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="1'000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <TextField fx:id="tfAmount" layoutX="524.0" layoutY="176.0" prefHeight="33.0" prefWidth="129.0" promptText="Betrag (max. 2'000)" />
-            <Button layoutX="524.0" layoutY="222.0" mnemonicParsing="false" onAction="#setCustomAmount" prefHeight="37.0" prefWidth="129.0" text="Eingegebener Betrag" />
+            <Button layoutX="524.0" layoutY="222.0" mnemonicParsing="false" onAction="#setCustomAmount" prefHeight="37.0" prefWidth="129.0" style="-fx-font-size: 12px;" styleClass="btn" text="Definierter Betrag" />
             <Label layoutX="81.0" layoutY="122.0" text="Betrag:" textFill="WHITE">
                <font>
                   <Font size="20.0" />

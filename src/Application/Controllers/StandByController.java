@@ -9,6 +9,8 @@ public class StandByController {
 
     @FXML
     void openLoginView() throws IOException {
+        System.err.close();
+        System.setErr(System.out);
         Navigation.switchToView("Login");
     }
 }

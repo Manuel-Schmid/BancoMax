@@ -2,19 +2,20 @@ package Application.Controllers;
 
 import Application.Data.Database;
 import Application.Data.Info;
-import Application.Main;
 import Application.Utility.Navigation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
+import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
@@ -26,12 +27,21 @@ public class PinChangeController {
     private TextField tfCardNr;
     @FXML
     private PasswordField pfPIN, pfPINconfirm;
+    @FXML
+    private BorderPane root;
 
     private boolean success = false;
 
     @FXML
     private void initialize() {
         tfCardNr.setText(Info.getCardNr());
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+        pfPIN.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                root.requestFocus();
+                firstTime.setValue(false);
+            }
+        });
     }
 
     @FXML
