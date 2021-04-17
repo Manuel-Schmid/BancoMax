@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.AccountInfoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" stylesheets="@../Styles/Global-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.AccountInfoController">
    <top>
       <AnchorPane prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +26,7 @@
    <bottom>
       <AnchorPane prefHeight="95.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#toMaster" prefHeight="36.0" prefWidth="119.0" text="Zurück" />
+            <Button focusTraversable="false" layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#toMaster" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Zurück" />
          </children>
       </AnchorPane>
    </bottom>
@@ -49,25 +49,29 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblBank" text="Bank:" textFill="WHITE" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="lblBalanceDate" text="Aktueller Saldo per XX.XX.20XX" textFill="WHITE" GridPane.rowIndex="2">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblBalance" text="CHF XXXXX.XX" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="lblBalance" text="CHF XXXXX.XX" textFill="#00ff2c" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label fx:id="lblBank" layoutY="4.0" text="Bank:" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </GridPane>
-            <Button layoutX="709.0" layoutY="383.0" mnemonicParsing="false" onAction="#onLastTransactions" prefHeight="37.0" prefWidth="129.0" text="Letzte Bewegungen" />
-            <Button layoutX="709.0" layoutY="331.0" mnemonicParsing="false" onAction="#onPrintReceipt" prefHeight="37.0" prefWidth="129.0" text="Beleg drucken" />
+            <Button focusTraversable="false" layoutX="709.0" layoutY="383.0" mnemonicParsing="false" onAction="#onLastTransactions" prefHeight="37.0" prefWidth="129.0" style="-fx-font-size: 12px;" styleClass="btn" text="Letzte Bewegungen" />
+            <Button focusTraversable="false" layoutX="709.0" layoutY="331.0" mnemonicParsing="false" onAction="#onPrintReceipt" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="Beleg drucken" />
          </children>
       </AnchorPane>
    </center>

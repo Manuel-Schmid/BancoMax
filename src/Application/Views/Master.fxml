@@ -47,7 +47,7 @@
                   <String fx:value="express" />
                   <String fx:value="btn" />
                </styleClass></Button>
-            <Label fx:id="lblError" alignment="CENTER" layoutX="65.0" layoutY="470.0" prefHeight="26.0" prefWidth="181.0" text="error" textAlignment="CENTER" textFill="RED" visible="false" wrapText="true" />
+            <Label fx:id="lblError" alignment="BOTTOM_LEFT" layoutX="100.0" layoutY="475.0" prefHeight="55.0" prefWidth="190.0" text="error" textFill="RED" visible="false" wrapText="true" />
             <AnchorPane fx:id="withdrawBtns" disable="true" layoutX="19.0" layoutY="297.0" opacity="0.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#onWithdrawCHF" prefHeight="45.0" prefWidth="170.0" styleClass="menu-btn" text="Bezug CHF" />

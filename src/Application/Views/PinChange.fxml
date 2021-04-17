@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#paneClicked" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.PinChangeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" onMouseClicked="#paneClicked" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" stylesheets="@../Styles/Global-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.PinChangeController">
    <top>
       <AnchorPane prefHeight="91.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -56,7 +56,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tfCardNr" disable="true" GridPane.columnIndex="1">
+                  <TextField fx:id="tfCardNr" disable="true" styleClass="txtField" GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets top="2.0" />
                      </GridPane.margin>
@@ -66,11 +66,11 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="pfPIN" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <PasswordField fx:id="pfPINconfirm" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="pfPIN" styleClass="txtField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <PasswordField fx:id="pfPINconfirm" styleClass="txtField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Button layoutX="545.0" layoutY="324.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="119.0" text="Bestätigen" />
+            <Button layoutX="545.0" layoutY="324.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Bestätigen" />
             <Label fx:id="lblError" alignment="CENTER" layoutX="493.0" layoutY="300.0" prefHeight="17.0" prefWidth="170.0" text="Bitte alle Felder ausfüllen!" textFill="RED" visible="false" />
             <Label fx:id="lblSuccess" alignment="CENTER" layoutX="495.0" layoutY="298.0" prefHeight="17.0" prefWidth="169.0" text="PIN erfolgreich geändert" textFill="#00ff2c" visible="false" />
          </children>
@@ -79,7 +79,7 @@
    <bottom>
       <AnchorPane prefHeight="95.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="36.0" prefWidth="119.0" text="Abbrechen" />
+            <Button layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Zurück" />
          </children>
       </AnchorPane>
    </bottom>

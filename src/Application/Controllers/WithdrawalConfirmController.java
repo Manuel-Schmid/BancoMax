@@ -40,17 +40,15 @@ public class WithdrawalConfirmController {
     @FXML
     private void confirm() throws Exception {
         withdraw();
-        Navigation.switchToView("TransactionSuccess");
     }
 
     @FXML
     private void confirmReceipt() throws Exception {
         withdraw();
-        Navigation.switchToView("TransactionSuccess");
         // print receipt !!!
     }
 
-    private void withdraw() {
+    private void withdraw() throws IOException {
         int[] banknotes = payout((int) WithdrawalInfo.getInstance().getAmount());
         boolean enoughInStock = Database.checkMoneystock(banknotes, WithdrawalInfo.getInstance().getCurrency().toString()); // error handling if moneyStock allows the withdrawal
         double amount = WithdrawalInfo.getInstance().getAmount();
@@ -62,6 +60,7 @@ public class WithdrawalConfirmController {
             amountInCHF = amount;
         }
         boolean enoughBalance = (Database.getBalance(Info.getAccountID()) >= amountInCHF);
+        System.out.println(enoughBalance);
         if (!enoughInStock) {
             lblError.setText("Der Automat hat nicht mehr genügend Noten für Ihre Anfrage! Probieren Sie es später erneut.         Wir entschuldigen uns für die Unannehmlichkeiten.");
             lblError.setVisible(true);
@@ -74,6 +73,7 @@ public class WithdrawalConfirmController {
             Database.insertTransaction(Operation.withdraw, amountInCHF, Info.getCardID());
             // Auszahlung
             printWithdrawal(banknotes);
+            Navigation.switchToView("TransactionSuccess");
         }
     }
 

@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,7 +27,11 @@ public class AccountInfoController {
         lblAccount.setText("Konto: " + Info.getIBAN());
         lblBank.setText("Bank: " + Info.getBank());
         lblBalanceDate.setText("Aktueller Saldo per " + Utils.getCurrentTimeStamp("dd.MM.yyyy")); // !!!
-        lblBalance.setText("CHF " + Utils.formatMoney(Database.getBalance(Info.getAccountID()))); // !!!
+        double balance = Database.getBalance(Info.getAccountID());
+        lblBalance.setText("CHF " + Utils.formatMoney(balance)); // !!!
+        if (balance <= 0) {
+            lblBalance.setTextFill(Color.rgb(247,0,62));
+        }
     }
 
     @FXML
@@ -36,7 +41,7 @@ public class AccountInfoController {
 
     @FXML
     private void onLastTransactions() throws IOException {
-        // show lastTransactions-view
+        // show lastTransactions-List
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(Main.primaryStage);

@@ -15,3 +15,8 @@
 .btn:focused{
     -fx-background-color: #040507;
 }
+
+.txtField{
+    -fx-background-radius: 15px;
+    -fx-padding: 4 0 4 13;
+}
