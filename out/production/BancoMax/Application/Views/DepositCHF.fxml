@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.DepositCHFController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.DepositCHFController">
    <top>
       <AnchorPane prefHeight="91.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
@@ -24,8 +25,8 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="748.0" layoutY="451.0" mnemonicParsing="false" onAction="#confirm" prefHeight="37.0" prefWidth="129.0" text="Bestätigen" />
-            <Button layoutX="21.0" layoutY="452.0" mnemonicParsing="false" onAction="#back" prefHeight="36.0" prefWidth="119.0" text="Zurück" />
+            <Button fx:id="btnConfirm" layoutX="748.0" layoutY="451.0" mnemonicParsing="false" onAction="#confirm" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="Bestätigen" />
+            <Button layoutX="22.0" layoutY="452.0" mnemonicParsing="false" onAction="#back" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Zurück" />
             <Label layoutX="55.0" layoutY="22.0" text="Währung: Schweizer Franken (CHF)" textFill="WHITE">
                <font>
                   <Font size="20.0" />
@@ -63,16 +64,20 @@
                         <Image url="@../Media/CHF/ten.jpg" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="tfThousand" alignment="CENTER" layoutX="75.0" layoutY="331.0" prefHeight="25.0" prefWidth="47.0" promptText="0" />
-                  <TextField fx:id="tfTwoHundred" alignment="CENTER" layoutX="225.0" layoutY="314.0" prefHeight="25.0" prefWidth="47.0" promptText="0" />
-                  <TextField fx:id="tfHundred" alignment="CENTER" layoutX="376.0" layoutY="289.0" prefHeight="25.0" prefWidth="47.0" promptText="0" />
-                  <TextField fx:id="tfFifty" alignment="CENTER" layoutX="520.0" layoutY="272.0" prefHeight="25.0" prefWidth="47.0" promptText="0" />
-                  <TextField fx:id="tfTwenty" alignment="CENTER" layoutX="654.0" layoutY="251.0" prefHeight="25.0" prefWidth="47.0" promptText="0" />
-                  <TextField fx:id="tfTen" alignment="CENTER" layoutX="785.0" layoutY="225.0" prefHeight="25.0" prefWidth="47.0" promptText="0" />
+                  <TextField fx:id="tfThousand" alignment="CENTER" layoutX="75.0" layoutY="331.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
+                  <TextField fx:id="tfTwoHundred" alignment="CENTER" layoutX="225.0" layoutY="314.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
+                  <TextField fx:id="tfHundred" alignment="CENTER" layoutX="376.0" layoutY="289.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
+                  <TextField fx:id="tfFifty" alignment="CENTER" layoutX="520.0" layoutY="272.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
+                  <TextField fx:id="tfTwenty" alignment="CENTER" layoutX="654.0" layoutY="251.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
+                  <TextField fx:id="tfTen" alignment="CENTER" layoutX="785.0" layoutY="225.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
                   <Label fx:id="lblError" alignment="CENTER" layoutX="735.0" layoutY="358.0" prefHeight="17.0" prefWidth="154.0" text="Nur Zahlen eingeben" textFill="RED" visible="false" />
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
    </center>
+   <stylesheets>
+      <URL value="@../Styles/Global-Stylesheet.css" />
+      <URL value="@../Styles/Deposit-Stylesheet.css" />
+   </stylesheets>
 </BorderPane>

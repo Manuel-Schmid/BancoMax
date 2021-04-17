@@ -1,12 +1,17 @@
 package Application.Controllers;
 
 import Application.Data.DepositInfo;
+import Application.Data.WithdrawalInfo;
 import Application.Utility.Navigation;
 import Application.Utility.Utils;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,9 +21,23 @@ public class DepositCHFController {
 
     @FXML
     private TextField tfThousand, tfTwoHundred, tfHundred, tfFifty, tfTwenty, tfTen;
-
+    @FXML
+    private Button btnConfirm;
+    @FXML
+    private BorderPane root;
     @FXML
     private Label lblError;
+
+    @FXML
+    private void initialize() {
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+        btnConfirm.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                root.requestFocus();
+                firstTime.setValue(false);
+            }
+        });
+    }
 
     @FXML
     private void confirm() throws IOException {
@@ -28,6 +47,7 @@ public class DepositCHFController {
         boolean isZero = true;
         boolean isNotNumeric = false;
         for (TextField tf : fields) {
+            tf.setText(tf.getText().replace("0", ""));
             if (tf.getText().isEmpty()) {
                 tf.setText("0");
             } else {

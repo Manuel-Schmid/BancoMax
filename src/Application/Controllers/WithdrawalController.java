@@ -3,28 +3,41 @@ package Application.Controllers;
 import Application.Data.WithdrawalInfo;
 import Application.Utility.Navigation;
 import Application.Utility.Utils;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
 public class WithdrawalController {
 
     @FXML
-    private Button btnConfirm;
+    private Button btnConfirm, btnBack;
     @FXML
     private Label lblSuccess, lblError, lblCurrency;
     @FXML
     private TextField tfAmount;
+    @FXML
+    private BorderPane root;
+
     private boolean success = false;
 
     @FXML
     private void initialize() {
         lblCurrency.setText("Währung: " + WithdrawalInfo.getInstance().getCurrency().toString());
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+        btnBack.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                root.requestFocus();
+                firstTime.setValue(false);
+            }
+        });
     }
 
     @FXML

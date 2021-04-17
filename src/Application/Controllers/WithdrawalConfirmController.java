@@ -8,8 +8,12 @@ import Application.Utility.Currency;
 import Application.Utility.Navigation;
 import Application.Utility.Operation;
 import Application.Utility.Utils;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
@@ -17,6 +21,10 @@ public class WithdrawalConfirmController {
 
     @FXML
     private Label lblCurrAmount, lblError;
+    @FXML
+    private Button btnBack;
+    @FXML
+    private BorderPane root;
 
     private String formattedAmount;
 
@@ -24,6 +32,13 @@ public class WithdrawalConfirmController {
     private void initialize() {
         formattedAmount = WithdrawalInfo.getInstance().getCurrency() + " " + Utils.formatMoney(WithdrawalInfo.getInstance().getAmount());
         lblCurrAmount.setText(formattedAmount);
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+        btnBack.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                root.requestFocus();
+                firstTime.setValue(false);
+            }
+        });
     }
 
     @FXML

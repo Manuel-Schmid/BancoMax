@@ -66,7 +66,7 @@ public class LoginController {
                 byte[] salt = Database.getAdminSalt();
                 byte[] hash = Security.hash(pfPassword.getText(), salt);
                 byte[] expHash = Database.getAdminHash();
-                if (Arrays.equals(hash, expHash)) { // Richtige Kombination
+                if (Arrays.equals(hash, expHash)) { // Korrektes Passwort
                     Navigation.switchToView("Admin");
                 } else { // Falsches Passwort
                     lblAdminError.setText("Falsches Passwort!");
