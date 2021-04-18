@@ -43,7 +43,6 @@ public class DepositCHFController {
     private void confirm() throws IOException {
         lblError.setVisible(false);
         ArrayList<TextField> fields = new ArrayList<>(Arrays.asList(tfThousand, tfTwoHundred, tfHundred, tfFifty, tfTwenty, tfTen));
-        // Check if at least one is not 0
         boolean isZero = true;
         boolean isNotNumeric = false;
         for (TextField tf : fields) {

@@ -25,6 +25,7 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 
@@ -57,23 +58,25 @@ public class LoginController {
 
     @FXML
     void onAdminClick() {
-        if(pfPassword.getText().isEmpty()) {
-            lblAdminError.setText("Bitte Passwort eingeben!");
-            lblAdminError.setVisible(true);
-        } else {
-            try {
-                byte[] salt = Database.getAdminSalt();
-                byte[] hash = Security.hash(pfPassword.getText(), salt);
-                byte[] expHash = Database.getAdminHash();
-                if (Arrays.equals(hash, expHash)) { // Korrektes Passwort
-                    Navigation.switchToView("Admin");
-                } else { // Falsches Passwort
-                    lblAdminError.setText("Falsches Passwort!");
+        if (settingsActive.equals("true")) {
+            if(pfPassword.getText().isEmpty()) {
+                lblAdminError.setText("Bitte Passwort eingeben!");
+                lblAdminError.setVisible(true);
+            } else {
+                try {
+                    byte[] salt = Database.getAdminSalt();
+                    byte[] hash = Security.hash(pfPassword.getText(), salt);
+                    byte[] expHash = Database.getAdminHash();
+                    if (Arrays.equals(hash, expHash)) { // Korrektes Passwort
+                        Navigation.switchToView("Admin");
+                    } else { // Falsches Passwort
+                        lblAdminError.setText("Falsches Passwort!");
+                        lblAdminError.setVisible(true);
+                    }
+                } catch (Exception e) {
+                    lblAdminError.setText("Fehler");
                     lblAdminError.setVisible(true);
                 }
-            } catch (Exception e) {
-                lblAdminError.setText("Fehler");
-                lblAdminError.setVisible(true);
             }
         }
     }
@@ -82,6 +85,13 @@ public class LoginController {
     private void keyPressed(KeyEvent ke) {
         if (ke.getCode().equals(KeyCode.ENTER)) {
             onLoginClick();
+        }
+    }
+
+    @FXML
+    private void textKeyPressed(KeyEvent ke) {
+        if (ke.getCode().equals(KeyCode.ENTER)) {
+            onAdminClick();
         }
     }
 

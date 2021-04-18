@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
@@ -62,11 +63,15 @@
                   </Label>
                </children>
             </GridPane>
-            <Label fx:id="lblError" layoutX="227.0" layoutY="213.0" prefHeight="118.0" prefWidth="457.0" text="Ihr Kontostand ist zu niedrig für diesen Bezug!" textFill="#f7003e" visible="false" wrapText="true">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
+            <HBox alignment="CENTER" layoutX="34.0" layoutY="189.0" prefHeight="118.0" prefWidth="851.0">
+               <children>
+                  <Label fx:id="lblError" prefHeight="118.0" prefWidth="457.0" text="Ihr Kontostand ist zu niedrig für diesen Bezug!" textFill="#f7003e" visible="false" wrapText="true">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
    </center>

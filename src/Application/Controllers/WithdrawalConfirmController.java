@@ -77,7 +77,7 @@ public class WithdrawalConfirmController {
         boolean enoughBalance = (Database.getBalance(Info.getAccountID()) >= amountInCHF);
         System.out.println(enoughBalance);
         if (!enoughInStock) {
-            lblError.setText("Der Automat hat nicht mehr genügend Noten für Ihre Anfrage! Probieren Sie es später erneut.         Wir entschuldigen uns für die Unannehmlichkeiten.");
+            lblError.setText("Der Automat hat nicht mehr genügend Noten für Ihre Anfrage, probieren Sie es später erneut.         Wir entschuldigen uns für die Unannehmlichkeiten.");
             lblError.setVisible(true);
         } else if (!enoughBalance) {
             lblError.setText("Ihr Kontostand ist zu niedrig für diesen Bezug!");

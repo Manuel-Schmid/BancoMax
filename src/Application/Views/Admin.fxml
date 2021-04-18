@@ -82,7 +82,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Button layoutX="6.0" layoutY="528.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Logout" />
+            <Button cancelButton="true" layoutX="6.0" layoutY="528.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Logout" />
             <Button layoutX="111.0" layoutY="367.0" mnemonicParsing="false" onAction="#onCreateAccountClick" styleClass="btn" text="Erstellen">
                <font>
                   <Font size="14.0" />

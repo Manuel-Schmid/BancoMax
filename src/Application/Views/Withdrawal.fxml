@@ -30,8 +30,8 @@
    <bottom>
       <AnchorPane prefHeight="95.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnBack" layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#toMaster" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Zurück" />
-            <Button fx:id="btnConfirm" disable="true" layoutX="706.0" layoutY="1.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="Bestätigen" />
+            <Button fx:id="btnBack" cancelButton="true" layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#toMaster" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Zurück" />
+            <Button fx:id="btnConfirm" defaultButton="true" disable="true" layoutX="706.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#onConfirm" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="Bestätigen" />
          </children>
       </AnchorPane>
    </bottom>
@@ -54,15 +54,15 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button cancelButton="true" mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="50" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="200" GridPane.columnIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="80" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="500" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="100" GridPane.rowIndex="2" />
-                  <Button mnemonicParsing="false" onAction="#setAmount" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="1'000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="50" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="200" GridPane.columnIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="80" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="500" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="100" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" onAction="#setAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="1'000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
-            <Button layoutX="523.0" layoutY="222.0" mnemonicParsing="false" onAction="#setCustomAmount" prefHeight="37.0" prefWidth="129.0" style="-fx-font-size: 12px;" styleClass="btn" text="Definierter Betrag" />
+            <Button fx:id="btnCustomAmount" layoutX="523.0" layoutY="222.0" mnemonicParsing="false" onAction="#setCustomAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" style="-fx-font-size: 12px;" styleClass="btn" text="Definierter Betrag" />
             <Label layoutX="81.0" layoutY="122.0" text="Betrag:" textFill="WHITE">
                <font>
                   <Font size="20.0" />
@@ -70,7 +70,7 @@
             </Label>
             <Label fx:id="lblError" alignment="TOP_CENTER" layoutX="526.0" layoutY="268.0" prefHeight="36.0" prefWidth="126.0" text="Höchstbetrag: 2'000" textFill="RED" visible="false" wrapText="true" />
             <Label fx:id="lblSuccess" alignment="CENTER" layoutX="524.0" layoutY="268.0" prefHeight="17.0" prefWidth="126.0" text="Betrag gültig" textFill="#00ff3a" visible="false" />
-            <JFXTextField fx:id="tfAmount" labelFloat="true" layoutX="524.0" layoutY="176.0" prefHeight="30.0" prefWidth="128.0" promptText="Betrag (max. 2'000)" unFocusColor="#b6afaf">
+            <JFXTextField fx:id="tfAmount" labelFloat="true" layoutX="524.0" layoutY="176.0" onKeyPressed="#textKeyPressed" prefHeight="30.0" prefWidth="128.0" promptText="Betrag (max. 2'000)" unFocusColor="#b6afaf">
                <font>
                   <Font name="System Bold" size="13.5" />
                </font>

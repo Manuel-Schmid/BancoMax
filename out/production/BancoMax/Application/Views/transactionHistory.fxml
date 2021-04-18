@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" stylesheets="@../Styles/transactionHistory-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.TransactionHistoryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" prefHeight="400.0" prefWidth="500.0" stylesheets="@../Styles/transactionHistory-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.TransactionHistoryController">
    <center>
       <ListView fx:id="actionList" disable="true" prefHeight="345.0" prefWidth="168.0" style="-fx-background-color: #0F111A;" styleClass="centered-list" BorderPane.alignment="CENTER" />
    </center>
    <top>
-      <AnchorPane prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: #090B10;" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="root" prefHeight="55.0" prefWidth="500.0" style="-fx-background-color: #090B10;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="19.0" layoutY="12.0" prefHeight="30.0" prefWidth="277.0" text="Ihre letzten Transaktionen:" textFill="WHITE">
                <font>

@@ -26,7 +26,7 @@
    <bottom>
       <AnchorPane prefHeight="95.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <Button focusTraversable="false" layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#toMaster" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Zurück" />
+            <Button cancelButton="true" focusTraversable="false" layoutX="21.0" layoutY="39.0" mnemonicParsing="false" onAction="#toMaster" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Zurück" />
          </children>
       </AnchorPane>
    </bottom>

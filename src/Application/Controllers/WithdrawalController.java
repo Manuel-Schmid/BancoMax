@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
@@ -18,7 +20,7 @@ import java.io.IOException;
 public class WithdrawalController {
 
     @FXML
-    private Button btnConfirm, btnBack;
+    private Button btnConfirm, btnBack, btnCustomAmount;
     @FXML
     private Label lblSuccess, lblError, lblCurrency;
     @FXML
@@ -38,6 +40,23 @@ public class WithdrawalController {
                 firstTime.setValue(false);
             }
         });
+    }
+
+    @FXML
+    private void keyPressed(KeyEvent ke) throws IOException {
+        if (ke.getCode().equals(KeyCode.ENTER)) {
+            if (!btnConfirm.isDisabled()){
+                onConfirm();
+            }
+        }
+    }
+
+    @FXML
+    private void textKeyPressed(KeyEvent ke) throws IOException {
+        if (ke.getCode().equals(KeyCode.ENTER)) {
+            btnCustomAmount.requestFocus();
+            setCustomAmount();
+        }
     }
 
     @FXML
@@ -71,6 +90,7 @@ public class WithdrawalController {
     @FXML
     private void setCustomAmount() {
         hideSuccess();
+        tfAmount.setText(Utils.zeroHandling(tfAmount.getText().toCharArray()));
         if (tfAmount.getText().isEmpty()) {
             lblError.setText("Betrag eingeben!");
             btnConfirm.setDisable(true);

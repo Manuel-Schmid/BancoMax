@@ -5,17 +5,14 @@ import Application.Data.Info;
 import Application.Utility.Navigation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
-import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
@@ -27,6 +24,8 @@ public class PinChangeController {
     private TextField tfCardNr;
     @FXML
     private PasswordField pfPIN, pfPINconfirm;
+    @FXML
+    private Button btnConfirm;
     @FXML
     private BorderPane root;
 
@@ -45,14 +44,8 @@ public class PinChangeController {
     }
 
     @FXML
-    private void keyPressed(KeyEvent ke) {
-        if (ke.getCode().equals(KeyCode.ENTER)) {
-            onConfirm();
-        }
-    }
-
-    @FXML
     private void onConfirm() {
+        btnConfirm.requestFocus();
         lblSuccess.setVisible(false);
         if(pfPIN.getText().isEmpty() || pfPINconfirm.getText().isEmpty()) {
             lblError.setText("Bitte alle Felder ausfüllen!");
