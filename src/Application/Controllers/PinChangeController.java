@@ -53,6 +53,7 @@ public class PinChangeController {
 
     @FXML
     private void onConfirm() {
+        lblSuccess.setVisible(false);
         if(pfPIN.getText().isEmpty() || pfPINconfirm.getText().isEmpty()) {
             lblError.setText("Bitte alle Felder ausfüllen!");
             lblError.setVisible(true);

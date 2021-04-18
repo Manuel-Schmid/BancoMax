@@ -46,7 +46,7 @@ public class DepositEuroController {
         boolean isZero = true;
         boolean isNotNumeric = false;
         for (TextField tf : fields) {
-            tf.setText(tf.getText().replace("0", ""));
+            tf.setText(Utils.zeroHandling(tf.getText().toCharArray()));
             if (tf.getText().isEmpty()) {
                 tf.setText("0");
             } else {

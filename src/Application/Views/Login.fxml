@@ -10,6 +10,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -61,15 +64,47 @@
                   </Label>
                </children>
             </AnchorPane>
-            <JFXTextField fx:id="tfCardNr" focusColor="#930033" labelFloat="true" layoutX="166.0" layoutY="296.0" prefHeight="30.0" prefWidth="185.0" promptText="Kartennummer" unFocusColor="#b6afaf">
+            <JFXTextField fx:id="tfCardNr" labelFloat="true" layoutX="166.0" layoutY="296.0" prefHeight="30.0" prefWidth="185.0" promptText="Kartennummer" unFocusColor="#b6afaf">
                <font>
                   <Font size="15.0" />
                </font>
+               <focusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.9803921580314636" green="0.6941176652908325" blue="0.027450980618596077" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.8078431487083435" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </focusColor>
             </JFXTextField>
-            <JFXPasswordField fx:id="tfPIN" focusColor="#930033" labelFloat="true" layoutX="166.0" layoutY="354.0" prefHeight="30.0" prefWidth="185.0" promptText="PIN" unFocusColor="#b6afaf">
+            <JFXPasswordField fx:id="tfPIN" labelFloat="true" layoutX="166.0" layoutY="354.0" prefHeight="30.0" prefWidth="185.0" promptText="PIN" unFocusColor="#b6afaf">
                <font>
                   <Font size="15.0" />
                </font>
+               <focusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.9803921580314636" green="0.6941176652908325" blue="0.027450980618596077" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.8078431487083435" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </focusColor>
             </JFXPasswordField>
          </children>
       </AnchorPane>

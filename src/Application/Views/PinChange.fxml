@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -11,6 +12,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" onMouseClicked="#paneClicked" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" stylesheets="@../Styles/Global-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.PinChangeController">
@@ -44,7 +48,7 @@
                   <RowConstraints maxHeight="145.888916015625" minHeight="10.0" prefHeight="44.0" valignment="CENTER" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label disable="true" text="Kartennummer:" textFill="WHITE">
+                  <Label disable="true" text="Kartennummer:" textFill="WHITE" GridPane.valignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -59,9 +63,53 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="tfCardNr" disable="true" focusColor="#930033" unFocusColor="#b6afaf" GridPane.columnIndex="1" />
-                  <JFXPasswordField fx:id="pfPIN" focusColor="#930033" labelFloat="true" promptText="PIN-Code" unFocusColor="#b6afaf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <JFXPasswordField fx:id="pfPINconfirm" focusColor="#930033" labelFloat="true" promptText="PIN-Code wiederholen" unFocusColor="#b6afaf" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="tfCardNr" disable="true" focusColor="#930033" unFocusColor="#b6afaf" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXTextField>
+                  <JFXPasswordField fx:id="pfPIN" labelFloat="true" promptText="PIN-Code" unFocusColor="#b6afaf" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <focusColor>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9803921580314636" green="0.6941176652908325" blue="0.027450980618596077" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="0.8078431487083435" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </focusColor>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="4.0" />
+                     </GridPane.margin></JFXPasswordField>
+                  <JFXPasswordField fx:id="pfPINconfirm" labelFloat="true" promptText="PIN-Code wiederholen" unFocusColor="#b6afaf" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <focusColor>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9803921580314636" green="0.6941176652908325" blue="0.027450980618596077" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="0.8078431487083435" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </focusColor>
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXPasswordField>
                </children>
             </GridPane>
             <Button layoutX="545.0" layoutY="367.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Bestätigen" />
