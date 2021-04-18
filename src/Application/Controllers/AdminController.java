@@ -3,10 +3,13 @@ package Application.Controllers;
 import Application.Data.Database;
 import Application.Data.DepositInfo;
 import Application.Utility.*;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -28,6 +31,9 @@ public class AdminController {
     // Restock Buttons
     @FXML
     private Button btnRestock, btnRestockEuro, btnRestockCHF;
+    // Root Pane
+    @FXML
+    private BorderPane root;
 
     private boolean success = false;
     private static boolean wasSuccessful = false;
@@ -38,6 +44,13 @@ public class AdminController {
             wasSuccessful = false;
             lblTransSuccessful.setVisible(true);
         }
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+        tfIBAN.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                root.requestFocus();
+                firstTime.setValue(false);
+            }
+        });
     }
 
     @FXML
@@ -141,6 +154,7 @@ public class AdminController {
         btnRestock.setVisible(false);
         btnRestockEuro.setVisible(true);
         btnRestockCHF.setVisible(true);
+        root.requestFocus();
     }
 
     @FXML

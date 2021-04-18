@@ -10,10 +10,5 @@
 }
 
 .admin-button:hover{
-    -fx-background-color: #bc0232;
-}
-
-.jfx-text-field, .jfx-password-field {
-    -fx-text-inner-color: white !important;
-    -fx-prompt-text-fill: white;
+    -fx-background-color: #b70031;
 }

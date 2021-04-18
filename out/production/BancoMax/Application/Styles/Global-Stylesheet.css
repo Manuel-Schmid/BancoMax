@@ -24,5 +24,6 @@
 }
 
 .jfx-text-field, .jfx-password-field {
-    -fx-text-inner-color: #b7b7b7;
+    -fx-prompt-text-fill: white;
+    -fx-text-inner-color: white;
 }

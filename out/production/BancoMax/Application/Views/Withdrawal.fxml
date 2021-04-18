@@ -10,6 +10,9 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" stylesheets="@../Styles/Global-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.WithdrawalController">
@@ -67,10 +70,26 @@
             </Label>
             <Label fx:id="lblError" alignment="TOP_CENTER" layoutX="526.0" layoutY="268.0" prefHeight="36.0" prefWidth="126.0" text="Höchstbetrag: 2'000" textFill="RED" visible="false" wrapText="true" />
             <Label fx:id="lblSuccess" alignment="CENTER" layoutX="524.0" layoutY="268.0" prefHeight="17.0" prefWidth="126.0" text="Betrag gültig" textFill="#00ff3a" visible="false" />
-            <JFXTextField fx:id="tfAmount" focusColor="#930033" labelFloat="true" layoutX="524.0" layoutY="176.0" prefHeight="30.0" prefWidth="128.0" promptText="Betrag (max. 2'000)" unFocusColor="#b6afaf">
+            <JFXTextField fx:id="tfAmount" labelFloat="true" layoutX="524.0" layoutY="176.0" prefHeight="30.0" prefWidth="128.0" promptText="Betrag (max. 2'000)" unFocusColor="#b6afaf">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="13.5" />
                </font>
+               <focusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.9803921580314636" green="0.6941176652908325" blue="0.027450980618596077" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.8078431487083435" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </focusColor>
             </JFXTextField>
          </children>
       </AnchorPane>

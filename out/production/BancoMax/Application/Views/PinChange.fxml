@@ -50,17 +50,17 @@
                <children>
                   <Label disable="true" text="Kartennummer:" textFill="WHITE" GridPane.valignment="CENTER">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label text="Neue PIN bestätigen:" textFill="WHITE" GridPane.rowIndex="2">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Label text="Neue PIN:" textFill="WHITE" GridPane.rowIndex="1">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <JFXTextField fx:id="tfCardNr" disable="true" focusColor="#930033" unFocusColor="#b6afaf" GridPane.columnIndex="1">
@@ -85,7 +85,7 @@
                         </LinearGradient>
                      </focusColor>
                      <font>
-                        <Font size="13.0" />
+                        <Font name="System Bold" size="12.0" />
                      </font>
                      <GridPane.margin>
                         <Insets bottom="4.0" />
@@ -108,8 +108,11 @@
                         </LinearGradient>
                      </focusColor>
                      <font>
-                        <Font size="13.0" />
-                     </font></JFXPasswordField>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="4.0" />
+                     </GridPane.margin></JFXPasswordField>
                </children>
             </GridPane>
             <Button layoutX="545.0" layoutY="367.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Bestätigen" />

@@ -72,6 +72,8 @@ public class PinChangeController {
                 lblError.setVisible(false);
                 lblSuccess.setVisible(true);
                 success = true;
+                pfPIN.clear();
+                pfPINconfirm.clear();
             } catch (Exception e) {
                 lblError.setText("Fehler!");
                 lblError.setVisible(true);

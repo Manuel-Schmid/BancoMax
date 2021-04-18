@@ -20,7 +20,26 @@
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="388.0" style="-fx-background-color: #090B10;" BorderPane.alignment="CENTER">
          <children>
-            <JFXPasswordField fx:id="pfPassword" focusColor="#930033" labelFloat="true" layoutX="29.0" layoutY="549.0" promptText="Admin-Passwort" unFocusColor="#b6afaf" />
+            <JFXPasswordField fx:id="pfPassword" labelFloat="true" layoutX="29.0" layoutY="549.0" promptText="Admin-Passwort" unFocusColor="#b6afaf">
+               <focusColor>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.9803921580314636" green="0.6941176652908325" blue="0.027450980618596077" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.8078431487083435" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </focusColor>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></JFXPasswordField>
             <ImageView fitHeight="194.0" fitWidth="138.0" layoutX="120.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Media/logo.png" />
@@ -66,7 +85,7 @@
             </AnchorPane>
             <JFXTextField fx:id="tfCardNr" labelFloat="true" layoutX="166.0" layoutY="296.0" prefHeight="30.0" prefWidth="185.0" promptText="Kartennummer" unFocusColor="#b6afaf">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
                <focusColor>
                   <LinearGradient endX="1.0" endY="1.0">
@@ -87,7 +106,7 @@
             </JFXTextField>
             <JFXPasswordField fx:id="tfPIN" labelFloat="true" layoutX="166.0" layoutY="354.0" prefHeight="30.0" prefWidth="185.0" promptText="PIN" unFocusColor="#b6afaf">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font>
                <focusColor>
                   <LinearGradient endX="1.0" endY="1.0">
