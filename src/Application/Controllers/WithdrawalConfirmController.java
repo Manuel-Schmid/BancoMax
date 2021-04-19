@@ -64,6 +64,7 @@ public class WithdrawalConfirmController {
     }
 
     private void withdraw() throws IOException {
+        lblError.setVisible(false);
         int[] banknotes = payout((int) WithdrawalInfo.getInstance().getAmount());
         boolean enoughInStock = Database.checkMoneystock(banknotes, WithdrawalInfo.getInstance().getCurrency().toString()); // error handling if moneyStock allows the withdrawal
         double amount = WithdrawalInfo.getInstance().getAmount();

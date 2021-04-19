@@ -362,23 +362,25 @@ public class Database {
         return false;
     }
 
-    public static ArrayList<String> getTransactions(int cardID) {
+    public static ArrayList<Transaction> getTransactions(int cardID) {
         String query = "SELECT timestamp, action, amountInCHF FROM bancomax.transaction WHERE FK_cardID = '"+cardID+"';";
-        ArrayList<String> transactions = new ArrayList<String>();
+        ArrayList<Transaction> transactions = new ArrayList<>();
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) { // Iterates through the whole ResultSet line by line
                 Timestamp timestamp = rs.getTimestamp("timestamp");
                 String action = rs.getString("action");
                 Double amountInCHF = rs.getDouble("amountInCHF");
-
+                String nAction;
                 if (action.equals("Withdrawal")) {
-                    action = "Bezug";
+                    nAction = "Bezug";
                 } else {
-                    action = "Einzahlung";
+                    nAction = "Einzahlung";
                 }
                 String tmstmp = Utils.formatTimestamp(timestamp);
-                transactions.add(tmstmp + ";" + action + ";" + Utils.formatMoney(amountInCHF));
+                String amountCHF = Utils.formatMoney(amountInCHF);
+//                System.out.println("tmstmp" + " : " + nAction + " : " +amountCHF);
+                transactions.add(new Transaction(tmstmp, nAction, amountCHF));
             }
             return transactions;
         } catch (SQLException e) {

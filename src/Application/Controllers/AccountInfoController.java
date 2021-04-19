@@ -7,12 +7,14 @@ import Application.Utility.Navigation;
 import Application.Utility.Utils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -51,6 +53,9 @@ public class AccountInfoController {
         dialog.setScene(new Scene(pane));
         dialog.setResizable(false);
         dialog.show();
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        dialog.setX((primScreenBounds.getWidth() - dialog.getWidth()) / 2);
+        dialog.setY((primScreenBounds.getHeight() - dialog.getHeight()) / 2);
     }
 
     @FXML
