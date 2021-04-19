@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.StandByController">
+<AnchorPane maxHeight="600.0" maxWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.StandByController">
    <children>
       <BorderPane onMouseClicked="#openLoginView" prefHeight="600.0" prefWidth="900.0">
          <bottom>
@@ -20,14 +20,15 @@
             </ImageView>
          </bottom>
          <center>
-            <ImageView BorderPane.alignment="BOTTOM_CENTER">
-               <image>
-                  <Image url="@../Media/logo.png" />
-               </image>
-               <BorderPane.margin>
-                  <Insets bottom="50.0" />
-               </BorderPane.margin>
-            </ImageView>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="334.0" fitWidth="333.0" layoutX="281.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Media/logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
    </children>

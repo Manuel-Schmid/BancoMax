@@ -40,7 +40,7 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></JFXPasswordField>
-            <ImageView fitHeight="194.0" fitWidth="138.0" layoutX="120.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="278.0" fitWidth="278.0" layoutX="55.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Media/logo.png" />
                </image>

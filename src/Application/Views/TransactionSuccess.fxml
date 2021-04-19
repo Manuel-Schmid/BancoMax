@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClick" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.TransactionSuccessController">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="388.0" style="-fx-background-color: #090B10;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="194.0" fitWidth="138.0" layoutX="120.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="275.0" fitWidth="281.0" layoutX="55.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Media/logo.png" />
                </image>
@@ -35,7 +34,7 @@
             </Label>
             <ImageView fitHeight="138.0" fitWidth="249.0" layoutX="179.0" layoutY="319.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Media/512x512.png" />
+                  <Image url="@../Media/checkmark.png" />
                </image>
             </ImageView>
          </children>
