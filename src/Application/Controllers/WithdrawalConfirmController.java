@@ -76,7 +76,6 @@ public class WithdrawalConfirmController {
             amountInCHF = amount;
         }
         boolean enoughBalance = (Database.getBalance(Info.getAccountID()) >= amountInCHF);
-        System.out.println(enoughBalance);
         if (!enoughInStock) {
             lblError.setText("Der Automat hat nicht mehr genügend Noten für Ihre Anfrage, probieren Sie es später erneut.         Wir entschuldigen uns für die Unannehmlichkeiten.");
             lblError.setVisible(true);
@@ -86,7 +85,7 @@ public class WithdrawalConfirmController {
         } else {
             Database.updateBalance(Operation.withdraw, amountInCHF, Info.getAccountID()); // Abzug vom Konto
             Database.updateMoneyStock(Operation.withdraw, banknotes, WithdrawalInfo.getInstance().getCurrency()); // Abzug vom MoneyStock
-            Database.insertTransaction(Operation.withdraw, amountInCHF, Info.getCardID());
+            Database.insertTransaction(Operation.withdraw, WithdrawalInfo.getInstance().getCurrency(), amount, Info.getCardID());
             // Auszahlung
             printWithdrawal(banknotes);
             Navigation.switchToView("TransactionSuccess");

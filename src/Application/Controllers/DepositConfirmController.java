@@ -75,7 +75,7 @@ public class DepositConfirmController {
         Database.updateMoneyStock(Operation.deposit, DepositInfo.getInstance().getBanknotes(), DepositInfo.getInstance().getCurrency()); // Einzahlung mit moneyStock verrechnen
         if (!DepositInfo.getInstance().isAdmin()) {
             Database.updateBalance(Operation.deposit, amountInCHF, Info.getAccountID()); // Einzahlung mit Konto verrechnen
-            Database.insertTransaction(Operation.deposit, amountInCHF, Info.getCardID()); // Transaktion verbuchen
+            Database.insertTransaction(Operation.deposit, DepositInfo.getInstance().getCurrency(), amount, Info.getCardID()); // Transaktion verbuchen
             Navigation.switchToView("TransactionSuccess");
         } else {
             DepositInfo.getInstance().setAdmin(false);

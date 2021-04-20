@@ -82,7 +82,7 @@ public class Database {
         }
     }
 
-    public static void insertTransaction(Operation operation, double amountInCHF, int cardID) {
+    public static void insertTransaction(Operation operation, Currency currency, double amount, int cardID) {
         try {
             String action = "";
             if (operation == Operation.withdraw) {
@@ -92,8 +92,7 @@ public class Database {
             }
             Date currentDate = new Date();
             Timestamp tmstmp = new Timestamp(currentDate.getTime());
-
-            String query = "INSERT INTO bancomax.transaction (timestamp, action, amountInCHF, FK_cardID) VALUES ('"+tmstmp+"', '"+action+"', '"+amountInCHF+"', '"+cardID+"');";
+            String query = "INSERT INTO bancomax.transaction (timestamp, action, currency, amount, FK_cardID) VALUES ('"+tmstmp+"', '"+action+"', '"+currency+"', '"+amount+"', '"+cardID+"');";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.execute();
         } catch (Exception e) {
@@ -363,14 +362,15 @@ public class Database {
     }
 
     public static ArrayList<Transaction> getTransactions(int cardID) {
-        String query = "SELECT timestamp, action, amountInCHF FROM bancomax.transaction WHERE FK_cardID = '"+cardID+"';";
+        String query = "SELECT timestamp, action, currency, amount FROM bancomax.transaction WHERE FK_cardID = '"+cardID+"';";
         ArrayList<Transaction> transactions = new ArrayList<>();
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) { // Iterates through the whole ResultSet line by line
                 Timestamp timestamp = rs.getTimestamp("timestamp");
                 String action = rs.getString("action");
-                Double amountInCHF = rs.getDouble("amountInCHF");
+                String currency = rs.getString("currency");
+                double amount = rs.getDouble("amount");
                 String nAction;
                 if (action.equals("Withdrawal")) {
                     nAction = "Bezug";
@@ -378,9 +378,8 @@ public class Database {
                     nAction = "Einzahlung";
                 }
                 String tmstmp = Utils.formatTimestamp(timestamp);
-                String amountCHF = Utils.formatMoney(amountInCHF);
-//                System.out.println("tmstmp" + " : " + nAction + " : " +amountCHF);
-                transactions.add(new Transaction(tmstmp, nAction, amountCHF));
+                String nAmount = Utils.formatMoney(amount);
+                transactions.add(new Transaction(tmstmp, nAction, currency, nAmount));
             }
             return transactions;
         } catch (SQLException e) {

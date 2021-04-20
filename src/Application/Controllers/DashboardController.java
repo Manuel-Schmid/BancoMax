@@ -11,7 +11,7 @@ public class DashboardController {
 
     @FXML
     private void initialize() {
-        
+
     }
 
     @FXML

@@ -29,9 +29,10 @@ public class TransactionHistoryController {
     private void initialize() { // Datum, Aktion, Betrag
         TreeTableColumn dateCol = new TreeTableColumn("Datum");
         TreeTableColumn actionCol = new TreeTableColumn("Transaktionsart");
-        TreeTableColumn amountCol = new TreeTableColumn("Betrag in CHF");
+        TreeTableColumn currencyCol = new TreeTableColumn("Währung");
+        TreeTableColumn amountCol = new TreeTableColumn("Betrag");
 
-        tableView.getColumns().addAll(dateCol, actionCol, amountCol);
+        tableView.getColumns().addAll(dateCol, actionCol, currencyCol, amountCol);
 
         data = FXCollections.observableArrayList(Database.getTransactions(Info.getCardID()));
 
@@ -41,15 +42,18 @@ public class TransactionHistoryController {
         actionCol.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Transaction, String>("action")
         );
+        currencyCol.setCellValueFactory(
+                new TreeItemPropertyValueFactory<Transaction, String>("currency")
+        );
         amountCol.setCellValueFactory(
                 new TreeItemPropertyValueFactory<Transaction, String>("amount")
         );
 
-        dateCol.prefWidthProperty().bind(tableView.widthProperty().multiply(0.3));
-        actionCol.prefWidthProperty().bind(tableView.widthProperty().multiply(0.3));
-        amountCol.prefWidthProperty().bind(tableView.widthProperty().multiply(0.3));
+        dateCol.prefWidthProperty().bind(tableView.widthProperty().multiply(0.25));
+        actionCol.prefWidthProperty().bind(tableView.widthProperty().multiply(0.22));
+        currencyCol.prefWidthProperty().bind(tableView.widthProperty().multiply(0.22));
+        amountCol.prefWidthProperty().bind(tableView.widthProperty().multiply(0.22));
 
-        // build Tree
         TreeItem<Transaction> root = new RecursiveTreeItem<>(data, RecursiveTreeObject::getChildren);
 
         tableView.setRoot(root);
@@ -60,6 +64,7 @@ public class TransactionHistoryController {
 
         applyColumnSettings(dateCol);
         applyColumnSettings(actionCol);
+        applyColumnSettings(currencyCol);
         applyColumnSettings(amountCol);
     }
 
