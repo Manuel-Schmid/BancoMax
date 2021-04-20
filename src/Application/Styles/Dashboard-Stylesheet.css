@@ -1,0 +1,30 @@
+.data0.chart-pie { -fx-pie-color: #38b9e0; }
+.data1.chart-pie { -fx-pie-color: aquamarine; }
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.chart-pie {
+    -fx-border-color: transparent;
+}
+
+.dialog-content {
+    -fx-background-color: #020203;
+    -fx-padding: 0px;
+}
+
+.dialog-button {
+    -fx-background-color: #0F111A;
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+}
+
+.dialog-button:hover {
+    -fx-background-color: #232534;
+}

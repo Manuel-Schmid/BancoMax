@@ -3,6 +3,7 @@ package Application.Controllers;
 import Application.Data.Database;
 import Application.Data.DepositInfo;
 import Application.Utility.*;
+import com.jfoenix.controls.JFXSpinner;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;

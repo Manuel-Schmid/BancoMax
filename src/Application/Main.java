@@ -2,6 +2,8 @@ package Application;
 
 import Application.Data.CurrencyAPI;
 import Application.Data.Database;
+import Application.Utility.Currency;
+import Application.Utility.Security;
 import com.sun.javafx.css.StyleManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +39,7 @@ public class Main extends Application {
 
 //        // INSERT admin
 //        byte[] salt = Security.createSalt();
-//        byte[] hash = Security.hash("xxxxx", salt);
+//        byte[] hash = Security.hash("xxx", salt);
 //
 //         Database.insertAdmin(hash, salt);
 

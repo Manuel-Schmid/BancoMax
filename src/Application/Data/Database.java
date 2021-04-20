@@ -14,7 +14,6 @@ public class Database {
     // 127.0.0.1:3306
     // http://83.77.103.210:3306/bancomax
     // http://83.77.103.210/phpmyadmin:3306/bancomax
-    // db_ip:3306/dbName
     static String username = "BMadmin";
     static String password = "When83+wet++";
 
@@ -103,6 +102,18 @@ public class Database {
 
 
     // UPDATES
+
+    public static void changeAdminPW(byte[] hash, byte[] salt) {
+        try {
+            String query = "UPDATE bancomax.admin SET passwordHash = ?, passwordSalt = ? WHERE adminID = 1;";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.setBytes(1, hash);
+            pstmt.setBytes(2, salt);
+            pstmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void changePIN(int cardID, byte[] PINhash, byte[] PINsalt) {
         try {
@@ -359,6 +370,38 @@ public class Database {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static int getTransactionCurrencyCount(Currency currency) {
+        String query = "SELECT COUNT(*) FROM transaction WHERE currency = '"+currency+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public static int getTransactionOperationsCount(Currency currency, Operation operation) {
+        String op = "";
+        if (operation.equals(Operation.withdraw)) {
+            op = "Withdrawal";
+        } else {
+            op = "Deposit";
+        }
+        String query = "SELECT COUNT(*) FROM transaction WHERE currency = '"+currency+"' AND action = '"+op+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public static ArrayList<Transaction> getTransactions(int cardID) {
