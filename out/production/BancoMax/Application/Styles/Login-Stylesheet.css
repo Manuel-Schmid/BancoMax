@@ -6,6 +6,8 @@
 
 .admin-button{
     -fx-background-color: #e6003c;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
     -fx-background-radius: 100px;
 }
 

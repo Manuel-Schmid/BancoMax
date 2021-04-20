@@ -33,7 +33,7 @@
     -fx-background-insets: 0, 0 0 1 0;
 }
 
-/* ScrollBar Design*/
+/* ScrollBar Design */
 .scroll-bar:vertical > .track-background, .scroll-bar:horizontal > .track-background {
     -fx-background-color: transparent;
 }

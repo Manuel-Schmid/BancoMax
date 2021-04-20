@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -82,14 +83,11 @@
                   </Label>
                </children>
             </GridPane>
-            <Button cancelButton="true" layoutX="6.0" layoutY="528.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Logout" />
-            <Button layoutX="111.0" layoutY="367.0" mnemonicParsing="false" onAction="#onCreateAccountClick" styleClass="btn" text="Erstellen">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
             <Label fx:id="lblError2" alignment="CENTER_RIGHT" layoutX="63.0" layoutY="341.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
             <Label fx:id="lblSuccess2" alignment="CENTER" layoutX="61.0" layoutY="341.0" prefHeight="17.0" prefWidth="183.0" text="User erfolgreich erstellt" textFill="#00ff2c" visible="false" />
+            <JFXButton layoutX="6.0" layoutY="528.0" onAction="#onBackToLogin" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Logout" />
+            <JFXButton layoutX="111.0" layoutY="367.0" onAction="#onCreateAccountClick" styleClass="btn" text="Erstellen" />
+            <Button cancelButton="true" layoutX="6.0" layoutY="528.0" mnemonicParsing="false" onAction="#onBackToLogin" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Logout" />
          </children>
       </AnchorPane>
    </left>
@@ -139,14 +137,10 @@
                   <TextField fx:id="tfAccountID" styleClass="list-btn" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <Button layoutX="113.0" layoutY="365.0" mnemonicParsing="false" onAction="#onCreateCardClick" styleClass="btn" text="Erstellen">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
             <Label fx:id="lblError" alignment="CENTER_RIGHT" layoutX="63.0" layoutY="340.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
             <Label fx:id="lblSuccess" alignment="CENTER" layoutX="62.0" layoutY="340.0" prefHeight="17.0" prefWidth="183.0" text="Karte erfolgreich erstellt" textFill="#00ff2c" visible="false" />
-            <Button layoutX="135.0" layoutY="435.0" mnemonicParsing="false" onAction="#clear" prefHeight="28.0" prefWidth="124.0" styleClass="btn" text="Clear All" />
+            <JFXButton layoutX="113.0" layoutY="365.0" onAction="#onCreateCardClick" styleClass="btn" text="Erstellen" />
+            <JFXButton layoutX="135.0" layoutY="435.0" onAction="#clear" prefHeight="28.0" prefWidth="124.0" styleClass="btn" text="Clear All" />
          </children>
       </AnchorPane>
    </right>
@@ -216,11 +210,6 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Button layoutX="100.0" layoutY="367.0" mnemonicParsing="false" onAction="#onCreateUserClick" styleClass="btn" text="Erstellen">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
             <Label fx:id="lblError1" alignment="CENTER_RIGHT" layoutX="50.0" layoutY="341.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
             <Label fx:id="lblSuccess1" alignment="CENTER" layoutX="48.0" layoutY="341.0" prefHeight="17.0" prefWidth="183.0" text="User erfolgreich erstellt" textFill="#00ff2c" visible="false" />
             <Button fx:id="btnRestockEuro" layoutX="136.0" layoutY="492.0" mnemonicParsing="false" onAction="#restockEuro" prefHeight="38.0" styleClass="btn" text="Euro auffüllen" visible="false">
@@ -234,6 +223,8 @@
                </font>
             </Button>
             <Label fx:id="lblTransSuccessful" alignment="CENTER" layoutX="50.0" layoutY="464.0" prefHeight="17.0" prefWidth="183.0" text="Automat erfolreich nachgefüllt" textFill="#00ff2c" visible="false" />
+            <JFXButton layoutX="100.0" layoutY="367.0" onAction="#onCreateUserClick" styleClass="btn" text="Erstellen" />
+            <Button layoutX="79.0" layoutY="43.0" mnemonicParsing="false" onAction="#toDashboard" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Dashboard" />
          </children>
       </AnchorPane>
    </center>

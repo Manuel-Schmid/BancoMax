@@ -1,4 +1,4 @@
-.btn{
+.btn {
     -fx-background-color: #1A1E23;
     -fx-background-radius: 2px;
     -fx-font-size: 14px;
@@ -6,6 +6,10 @@
     -fx-text-fill: #e7e1e1;
     -fx-border-color: #3f464c;
     -fx-border-radius: 2px;
+}
+
+.jfx-button .jfx-rippler {
+    /*-jfx-rippler-fill: #930033;*/
 }
 
 .btn:hover{

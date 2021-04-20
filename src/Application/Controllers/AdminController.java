@@ -178,6 +178,11 @@ public class AdminController {
     }
 
     @FXML
+    private void toDashboard() throws IOException {
+        Navigation.switchToView("Dashboard");
+    }
+
+    @FXML
     private void clear() {
         tfIBAN.clear();
         tfBalance.clear();

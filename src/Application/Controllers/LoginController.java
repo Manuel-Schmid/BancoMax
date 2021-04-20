@@ -32,7 +32,7 @@ import java.util.Arrays;
 public class LoginController {
 
     @FXML
-    private  Label lblAdminError, lblError;
+    private Label lblAdminError, lblError;
     @FXML
     private TextField pfPassword, tfCardNr, tfPIN;
     @FXML

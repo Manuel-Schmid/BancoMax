@@ -45,10 +45,7 @@
                   <Image url="@../Media/logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnAdmin" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="181.0" layoutY="549.0" mnemonicParsing="false" onAction="#onAdminClick" prefHeight="25.0" prefWidth="108.0" styleClass="admin-button" text="Admin-Ansicht" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
+            <Button fx:id="btnAdmin" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="181.0" layoutY="549.0" mnemonicParsing="false" onAction="#onAdminClick" prefHeight="25.0" prefWidth="108.0" styleClass="admin-button" text="Admin-Ansicht" textAlignment="CENTER" />
             <ImageView fx:id="btnSettings" layoutX="17.0" layoutY="539.0" onMouseEntered="#settingsHover">
                <image>
                   <Image url="@../Media/settings.png" />
