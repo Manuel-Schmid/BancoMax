@@ -7,6 +7,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -33,6 +36,8 @@ public class DashboardController {
     private StackPane stackpane;
     @FXML
     private Button btnPWChange, btnBack;
+    @FXML
+    private BorderPane root;
 
     @FXML
     private void initialize() {
@@ -65,6 +70,14 @@ public class DashboardController {
         valueEuro.setText(Utils.formatMoney(worthEuro) + " Euro");
         Double exRate = CurrencyAPI.getExRate();
         valueTotalCHF.setText(Utils.formatMoney((worthEuro * exRate) + worthCHF) + " CHF");
+
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+        btnBack.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                root.requestFocus();
+                firstTime.setValue(false);
+            }
+        });
     }
 
     private int calcValue(int[] banknotes) {

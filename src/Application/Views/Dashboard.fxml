@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.DashboardController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.DashboardController">
    <bottom>
       <AnchorPane prefHeight="67.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
@@ -41,7 +41,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="valueTotalCHF" layoutX="24.0" layoutY="214.0" prefHeight="30.0" prefWidth="185.0" text="XX'XXX.XX" textFill="#00ff2c">
+            <Label fx:id="valueTotalCHF" layoutX="24.0" layoutY="215.0" prefHeight="30.0" prefWidth="185.0" text="XX'XXX.XX" textFill="#00ff2c">
                <font>
                   <Font size="17.0" />
                </font>
