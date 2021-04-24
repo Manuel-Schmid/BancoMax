@@ -61,19 +61,19 @@
          <top>
             <AnchorPane maxHeight="307.0" maxWidth="702.0" minHeight="307.0" minWidth="702.0" prefHeight="307.0" prefWidth="702.0" BorderPane.alignment="CENTER">
                <children>
-                  <LineChart fx:id="lineChart" layoutX="18.0" layoutY="31.0" prefHeight="320.0" prefWidth="649.0">
+                  <LineChart fx:id="lineChart" layoutX="1.0" layoutY="31.0" prefHeight="320.0" prefWidth="664.0">
                     <xAxis>
                       <CategoryAxis label="Tag" prefWidth="574.0" side="BOTTOM" tickLabelFill="#00caff" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis label="Anzahl Transaktionen" side="LEFT" tickLabelFill="#00caff">
+                      <NumberAxis fx:id="yAxis" label="Anzahl Transaktionen" minorTickCount="2" side="LEFT" tickLabelFill="#00caff" tickUnit="1.0">
                            <tickLabelFont>
                               <Font name="System Bold" size="8.0" />
                            </tickLabelFont>
                         </NumberAxis>
                     </yAxis>
                   </LineChart>
-                  <Label fx:id="lblTitleLineChart" alignment="CENTER" layoutX="71.0" layoutY="14.0" prefHeight="28.0" prefWidth="582.0" text="Transaktionenübersicht April" textFill="WHITE">
+                  <Label fx:id="lblTitleLineChart" alignment="CENTER" layoutX="66.0" layoutY="16.0" prefHeight="28.0" prefWidth="582.0" text="Transaktionenübersicht April" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
@@ -83,24 +83,24 @@
          <right>
             <AnchorPane maxHeight="250.0" maxWidth="702.0" minHeight="245.0" minWidth="702.0" prefHeight="243.0" prefWidth="702.0" BorderPane.alignment="CENTER">
                <children>
-                  <PieChart fx:id="euroChart" labelsVisible="false" layoutX="459.0" layoutY="39.0" prefHeight="218.0" prefWidth="226.0" startAngle="90.0" />
-                  <PieChart fx:id="chfChart" labelsVisible="false" layoutX="232.0" layoutY="39.0" prefHeight="218.0" prefWidth="226.0" startAngle="90.0" />
-                  <Label alignment="CENTER" layoutX="7.0" layoutY="12.0" prefHeight="28.0" prefWidth="222.0" text="Alle Transaktionen" textFill="WHITE">
+                  <PieChart fx:id="euroChart" labelsVisible="false" layoutX="463.0" layoutY="39.0" prefHeight="218.0" prefWidth="226.0" startAngle="90.0" />
+                  <PieChart fx:id="chfChart" labelsVisible="false" layoutX="236.0" layoutY="39.0" prefHeight="218.0" prefWidth="226.0" startAngle="90.0" />
+                  <Label alignment="CENTER" layoutX="11.0" layoutY="12.0" prefHeight="28.0" prefWidth="222.0" text="Alle Transaktionen" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="461.0" layoutY="12.0" prefHeight="28.0" prefWidth="222.0" text="Euro Transaktionen" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="465.0" layoutY="12.0" prefHeight="28.0" prefWidth="222.0" text="Euro Transaktionen" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" layoutX="235.0" layoutY="12.0" prefHeight="28.0" prefWidth="222.0" text="CHF Transaktionen" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="239.0" layoutY="12.0" prefHeight="28.0" prefWidth="222.0" text="CHF Transaktionen" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </Label>
-                  <PieChart fx:id="currenciesChart" labelsVisible="false" layoutX="5.0" layoutY="39.0" prefHeight="218.0" prefWidth="226.0" startAngle="90.0" />
+                  <PieChart fx:id="currenciesChart" labelsVisible="false" layoutX="9.0" layoutY="39.0" prefHeight="218.0" prefWidth="226.0" startAngle="90.0" />
                </children>
             </AnchorPane>
          </right>

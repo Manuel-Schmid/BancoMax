@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
@@ -44,7 +45,9 @@ public class DashboardController {
     @FXML
     private BorderPane root;
     @FXML
-    private LineChart<String, Number> lineChart;
+    private LineChart<String, Integer> lineChart;
+    @FXML
+    private NumberAxis yAxis;
 
     @FXML
     private void initialize() {
@@ -81,14 +84,19 @@ public class DashboardController {
         // Line chart
         lblTitleLineChart.setText("Transaktionenübersicht " + Utils.getFormattedMonth());
 
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
         int currentMonth = Utils.getMonthInt(new Date());
         int daysOfMonth = Utils.getMonthDayCount();
+        int highestTransCount = 0;
         for (int day = 1; day <= daysOfMonth; day++) {
             int transactionCount = Database.getTransactionCount(day, currentMonth);
+            if (transactionCount > highestTransCount) { highestTransCount = transactionCount; }
             series.getData().add(new XYChart.Data(day + "." , transactionCount));
         }
         lineChart.getData().add(series);
+        yAxis.setAutoRanging(false);
+        yAxis.setTickUnit(2);
+        yAxis.setUpperBound(highestTransCount + 2);
 
         final BooleanProperty firstTime = new SimpleBooleanProperty(true);
         btnPWChange.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
