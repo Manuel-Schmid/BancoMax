@@ -5,6 +5,9 @@ import Application.Data.Info;
 import Application.Main;
 import Application.Utility.Navigation;
 import Application.Utility.Utils;
+import com.jfoenix.controls.JFXButton;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -23,6 +26,10 @@ public class AccountInfoController {
 
     @FXML
     private Label lblAccount, lblBank, lblBalanceDate, lblBalance;
+    @FXML
+    private BorderPane root;
+    @FXML
+    private JFXButton btnLastTrans;
 
     @FXML
     private void initialize() {
@@ -34,6 +41,13 @@ public class AccountInfoController {
         if (balance <= 0) {
             lblBalance.setTextFill(Color.rgb(247,0,62));
         }
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+        btnLastTrans.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                root.requestFocus();
+                firstTime.setValue(false);
+            }
+        });
     }
 
     @FXML

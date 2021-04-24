@@ -91,7 +91,7 @@ public class DashboardController {
         lineChart.getData().add(series);
 
         final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        btnBack.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+        btnPWChange.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
             if(newValue && firstTime.get()){
                 root.requestFocus();
                 firstTime.setValue(false);

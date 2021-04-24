@@ -27,7 +27,7 @@
          <children>
             <Button fx:id="btnConfirm" defaultButton="true" layoutX="748.0" layoutY="451.0" mnemonicParsing="false" onAction="#confirm" prefHeight="37.0" prefWidth="129.0" styleClass="btn" text="Bestätigen" />
             <Button cancelButton="true" layoutX="22.0" layoutY="452.0" mnemonicParsing="false" onAction="#back" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Zurück" />
-            <Label layoutX="55.0" layoutY="22.0" text="Währung: Schweizer Franken (CHF)" textFill="WHITE">
+            <Label layoutX="35.0" layoutY="32.0" text="Währung: Schweizer Franken (CHF)" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

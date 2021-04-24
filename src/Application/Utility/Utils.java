@@ -61,7 +61,6 @@ public class Utils {
 
     public static int getMonthInt(Date date) {
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        int month = localDate.getMonthValue();
         return localDate.getMonthValue();
     }
 

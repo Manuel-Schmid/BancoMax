@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -115,9 +116,9 @@
                      </GridPane.margin></JFXPasswordField>
                </children>
             </GridPane>
-            <Button fx:id="btnConfirm" defaultButton="true" layoutX="545.0" layoutY="367.0" mnemonicParsing="false" onAction="#onConfirm" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Bestätigen" />
             <Label fx:id="lblError" alignment="CENTER" layoutX="494.0" layoutY="342.0" prefHeight="17.0" prefWidth="170.0" text="Bitte alle Felder ausfüllen!" textFill="RED" visible="false" />
             <Label fx:id="lblSuccess" alignment="CENTER" layoutX="495.0" layoutY="342.0" prefHeight="17.0" prefWidth="169.0" text="PIN erfolgreich geändert" textFill="#00ff2c" visible="false" />
+            <JFXButton fx:id="btnConfirm" layoutX="545.0" layoutY="367.0" onAction="#onConfirm" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Bestätigen" />
          </children>
       </AnchorPane>
    </center>

@@ -52,7 +52,7 @@ public class WithdrawalController {
     }
 
     @FXML
-    private void textKeyPressed(KeyEvent ke) throws IOException {
+    private void textKeyPressed(KeyEvent ke) {
         if (ke.getCode().equals(KeyCode.ENTER)) {
             btnCustomAmount.requestFocus();
             setCustomAmount();
