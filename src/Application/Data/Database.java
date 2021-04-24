@@ -283,6 +283,19 @@ public class Database {
         return null;
     }
 
+    public static int getTransactionCount(int day, int month) {
+        String query = "SELECT COUNT(*) FROM transaction WHERE (SELECT EXTRACT(MONTH FROM transaction.timestamp)) = '"+month+"' AND (SELECT EXTRACT(DAY FROM transaction.timestamp)) = '"+day+"';";
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public static ArrayList<String> getAllCardNrs() {
         String query = "SELECT cardNr FROM bancomax.card;";
         try (Statement stmt = conn.createStatement()) {

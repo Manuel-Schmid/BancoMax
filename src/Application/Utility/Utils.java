@@ -1,10 +1,18 @@
 package Application.Utility;
 
+import Application.Data.Transaction;
+
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.YearMonth;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class Utils {
@@ -51,4 +59,20 @@ public class Utils {
         return charList.stream().map(Object::toString).collect(Collectors.joining());
     }
 
+    public static int getMonthInt(Date date) {
+        LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        int month = localDate.getMonthValue();
+        return localDate.getMonthValue();
+    }
+
+    public static String getFormattedMonth() {
+        LocalDateTime time = LocalDateTime.now();
+        return time.format(DateTimeFormatter.ofPattern("MMMM", Locale.GERMAN));
+    }
+
+    public static int getMonthDayCount() {
+        LocalDateTime now = LocalDateTime.now();
+        YearMonth yearMonthObject = YearMonth.of(now.getYear(), now.getMonth());
+        return yearMonthObject.lengthOfMonth();
+    }
 }

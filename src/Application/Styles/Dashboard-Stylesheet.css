@@ -28,3 +28,24 @@
 .dialog-button:hover {
     -fx-background-color: #232534;
 }
+
+.chart-plot-background {
+    -fx-background-color: #090B10;
+}
+
+.chart-horizontal-grid-lines,
+.chart-vertical-grid-lines {
+    -fx-stroke: transparent;
+}
+
+.axis-label {
+    -fx-text-fill: white;
+}
+
+.chart-series-line { -fx-stroke: #00caff; }
+
+.series0 {
+    -fx-stroke-width: 2px;
+    -fx-effect: null;
+    -fx-background-color: transparent;
+}
