@@ -1,11 +1,8 @@
 package Application.Controllers;
 
 import Application.Data.DepositInfo;
-import Application.Data.WithdrawalInfo;
 import Application.Utility.Navigation;
 import Application.Utility.Utils;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,16 +27,15 @@ public class DepositEuroController {
 
     @FXML
     private void initialize() {
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        btnConfirm.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                root.requestFocus();
-                firstTime.setValue(false);
-            }
-        });
+        Utils.moveFocus(btnConfirm, root);
     }
+
     @FXML
     private void confirm() throws IOException {
+        depositConfirm(lblError, tfThousand, tfTwoHundred, tfHundred, tfFifty, tfTwenty, tfTen);
+    }
+
+    public static void depositConfirm(Label lblError, TextField tfThousand, TextField tfTwoHundred, TextField tfHundred, TextField tfFifty, TextField tfTwenty, TextField tfTen) throws IOException {
         lblError.setVisible(false);
         ArrayList<TextField> fields = new ArrayList<>(Arrays.asList(tfThousand, tfTwoHundred, tfHundred, tfFifty, tfTwenty, tfTen));
         boolean isZero = true;
@@ -110,9 +106,12 @@ public class DepositEuroController {
         }
     }
 
-
     @FXML
     private void back() throws IOException {
+        goBack();
+    }
+
+    public static void goBack() throws IOException {
         if (DepositInfo.getInstance().isAdmin()) {
             DepositInfo.getInstance().setAdmin(false);
             Navigation.switchToView("Admin");
@@ -121,6 +120,4 @@ public class DepositEuroController {
         }
         DepositInfo.getInstance().setAmount(0);
     }
-
-
 }

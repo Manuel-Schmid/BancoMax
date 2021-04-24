@@ -5,8 +5,6 @@ import Application.Utility.Currency;
 import Application.Utility.Navigation;
 import Application.Utility.Operation;
 import Application.Utility.Utils;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,13 +30,7 @@ public class DepositConfirmController {
         }
         String formattedAmount = DepositInfo.getInstance().getCurrency() + " " + Utils.formatMoney(DepositInfo.getInstance().getAmount());
         lblAmount.setText(formattedAmount);
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        btnBack.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                root.requestFocus();
-                firstTime.setValue(false);
-            }
-        });
+        Utils.moveFocus(btnBack, root);
     }
 
     @FXML
@@ -82,6 +74,5 @@ public class DepositConfirmController {
             AdminController.setWasSuccessful(true);
             Navigation.switchToView("Admin");
         }
-
     }
 }

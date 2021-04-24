@@ -5,8 +5,6 @@ import Application.Data.Info;
 import Application.Utility.Navigation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,13 +32,7 @@ public class PinChangeController {
     @FXML
     private void initialize() {
         tfCardNr.setText(Info.getCardNr());
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        pfPIN.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                root.requestFocus();
-                firstTime.setValue(false);
-            }
-        });
+        Utils.moveFocus(pfPIN, root);
     }
 
     @FXML
@@ -48,15 +40,11 @@ public class PinChangeController {
         btnConfirm.requestFocus();
         lblSuccess.setVisible(false);
         if(pfPIN.getText().isEmpty() || pfPINconfirm.getText().isEmpty()) {
-            lblError.setText("Bitte alle Felder ausfüllen!");
-            lblError.setVisible(true);
+            setError("Bitte alle Felder ausfüllen!");
         } else if (!Utils.isNumeric(pfPIN.getText()) || !Utils.isNumeric(pfPINconfirm.getText())) {
-            lblError.setText("Falsches Format!");
-            lblError.setVisible(true);
+            setError("Falsches Format!");
         } else if (!pfPIN.getText().equals(pfPINconfirm.getText())) {
-            lblError.setText("Die PINs müssen übereinstimmen");
-            lblError.setText("PINs stimmen nicht überein");
-            lblError.setVisible(true);
+            setError("PINs stimmen nicht überein");
         } else {
             try {
                 byte[] PINsalt = Security.createSalt();
@@ -68,10 +56,14 @@ public class PinChangeController {
                 pfPIN.clear();
                 pfPINconfirm.clear();
             } catch (Exception e) {
-                lblError.setText("Fehler!");
-                lblError.setVisible(true);
+                setError("Fehler!");
             }
         }
+    }
+
+    private void setError(String msg) {
+        lblError.setText(msg);
+        lblError.setVisible(true);
     }
 
     public void onCancel() throws IOException {

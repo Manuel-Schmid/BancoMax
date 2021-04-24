@@ -6,7 +6,7 @@ public class WithdrawalInfo { // Singleton
 
     private WithdrawalInfo(){}
 
-    private static WithdrawalInfo wd = new WithdrawalInfo();
+    private static final WithdrawalInfo wd = new WithdrawalInfo();
 
     public static WithdrawalInfo getInstance() {
         return wd;

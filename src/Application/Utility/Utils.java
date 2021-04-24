@@ -1,6 +1,9 @@
 package Application.Utility;
 
-import Application.Data.Transaction;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.control.Control;
+import javafx.scene.layout.BorderPane;
 
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
@@ -73,5 +76,15 @@ public class Utils {
         LocalDateTime now = LocalDateTime.now();
         YearMonth yearMonthObject = YearMonth.of(now.getYear(), now.getMonth());
         return yearMonthObject.lengthOfMonth();
+    }
+
+    public static void moveFocus(Control from, BorderPane to) {
+        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
+        from.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
+            if(newValue && firstTime.get()){
+                to.requestFocus();
+                firstTime.setValue(false);
+            }
+        });
     }
 }

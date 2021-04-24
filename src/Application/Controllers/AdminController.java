@@ -3,9 +3,6 @@ package Application.Controllers;
 import Application.Data.Database;
 import Application.Data.DepositInfo;
 import Application.Utility.*;
-import com.jfoenix.controls.JFXSpinner;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -45,13 +42,7 @@ public class AdminController {
             wasSuccessful = false;
             lblTransSuccessful.setVisible(true);
         }
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        tfIBAN.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                root.requestFocus();
-                firstTime.setValue(false);
-            }
-        });
+        Utils.moveFocus(tfIBAN, root);
     }
 
     @FXML
@@ -59,17 +50,13 @@ public class AdminController {
         hideSuccess();
         try {
             if(tfCardNr.getText().isEmpty() || tfCardtype.getText().isEmpty() || tfPIN.getText().isEmpty() || tfAccountID.getText().isEmpty()) {
-                lblError.setText("Alle Felder müssen ausgefüllt sein!");
-                lblError.setVisible(true);
+                setError(lblError, "Alle Felder müssen ausgefüllt sein!");
             } else if (!Utils.isNumeric(tfCardNr.getText()) || !Utils.isNumeric(tfPIN.getText()) || !Utils.isNumeric(tfAccountID.getText())  || tfCardNr.getText().length() > 16) {
-                lblError.setText("Falsches Format!");
-                lblError.setVisible(true);
+                setError(lblError, "Falsches Format!");
             } else if (Objects.requireNonNull(Database.getAllCardNrs()).contains(tfCardNr.getText())){
-                lblError.setText("Kartennummer vergeben!");
-                lblError.setVisible(true);
+                setError(lblError, "Kartennummer vergeben!");
             }  else if (!Objects.requireNonNull(Database.getAllAccountIDs()).contains(Integer.parseInt(tfAccountID.getText()))) {
-                lblError.setText("AccountID existiert nicht!");
-                lblError.setVisible(true);
+                setError(lblError, "AccountID existiert nicht!");
             } else { // Success
                 byte[] PINsalt = Security.createSalt();
                 byte[] PINhash = Security.hash(tfPIN.getText(), PINsalt);
@@ -80,9 +67,13 @@ public class AdminController {
             }
         } catch (Exception e) {
             lblSuccess.setVisible(false);
-            lblError.setText("Fehler!");
-            lblError.setVisible(true);
+            setError(lblError, "Fehler!");
         }
+    }
+
+    private void setError(Label lbl, String msg) {
+        lbl.setText(msg);
+        lbl.setVisible(true);
     }
 
     @FXML
@@ -90,8 +81,7 @@ public class AdminController {
         hideSuccess();
         try {
             if(tfFirstName.getText().isEmpty() || tfLastName.getText().isEmpty() || tfSalutation.getText().isEmpty()) {
-                lblError1.setText("Alle Felder müssen ausgefüllt sein!");
-                lblError1.setVisible(true);
+                setError(lblError1, "Alle Felder müssen ausgefüllt sein!");
             } else if (tfSalutation.getText().equals("Herr") || tfSalutation.getText().equals("Frau")) { // Success
                 Database.insertUser(tfFirstName.getText(), tfLastName.getText(), Salutation.valueOf(tfSalutation.getText()));
                 lblError1.setVisible(false);
@@ -99,13 +89,11 @@ public class AdminController {
                 lblSuccess1.setVisible(true);
                 success = true;
             } else {
-                lblError1.setText("Falsches Anrede-Format!");
-                lblError1.setVisible(true);
+                setError(lblError1, "Falsches Anrede-Format!");
             }
         } catch (Exception e) {
             lblSuccess1.setVisible(false);
-            lblError1.setText("Fehler!");
-            lblError1.setVisible(true);
+            setError(lblError1, "Fehler!");
         }
     }
 
@@ -114,14 +102,11 @@ public class AdminController {
         hideSuccess();
         try {
             if(tfIBAN.getText().isEmpty() || tfBalance.getText().isEmpty() || tfBank.getText().isEmpty() || tfUserID.getText().isEmpty()) {
-                lblError2.setText("Alle Felder müssen ausgefüllt sein!");
-                lblError2.setVisible(true);
+                setError(lblError2, "Alle Felder müssen ausgefüllt sein!");
             } else if (!Utils.isNumeric(tfBalance.getText()) || !Utils.isNumeric(tfUserID.getText()) || tfIBAN.getText().length() > 21) {
-                lblError2.setText("Falsches Format!");
-                lblError2.setVisible(true);
+                setError(lblError2, "Falsches Format!");
             }  else if (!Objects.requireNonNull(Database.getAllUserIDs()).contains(Integer.parseInt(tfUserID.getText()))) {
-                lblError.setText("UserID existiert nicht!");
-                lblError.setVisible(true);
+                setError(lblError2, "UserID existiert nicht!");
             } else { // Success
                 Database.insertAccount(tfIBAN.getText(), Double.parseDouble(tfBalance.getText()), tfBank.getText(), Integer.parseInt(tfUserID.getText()));
                 lblError2.setVisible(false);
@@ -130,8 +115,7 @@ public class AdminController {
             }
         } catch (Exception e) {
             lblSuccess2.setVisible(false);
-            lblError2.setText("Fehler!");
-            lblError2.setVisible(true);
+            setError(lblError2, "Fehler!");
         }
     }
     

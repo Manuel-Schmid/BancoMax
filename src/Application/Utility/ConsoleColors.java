@@ -3,13 +3,11 @@ package Application.Utility;
 public class ConsoleColors {
 
     /*  Usage:
-        System.out.println(ConsoleColors.RED + "RED COLORED" +
-        ConsoleColors.RESET + " NORMAL");
+        System.out.println(ConsoleColors.RED + "red text" + ConsoleColors.RESET);
     * */
 
-
     // Reset
-    public static final String RESET = "\033[0m";  // Text Reset
+    public static final String RESET = "\033[0m";  // Color Reset
 
     // Regular Colors
     public static final String BLACK = "\033[0;30m";   // BLACK

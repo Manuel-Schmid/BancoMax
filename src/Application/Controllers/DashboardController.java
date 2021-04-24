@@ -2,19 +2,13 @@ package Application.Controllers;
 
 import Application.Data.CurrencyAPI;
 import Application.Data.Database;
-import Application.Data.Info;
-import Application.Data.Transaction;
 import Application.Utility.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -27,10 +21,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.stream.Collectors;
 
 public class DashboardController {
 
@@ -98,13 +89,7 @@ public class DashboardController {
         yAxis.setTickUnit(2);
         yAxis.setUpperBound(highestTransCount + 2);
 
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        btnPWChange.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                root.requestFocus();
-                firstTime.setValue(false);
-            }
-        });
+        Utils.moveFocus(btnPWChange, root);
     }
 
     private int calcValue(int[] banknotes) {
@@ -118,7 +103,6 @@ public class DashboardController {
         disableButtons(true);
         tf = new JFXTextField();
         tf.setPromptText("Neues Passwort");
-        tf.getStyleClass().add("dialog-tf");
         tf.setFocusColor(Color.rgb(255, 206, 0));
         JFXDialogLayout content = new JFXDialogLayout();
         content.setBody(tf);
@@ -150,16 +134,12 @@ public class DashboardController {
                 tf.setStyle("-fx-prompt-text-fill: white");
             }
         });
-        buttonCancel.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                tf.setText("");
-                tf.setStyle("-fx-prompt-text-fill: white");
-                dialog.close();
-                disableButtons(false);
-            }
+        buttonCancel.setOnAction(actionEvent -> {
+            tf.setText("");
+            tf.setStyle("-fx-prompt-text-fill: white");
+            dialog.close();
+            disableButtons(false);
         });
-
         content.setActions(buttonCancel, buttonConf);
         dialog.show();
         dialog.toFront();

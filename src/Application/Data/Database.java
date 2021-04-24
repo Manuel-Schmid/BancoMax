@@ -17,15 +17,13 @@ public class Database {
     static String username = "BMadmin";
     static String password = "When83+wet++";
 
-    static Connection conn = null;
-    static Statement stmt = null;
+    public static Connection conn = null;
 
     public static void connectToDatabase() throws Exception {
         try {
             // Register JDBC Driver
             Main.class.forName("com.mysql.cj.jdbc.Driver");
             // Main.class.forName("org.mariadb.jdbc.Driver");
-            // Open a Connection
             System.out.println("Connecting to  database ...");
             conn  = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println(ConsoleColors.GREEN + "Connection successful!" + ConsoleColors.RESET);
@@ -43,18 +41,6 @@ public class Database {
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.setBytes(1, PINhash);
             pstmt.setBytes(2, PINsalt);
-            pstmt.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void insertAdmin(byte[] passwordHash, byte[] passwordSalt) {
-        try {
-            String query = "INSERT INTO `bancomax`.`admin`(`passwordHash`, `passwordSalt`) VALUES (?,?);";
-            PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setBytes(1, passwordHash);
-            pstmt.setBytes(2, passwordSalt);
             pstmt.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,7 +69,7 @@ public class Database {
 
     public static void insertTransaction(Operation operation, Currency currency, double amount, int cardID) {
         try {
-            String action = "";
+            String action;
             if (operation == Operation.withdraw) {
                 action = "Withdrawal";
             } else {
@@ -98,8 +84,6 @@ public class Database {
             e.printStackTrace();
         }
     }
-
-
 
     // UPDATES
 
@@ -277,7 +261,7 @@ public class Database {
             if (rs.next()) {
                 return rs.getDouble(1);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -313,6 +297,10 @@ public class Database {
 
     public static ArrayList<Integer> getAllAccountIDs() {
         String query = "SELECT accountID FROM bancomax.account;";
+        return getIntegers(query);
+    }
+
+    private static ArrayList<Integer> getIntegers(String query) {
         try (Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
             ArrayList<Integer> accountIDs = new ArrayList<>();
@@ -328,17 +316,7 @@ public class Database {
 
     public static ArrayList<Integer> getAllUserIDs() {
         String query = "SELECT userID FROM bancomax.user;";
-        try (Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery(query);
-            ArrayList<Integer> userIDs = new ArrayList<>();
-            while (rs.next()) {
-                userIDs.add(rs.getInt(1));
-            }
-            return userIDs;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return getIntegers(query);
     }
 
     public static int[] getMoneystock(Currency currency) {
@@ -399,7 +377,7 @@ public class Database {
     }
 
     public static int getTransactionOperationsCount(Currency currency, Operation operation) {
-        String op = "";
+        String op;
         if (operation.equals(Operation.withdraw)) {
             op = "Withdrawal";
         } else {

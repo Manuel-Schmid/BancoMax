@@ -6,8 +6,6 @@ import Application.Main;
 import Application.Utility.Navigation;
 import Application.Utility.Utils;
 import com.jfoenix.controls.JFXButton;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -21,6 +19,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class AccountInfoController {
 
@@ -35,19 +34,13 @@ public class AccountInfoController {
     private void initialize() {
         lblAccount.setText("Konto: " + Info.getIBAN());
         lblBank.setText("Bank: " + Info.getBank());
-        lblBalanceDate.setText("Aktueller Saldo per " + Utils.getCurrentTimeStamp("dd.MM.yyyy")); // !!!
+        lblBalanceDate.setText("Aktueller Saldo per " + Utils.getCurrentTimeStamp("dd.MM.yyyy"));
         double balance = Database.getBalance(Info.getAccountID());
-        lblBalance.setText("CHF " + Utils.formatMoney(balance)); // !!!
+        lblBalance.setText("CHF " + Utils.formatMoney(balance));
         if (balance <= 0) {
             lblBalance.setTextFill(Color.rgb(247,0,62));
         }
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        btnLastTrans.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                root.requestFocus();
-                firstTime.setValue(false);
-            }
-        });
+        Utils.moveFocus(btnLastTrans, root);
     }
 
     @FXML
@@ -57,19 +50,18 @@ public class AccountInfoController {
 
     @FXML
     private void onLastTransactions() throws IOException {
-        // show lastTransactions-List
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(Main.primaryStage);
-        BorderPane pane = FXMLLoader.load(Main.class.getResource("Views/transactionHistory.fxml"));
+        BorderPane pane = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("Views/transactionHistory.fxml")));
         dialog.setTitle("BancoMax - Transaktionen");
         dialog.getIcons().add(new Image("Application/Media/logo256.png"));
         dialog.setScene(new Scene(pane));
         dialog.setResizable(false);
-        dialog.show();
+        dialog.show(); // show lastTransactions-List
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        dialog.setX((primScreenBounds.getWidth() - dialog.getWidth()) / 2);
-        dialog.setY((primScreenBounds.getHeight() - dialog.getHeight()) / 2);
+        dialog.setX((primScreenBounds.getWidth() - dialog.getWidth()) / 2); // center
+        dialog.setY((primScreenBounds.getHeight() - dialog.getHeight()) / 2); // center
     }
 
     @FXML

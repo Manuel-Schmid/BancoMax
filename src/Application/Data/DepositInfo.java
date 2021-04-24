@@ -2,13 +2,11 @@ package Application.Data;
 
 import Application.Utility.Currency;
 
-import java.util.Arrays;
-
 public class DepositInfo { // Singleton
 
     private DepositInfo() {}
 
-    private static DepositInfo dp = new DepositInfo();
+    private static final DepositInfo dp = new DepositInfo();
 
     public static DepositInfo getInstance() {
         return dp;

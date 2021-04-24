@@ -7,8 +7,6 @@ import Application.Utility.Navigation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
 import javafx.animation.*;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -25,7 +23,6 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 
@@ -47,13 +44,7 @@ public class LoginController {
     @FXML
     private void initialize() {
         btnSettings.toFront();
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        pfPassword.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                root.requestFocus();
-                firstTime.setValue(false);
-            }
-        });
+        Utils.moveFocus(pfPassword, root);
     }
 
     @FXML

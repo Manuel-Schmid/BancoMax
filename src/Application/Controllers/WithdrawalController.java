@@ -3,8 +3,6 @@ package Application.Controllers;
 import Application.Data.WithdrawalInfo;
 import Application.Utility.Navigation;
 import Application.Utility.Utils;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,13 +31,7 @@ public class WithdrawalController {
     @FXML
     private void initialize() {
         lblCurrency.setText("Währung: " + WithdrawalInfo.getInstance().getCurrency().toString());
-        final BooleanProperty firstTime = new SimpleBooleanProperty(true);
-        btnBack.focusedProperty().addListener((observable,  oldValue,  newValue) -> {
-            if(newValue && firstTime.get()){
-                root.requestFocus();
-                firstTime.setValue(false);
-            }
-        });
+        Utils.moveFocus(btnBack, root);
     }
 
     @FXML
@@ -87,18 +79,20 @@ public class WithdrawalController {
         }
     }
 
+    private void setError(String msg) {
+        lblError.setText(msg);
+        btnConfirm.setDisable(true);
+        lblError.setVisible(true);
+    }
+
     @FXML
     private void setCustomAmount() {
         hideSuccess();
         tfAmount.setText(Utils.zeroHandling(tfAmount.getText().toCharArray()));
         if (tfAmount.getText().isEmpty()) {
-            lblError.setText("Betrag eingeben!");
-            btnConfirm.setDisable(true);
-            lblError.setVisible(true);
+            setError("Betrag eingeben!");
         } else if (!Utils.isNumeric(tfAmount.getText())) {
-            lblError.setText("Falsches Format!");
-            btnConfirm.setDisable(true);
-            lblError.setVisible(true);
+            setError("Falsches Format!");
         } else {
             boolean isInt = false;
             int cusAmount = 0;
@@ -106,19 +100,13 @@ public class WithdrawalController {
                 cusAmount = Integer.parseInt(tfAmount.getText());
                 isInt = true;
             } catch (NumberFormatException e) {
-                lblError.setText("Nur Ganzzahlen verwenden!");
-                btnConfirm.setDisable(true);
-                lblError.setVisible(true);
+                setError("Nur Ganzzahlen verwenden!");
             }
             if (isInt) {
                 if (cusAmount > 2000) { // Amount greater than 2000
-                    lblError.setText("Höchstbetrag: 2000");
-                    btnConfirm.setDisable(true);
-                    lblError.setVisible(true);
+                    setError("Höchstbetrag: 2000");
                 } else if (cusAmount % 10 != 0) { // Amount is not divisible by 10
-                    lblError.setText("Betrag nicht in Noten auszahlbar!");
-                    btnConfirm.setDisable(true);
-                    lblError.setVisible(true);
+                    setError("Betrag nicht in Noten auszahlbar!");
                 } else { // Success
                     WithdrawalInfo.getInstance().setAmount(cusAmount);
                     btnConfirm.setDisable(false);

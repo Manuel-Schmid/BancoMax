@@ -1,6 +1,5 @@
 package Application.Data;
 
-import Application.Utility.Currency;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 
