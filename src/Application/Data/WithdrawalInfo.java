@@ -13,6 +13,7 @@ public class WithdrawalInfo { // Singleton
     }
 
     // default values
+
     private double amount = 0;
     private Currency currency = Currency.CHF;
 

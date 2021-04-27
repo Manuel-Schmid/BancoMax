@@ -4,6 +4,8 @@ import Application.Data.CurrencyAPI;
 import Application.Data.Database;
 import Application.Data.Info;
 import Application.Data.WithdrawalInfo;
+import Application.PDF_Maker.OpenPDF;
+import Application.PDF_Maker.PDFFile;
 import Application.Utility.Currency;
 import Application.Utility.Navigation;
 import Application.Utility.Operation;
@@ -51,8 +53,12 @@ public class WithdrawalConfirmController {
 
     @FXML
     private void confirmReceipt() throws Exception {
+        // print PDF
+        PDFFile f1 = new PDFFile();
+        f1.createWithdrawOrInfo("Bezugsbeleg", "withdraw");
+        OpenPDF oPdf = new OpenPDF(f1);
+
         withdraw();
-        // print receipt !!!
     }
 
     private void withdraw() throws IOException {

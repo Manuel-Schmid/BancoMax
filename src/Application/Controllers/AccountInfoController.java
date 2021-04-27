@@ -3,6 +3,8 @@ package Application.Controllers;
 import Application.Data.Database;
 import Application.Data.Info;
 import Application.Main;
+import Application.PDF_Maker.OpenPDF;
+import Application.PDF_Maker.PDFFile;
 import Application.Utility.Navigation;
 import Application.Utility.Utils;
 import com.jfoenix.controls.JFXButton;
@@ -45,7 +47,10 @@ public class AccountInfoController {
 
     @FXML
     private void onPrintReceipt() {
-        // print receipt
+        PDFFile f2 = new PDFFile();
+        f2.createWithdrawOrInfo("Informationsbeleg", "information");
+
+        OpenPDF oPdf = new OpenPDF(f2);
     }
 
     @FXML

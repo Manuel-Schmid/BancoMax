@@ -3,6 +3,7 @@ package Application.Controllers;
 import Application.Data.WithdrawalInfo;
 import Application.Utility.Navigation;
 import Application.Utility.Utils;
+import com.jfoenix.controls.JFXSlider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 
@@ -25,12 +27,48 @@ public class WithdrawalController {
     private TextField tfAmount;
     @FXML
     private BorderPane root;
+    @FXML
+    private JFXSlider noteSlider;
 
     private boolean success = false;
 
     @FXML
     private void initialize() {
         lblCurrency.setText("Währung: " + WithdrawalInfo.getInstance().getCurrency().toString());
+
+//        StringConverter<Double> convert = new StringConverter<>() {
+//            @Override
+//            public String toString(Double d) {
+//                if (d == 1) {
+//                    return "10er";
+//                } else if (d == 2) {
+//                    return "20er";
+//                } else if (d == 3) {
+//                    return "50er";
+//                } else if (d == 4) {
+//                    return "Alle";
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            public Double fromString(String string) {
+//                if (string.equals("10er")) {
+//                    return 1d;
+//                } else if (string.equals("20er")) {
+//                    return 2d;
+//                } else if (string.equals("50er")) {
+//                    return 3d;
+//                } else if (string.equals("Alle")) {
+//                    return 4d;
+//                }
+//                return null;
+//            }
+//
+//        };
+//
+//        noteSlider.setLabelFormatter(convert);
+
         Utils.moveFocus(btnBack, root);
     }
 
