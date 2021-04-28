@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.MasterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.MasterController">
    <left>
       <AnchorPane minWidth="300.0" prefHeight="600.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
@@ -64,7 +65,10 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="btnCreateFile" layoutX="184.0" layoutY="20.0" mnemonicParsing="false" onAction="#createFile" onMouseEntered="#menuExited" styleClass="btn" text="Create File" />
+            <Button focusTraversable="false" layoutX="149.0" layoutY="18.0" mnemonicParsing="false" onAction="#createFile" onMouseEntered="#menuExited" prefHeight="27.0" prefWidth="133.0" style="-fx-font-size: 10px;" styleClass="btn" text=" Kartendatei erstellen">
+               <graphic>
+                  <FontAwesomeIcon fill="WHITE" iconName="FILE_ALT" />
+               </graphic></Button>
          </children></AnchorPane>
    </right>
    <center>

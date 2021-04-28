@@ -102,6 +102,7 @@ public class LoginController {
 
     @FXML
     private void keyPressed(KeyEvent ke) {
+        lblErrorFile.setVisible(false);
         if (ke.getCode().equals(KeyCode.ENTER)) {
             onLoginClick();
         }
@@ -109,6 +110,7 @@ public class LoginController {
 
     @FXML
     private void textKeyPressed(KeyEvent ke) {
+        lblErrorFile.setVisible(false);
         if (ke.getCode().equals(KeyCode.ENTER)) {
             onAdminClick();
         }

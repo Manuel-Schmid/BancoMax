@@ -8,10 +8,8 @@ import Application.Main;
 import Application.Utility.*;
 import javafx.animation.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -25,15 +23,10 @@ public class MasterController {
 
     @FXML
     private Label lblWelcome, lblError;
-    @FXML
-    private Button btnCreateFile;
-    @FXML
-    private BorderPane root;
 
     @FXML
     private void initialize() {
         lblWelcome.setText("Willkommen " + Info.getSalutation() + " " + Info.getLastName());
-        Utils.moveFocus(btnCreateFile, root);
     }
 
     public void onBackToLogin() throws IOException {
@@ -110,7 +103,6 @@ public class MasterController {
         if (file != null) {
             Utils.saveTextToFile(Security.encrypt(Info.getCardNr()), file);
         }
-        root.requestFocus();
     }
 
     // Animations & Design
