@@ -122,6 +122,8 @@
                   </LinearGradient>
                </focusColor>
             </JFXPasswordField>
+            <Button layoutX="363.0" layoutY="297.0" mnemonicParsing="false" onAction="#chooseFile" prefHeight="32.0" prefWidth="78.0" style="-fx-font-size: 11px;" styleClass="btn" text="Choose File" />
+            <Label fx:id="lblErrorFile" alignment="CENTER" layoutX="367.0" layoutY="333.0" prefHeight="17.0" prefWidth="68.0" text="Ungültig!" textFill="RED" visible="false" />
          </children>
       </AnchorPane>
    </right>

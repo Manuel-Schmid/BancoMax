@@ -4,7 +4,11 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Control;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -16,9 +20,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Utils {
+
+    public static FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
 
     public static boolean isNumeric(String strNum) {
         if (strNum == null) {
@@ -86,5 +93,30 @@ public class Utils {
                 firstTime.setValue(false);
             }
         });
+    }
+
+    public static String read(File file) {
+        try {
+            Scanner sc = new Scanner(file); // "C:/Users/Many/Desktop/test.txt"
+            StringBuilder sb = new StringBuilder();
+            while(sc.hasNextLine()) {
+                sb.append(sc.nextLine());
+            }
+            sc.close();
+            return String.valueOf(sb);
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public static void saveTextToFile(String content, File file) {
+        try {
+            PrintWriter writer;
+            writer = new PrintWriter(file);
+            writer.println(content);
+            writer.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

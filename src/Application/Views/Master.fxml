@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.MasterController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.MasterController">
    <left>
       <AnchorPane minWidth="300.0" prefHeight="600.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
@@ -64,6 +64,7 @@
                   </Label>
                </children>
             </AnchorPane>
+            <Button fx:id="btnCreateFile" layoutX="184.0" layoutY="20.0" mnemonicParsing="false" onAction="#createFile" onMouseEntered="#menuExited" styleClass="btn" text="Create File" />
          </children></AnchorPane>
    </right>
    <center>

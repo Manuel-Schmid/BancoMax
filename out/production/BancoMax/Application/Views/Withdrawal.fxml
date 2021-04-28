@@ -93,7 +93,7 @@
                </focusColor>
             </JFXTextField>
             <JFXButton fx:id="btnCustomAmount" layoutX="523.0" layoutY="222.0" onAction="#setCustomAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" style="-fx-font-size: 12px;" styleClass="btn" text="Definierter Betrag" />
-            <AnchorPane layoutX="598.0" layoutY="307.0">
+            <AnchorPane layoutX="598.0" layoutY="307.0" visible="false">
                <children>
                   <JFXSlider fx:id="noteSlider" blockIncrement="1.0" layoutX="3.0" majorTickUnit="1.0" max="4.0" min="1.0" minorTickCount="0" prefHeight="37.0" prefWidth="193.0" showTickMarks="true" snapToTicks="true" value="1.0" />
                   <Label layoutY="27.0" prefHeight="17.0" prefWidth="218.0" text="10er            20er           50er           Alle" textFill="WHITE" />

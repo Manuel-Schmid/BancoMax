@@ -3,13 +3,18 @@ package Application.Controllers;
 import Application.Data.Database;
 import Application.Data.DepositInfo;
 import Application.Data.Info;
+import Application.Main;
 import Application.Utility.Navigation;
 import Application.Utility.Security;
 import Application.Utility.Utils;
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -21,15 +26,19 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.util.Arrays;
 
 
 public class LoginController {
 
     @FXML
-    private Label lblAdminError, lblError;
+    private Label lblAdminError, lblError, lblErrorFile;
     @FXML
     private TextField pfPassword, tfCardNr, tfPIN;
     @FXML
@@ -51,8 +60,7 @@ public class LoginController {
     void onAdminClick() {
         if (settingsActive.equals("true")) {
             if(pfPassword.getText().isEmpty()) {
-                lblAdminError.setText("Bitte Passwort eingeben!");
-                lblAdminError.setVisible(true);
+                setError(lblAdminError, "Bitte Passwort eingeben!");
             } else {
                 try {
                     byte[] salt = Database.getAdminSalt();
@@ -61,13 +69,33 @@ public class LoginController {
                     if (Arrays.equals(hash, expHash)) { // Korrektes Passwort
                         Navigation.switchToView("Admin");
                     } else { // Falsches Passwort
-                        lblAdminError.setText("Falsches Passwort!");
-                        lblAdminError.setVisible(true);
+                        setError(lblAdminError, "Falsches Passwort!");
                     }
                 } catch (Exception e) {
-                    lblAdminError.setText("Fehler");
-                    lblAdminError.setVisible(true);
+                    setError(lblAdminError, "Fehler!");
                 }
+            }
+        }
+    }
+
+    @FXML
+    private void chooseFile() {
+        lblErrorFile.setVisible(false);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().add(Utils.extFilter);
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(Main.primaryStage);
+        File file = fileChooser.showOpenDialog(dialog);
+        if (file == null || !file.getName().contains(".txt")) {
+            lblErrorFile.setVisible(true);
+        } else {
+            String cardNr = Security.decrypt(Utils.read(file));
+            if (cardNr.isEmpty() || cardNr.isBlank() || !Utils.isNumeric(cardNr)) {
+                lblErrorFile.setVisible(true);
+            } else {
+                tfCardNr.setText(cardNr);
             }
         }
     }
@@ -89,11 +117,9 @@ public class LoginController {
     public void onLoginClick() {
         DepositInfo.getInstance().setAdmin(false);
         if(tfCardNr.getText().isEmpty() || tfPIN.getText().isEmpty()) {
-            lblError.setText("Bitte alle Felder ausfüllen!");
-            lblError.setVisible(true);
+            setError(lblError, "Bitte alle Felder ausfüllen!");
         } else if (!Utils.isNumeric(tfCardNr.getText()) || !Utils.isNumeric(tfPIN.getText()) || tfCardNr.getText().length() > 16) {
-            lblError.setText("Falsches Format!");
-            lblError.setVisible(true);
+            setError(lblError, "Falsches Format!");
         } else {
             try {
                 String cardNr = tfCardNr.getText();
@@ -104,14 +130,17 @@ public class LoginController {
                     Info.setInfo(cardNr);
                     Navigation.switchToView("Master");
                 } else { // Falsche Kombination
-                    lblError.setText("Falsche Kombination!");
-                    lblError.setVisible(true);
+                    setError(lblError, "Falsche Kombination!");
                 }
             } catch (Exception e) {
-                lblError.setText("Fehler!");
-                lblError.setVisible(true);
+                setError(lblError, "Fehler!");
             }
         }
+    }
+
+    private void setError(Label label, String msg) {
+        label.setText(msg);
+        label.setVisible(true);
     }
 
     // Animations & Design

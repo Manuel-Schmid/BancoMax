@@ -3,6 +3,7 @@ package Application;
 import Application.Data.CurrencyAPI;
 import Application.Utility.Security;
 import Application.Data.Database;
+import Application.Utility.Utils;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -12,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.Objects;
 
 public class Main extends Application {

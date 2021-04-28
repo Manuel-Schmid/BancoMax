@@ -4,31 +4,41 @@ import Application.Data.Database;
 import Application.Data.DepositInfo;
 import Application.Data.Info;
 import Application.Data.WithdrawalInfo;
-import Application.Utility.Currency;
-import Application.Utility.Navigation;
-import Application.Utility.Operation;
+import Application.Main;
+import Application.Utility.*;
 import javafx.animation.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MasterController {
 
     @FXML
     private Label lblWelcome, lblError;
-
-    public void onBackToLogin() throws IOException {
-        Info.logout();
-        Navigation.switchToView("Login");
-    }
+    @FXML
+    private Button btnCreateFile;
+    @FXML
+    private BorderPane root;
 
     @FXML
     private void initialize() {
         lblWelcome.setText("Willkommen " + Info.getSalutation() + " " + Info.getLastName());
+        Utils.moveFocus(btnCreateFile, root);
+    }
+
+    public void onBackToLogin() throws IOException {
+        Info.logout();
+        Navigation.switchToView("Login");
     }
 
     @FXML
@@ -87,6 +97,20 @@ public class MasterController {
             Database.insertTransaction(Operation.withdraw, Currency.CHF, WithdrawalInfo.getInstance().getAmount(), Info.getCardID());
             Navigation.switchToView("TransactionSuccess");
         }
+    }
+
+    @FXML
+    private void createFile() {
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(Main.primaryStage);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(Utils.extFilter);
+        File file = fileChooser.showSaveDialog(dialog);
+        if (file != null) {
+            Utils.saveTextToFile(Security.encrypt(Info.getCardNr()), file);
+        }
+        root.requestFocus();
     }
 
     // Animations & Design
