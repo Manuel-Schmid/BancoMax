@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.util.StringConverter;
 
 import java.io.IOException;
@@ -28,46 +29,20 @@ public class WithdrawalController {
     @FXML
     private BorderPane root;
     @FXML
-    private JFXSlider noteSlider;
+    private JFXSlider slider;
 
     private boolean success = false;
 
     @FXML
     private void initialize() {
         lblCurrency.setText("Währung: " + WithdrawalInfo.getInstance().getCurrency().toString());
+        slider.setLabelFormatter(Utils.getStringConverter());
 
-//        StringConverter<Double> convert = new StringConverter<>() {
-//            @Override
-//            public String toString(Double d) {
-//                if (d == 1) {
-//                    return "10er";
-//                } else if (d == 2) {
-//                    return "20er";
-//                } else if (d == 3) {
-//                    return "50er";
-//                } else if (d == 4) {
-//                    return "Alle";
-//                }
-//                return null;
-//            }
-//
-//            @Override
-//            public Double fromString(String string) {
-//                if (string.equals("10er")) {
-//                    return 1d;
-//                } else if (string.equals("20er")) {
-//                    return 2d;
-//                } else if (string.equals("50er")) {
-//                    return 3d;
-//                } else if (string.equals("Alle")) {
-//                    return 4d;
-//                }
-//                return null;
-//            }
-//
-//        };
-//
-//        noteSlider.setLabelFormatter(convert);
+        slider.valueProperty().addListener(e -> {
+            Color imageColor = Color.rgb(250, 166, 0).interpolate(Color.rgb(230, 0, 60),
+                    slider.getValue() / 100);
+            slider.setStyle("-fx-custom-color : " + Utils.colorToHex(imageColor) + ";");
+        });
 
         Utils.moveFocus(btnBack, root);
     }
@@ -97,7 +72,17 @@ public class WithdrawalController {
 
     @FXML
     private void onConfirm() throws IOException {
+        switch ((int)slider.getValue()) {
+            case 0 -> setNoteSize(1);
+            case 33 -> setNoteSize(2);
+            case 66 -> setNoteSize(3);
+            default -> setNoteSize(4);
+        }
         Navigation.switchToView("WithdrawalConfirm");
+    }
+
+    private void setNoteSize(int size) {
+        WithdrawalInfo.getInstance().setNoteSize(size);
     }
 
     @FXML

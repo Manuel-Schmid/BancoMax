@@ -13,7 +13,7 @@ public class WithdrawalInfo { // Singleton
     }
 
     // default values
-
+    private int noteSize = 0;
     private double amount = 0;
     private Currency currency = Currency.CHF;
 
@@ -31,5 +31,13 @@ public class WithdrawalInfo { // Singleton
 
     public void setCurrency(Currency currency) {
         this.currency = currency;
+    }
+
+    public int getNoteSize() {
+        return noteSize;
+    }
+
+    public void setNoteSize(int noteSize) {
+        this.noteSize = noteSize;
     }
 }

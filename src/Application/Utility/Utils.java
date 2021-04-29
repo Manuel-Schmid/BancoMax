@@ -4,7 +4,9 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Control;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.util.StringConverter;
 
 import java.io.File;
 import java.io.FileReader;
@@ -118,5 +120,39 @@ public class Utils {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static StringConverter<Double> getStringConverter() {
+        return new StringConverter<>() {
+            @Override
+            public String toString(Double d) {
+                if (d < 16.5) {
+                    return "10er";
+                } else if (d < 49.5) {
+                    return "20er";
+                } else if (d < 82.5) {
+                    return "50er";
+                } else if (d <= 100) {
+                    return "Alle";
+                }
+                return null;
+            }
+
+            @Override
+            public Double fromString(String string) {
+                return switch (string) {
+                    case "10er" -> 1d;
+                    case "20er" -> 2d;
+                    case "50er" -> 3d;
+                    case "Alle" -> 4d;
+                    default -> null;
+                };
+            }
+        };
+    }
+
+    public static String colorToHex(Color color) {
+        return String.format("#%02X%02X%02X", (int) (color.getRed() * 255),
+                (int) (color.getGreen() * 255), (int) (color.getBlue() * 255));
     }
 }

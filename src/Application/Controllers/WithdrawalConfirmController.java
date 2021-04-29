@@ -53,7 +53,6 @@ public class WithdrawalConfirmController {
 
     @FXML
     private void confirmReceipt() throws Exception {
-        // print PDF
         PDFFile f1 = new PDFFile();
         f1.createWithdrawOrInfo("Bezugsbeleg", "withdraw");
         OpenPDF oPdf = new OpenPDF(f1);
@@ -63,7 +62,7 @@ public class WithdrawalConfirmController {
 
     private void withdraw() throws IOException {
         lblError.setVisible(false);
-        int[] banknotes = payout((int) WithdrawalInfo.getInstance().getAmount());
+        int[] banknotes = payout((int) WithdrawalInfo.getInstance().getAmount(), WithdrawalInfo.getInstance().getNoteSize());
         boolean enoughInStock = Database.checkMoneystock(banknotes, WithdrawalInfo.getInstance().getCurrency().toString()); // error handling if moneyStock allows the withdrawal
         double amount = WithdrawalInfo.getInstance().getAmount();
         double amountInCHF;
@@ -90,18 +89,36 @@ public class WithdrawalConfirmController {
         }
     }
 
-    private int[] payout(int restAmount) {
-        int thousand = 0;
-        if (WithdrawalInfo.getInstance().getCurrency() == Currency.CHF) { // thousand bank note only if CHF
-            thousand = restAmount / 1000; restAmount = restAmount % 1000;
-        }
-        int twoHundred = restAmount / 200; restAmount = restAmount % 200;
-        int hundred = restAmount / 100; restAmount = restAmount % 100;
-        int fifty = restAmount / 50; restAmount = restAmount % 50;
-        int twenty = restAmount / 20; restAmount = restAmount % 20;
-        int ten = restAmount / 10;
+    private int[] payout(int restAmount, int noteSize) {
+        switch (noteSize) {
+            case 1 -> {
+                return new int[] { 0, 0, 0, 0, 0, restAmount / 10 };
+            }
+            case 2 -> {
+                int twenty = restAmount / 20; restAmount = restAmount % 20;
+                int ten = restAmount / 10;
+                return new int[] { 0, 0, 0, 0, twenty, ten };
+            }
+            case 3 -> {
+                int fifty = restAmount / 50; restAmount = restAmount % 50;
+                int twenty = restAmount / 20; restAmount = restAmount % 20;
+                int ten = restAmount / 10;
+                return new int[] { 0, 0, 0, fifty, twenty, ten };
+            }
+            default ->  { // (case 4 & default)
+                int thousand = 0;
+                if (WithdrawalInfo.getInstance().getCurrency() == Currency.CHF) { // thousand bank note only if CHF
+                    thousand = restAmount / 1000; restAmount = restAmount % 1000;
+                }
+                int twoHundred = restAmount / 200; restAmount = restAmount % 200;
+                int hundred = restAmount / 100; restAmount = restAmount % 100;
+                int fifty = restAmount / 50; restAmount = restAmount % 50;
+                int twenty = restAmount / 20; restAmount = restAmount % 20;
+                int ten = restAmount / 10;
 
-        return new int[] { thousand, twoHundred, hundred, fifty, twenty, ten };
+                return new int[] { thousand, twoHundred, hundred, fifty, twenty, ten };
+            }
+        }
     }
 
     private void printWithdrawal(int[] payout) {

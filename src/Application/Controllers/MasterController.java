@@ -10,6 +10,7 @@ import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -23,6 +24,8 @@ public class MasterController {
 
     @FXML
     private Label lblWelcome, lblError;
+    @FXML
+    private BorderPane root;
 
     @FXML
     private void initialize() {
@@ -94,12 +97,14 @@ public class MasterController {
 
     @FXML
     private void createFile() {
+        root.setDisable(true);
         final Stage dialog = new Stage();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(Main.primaryStage);
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(Utils.extFilter);
         File file = fileChooser.showSaveDialog(dialog);
+        root.setDisable(false);
         if (file != null) {
             Utils.saveTextToFile(Security.encrypt(Info.getCardNr()), file);
         }

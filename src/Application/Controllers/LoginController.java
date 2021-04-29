@@ -80,6 +80,7 @@ public class LoginController {
 
     @FXML
     private void chooseFile() {
+        root.setDisable(true);
         lblErrorFile.setVisible(false);
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
@@ -88,6 +89,7 @@ public class LoginController {
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.initOwner(Main.primaryStage);
         File file = fileChooser.showOpenDialog(dialog);
+        root.setDisable(false);
         if (file == null || !file.getName().contains(".txt")) {
             lblErrorFile.setVisible(true);
         } else {
@@ -152,7 +154,7 @@ public class LoginController {
     void settingsHover() {
         if (settingsActive.equals("false")) {
             settingsActive = "running";
-            adminTransition(+300, "true");
+            adminTransition(+310, "true");
         }
     }
 
@@ -160,7 +162,7 @@ public class LoginController {
     void onLoginEntered() {
         if (settingsActive.equals("true")) {
             settingsActive = "running";
-            adminTransition(-300, "false");
+            adminTransition(-310, "false");
         }
     }
 
