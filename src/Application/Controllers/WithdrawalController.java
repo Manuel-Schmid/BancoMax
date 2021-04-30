@@ -14,7 +14,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import javafx.util.StringConverter;
 
 import java.io.IOException;
 
@@ -28,22 +27,12 @@ public class WithdrawalController {
     private TextField tfAmount;
     @FXML
     private BorderPane root;
-    @FXML
-    private JFXSlider slider;
 
     private boolean success = false;
 
     @FXML
     private void initialize() {
         lblCurrency.setText("Währung: " + WithdrawalInfo.getInstance().getCurrency().toString());
-        slider.setLabelFormatter(Utils.getStringConverter());
-
-        slider.valueProperty().addListener(e -> {
-            Color imageColor = Color.rgb(250, 166, 0).interpolate(Color.rgb(230, 0, 60),
-                    slider.getValue() / 100);
-            slider.setStyle("-fx-custom-color : " + Utils.colorToHex(imageColor) + ";");
-        });
-
         Utils.moveFocus(btnBack, root);
     }
 
@@ -59,8 +48,8 @@ public class WithdrawalController {
     @FXML
     private void textKeyPressed(KeyEvent ke) {
         if (ke.getCode().equals(KeyCode.ENTER)) {
-            btnCustomAmount.requestFocus();
             setCustomAmount();
+            btnConfirm.requestFocus();
         }
     }
 
@@ -72,17 +61,7 @@ public class WithdrawalController {
 
     @FXML
     private void onConfirm() throws IOException {
-        switch ((int)slider.getValue()) {
-            case 0 -> setNoteSize(1);
-            case 33 -> setNoteSize(2);
-            case 66 -> setNoteSize(3);
-            default -> setNoteSize(4);
-        }
         Navigation.switchToView("WithdrawalConfirm");
-    }
-
-    private void setNoteSize(int size) {
-        WithdrawalInfo.getInstance().setNoteSize(size);
     }
 
     @FXML

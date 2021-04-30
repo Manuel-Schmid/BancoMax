@@ -10,10 +10,12 @@ import Application.Utility.Currency;
 import Application.Utility.Navigation;
 import Application.Utility.Operation;
 import Application.Utility.Utils;
+import com.jfoenix.controls.JFXSlider;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 
@@ -25,6 +27,8 @@ public class WithdrawalConfirmController {
     private Button btnBack;
     @FXML
     private BorderPane root;
+    @FXML
+    private JFXSlider slider;
 
     private String formattedAmount;
 
@@ -32,6 +36,13 @@ public class WithdrawalConfirmController {
     private void initialize() {
         formattedAmount = WithdrawalInfo.getInstance().getCurrency() + " " + Utils.formatMoney(WithdrawalInfo.getInstance().getAmount());
         lblCurrAmount.setText(formattedAmount);
+        slider.setLabelFormatter(Utils.getStringConverter());
+
+        slider.valueProperty().addListener(e -> {
+            Color imageColor = Color.rgb(250, 166, 0).interpolate(Color.rgb(230, 0, 60),
+                    slider.getValue() / 100);
+            slider.setStyle("-fx-custom-color : " + Utils.colorToHex(imageColor) + ";");
+        });
         Utils.moveFocus(btnBack, root);
     }
 
@@ -53,14 +64,21 @@ public class WithdrawalConfirmController {
 
     @FXML
     private void confirmReceipt() throws Exception {
-        PDFFile f1 = new PDFFile();
-        f1.createWithdrawOrInfo("Bezugsbeleg", "withdraw");
-        OpenPDF oPdf = new OpenPDF(f1);
-
-        withdraw();
+        if (withdraw()) {
+            PDFFile f1 = new PDFFile();
+            f1.createWithdrawOrInfo("Bezugsbeleg", "withdraw");
+            OpenPDF oPdf = new OpenPDF(f1);
+        }
     }
 
-    private void withdraw() throws IOException {
+    private boolean withdraw() throws IOException {
+        switch ((int)slider.getValue()) {
+            case 0 -> setNoteSize(1);
+            case 33 -> setNoteSize(2);
+            case 66 -> setNoteSize(3);
+            default -> setNoteSize(4);
+        }
+
         lblError.setVisible(false);
         int[] banknotes = payout((int) WithdrawalInfo.getInstance().getAmount(), WithdrawalInfo.getInstance().getNoteSize());
         boolean enoughInStock = Database.checkMoneystock(banknotes, WithdrawalInfo.getInstance().getCurrency().toString()); // error handling if moneyStock allows the withdrawal
@@ -74,11 +92,9 @@ public class WithdrawalConfirmController {
         }
         boolean enoughBalance = (Database.getBalance(Info.getAccountID()) >= amountInCHF);
         if (!enoughInStock) {
-            lblError.setText("Der Automat hat nicht mehr genügend Noten für Ihre Anfrage, probieren Sie es später erneut.         Wir entschuldigen uns für die Unannehmlichkeiten.");
-            lblError.setVisible(true);
+            return setError("Der Automat hat nicht mehr genügend Noten für Ihre Anfrage, probieren Sie es später erneut.         Wir entschuldigen uns für die Unannehmlichkeiten.");
         } else if (!enoughBalance) {
-            lblError.setText("Ihr Kontostand ist zu niedrig für diesen Bezug!");
-            lblError.setVisible(true);
+            return setError("Ihr Kontostand ist zu niedrig für diesen Bezug!");
         } else {
             Database.updateBalance(Operation.withdraw, amountInCHF, Info.getAccountID()); // Abzug vom Konto
             Database.updateMoneyStock(Operation.withdraw, banknotes, WithdrawalInfo.getInstance().getCurrency()); // Abzug vom MoneyStock
@@ -86,7 +102,15 @@ public class WithdrawalConfirmController {
             // Auszahlung
             printWithdrawal(banknotes);
             Navigation.switchToView("TransactionSuccess");
+            return true;
         }
+    }
+
+    private boolean setError(String msg) {
+        root.requestFocus();
+        lblError.setText(msg);
+        lblError.setVisible(true);
+        return false;
     }
 
     private int[] payout(int restAmount, int noteSize) {
@@ -119,6 +143,10 @@ public class WithdrawalConfirmController {
                 return new int[] { thousand, twoHundred, hundred, fifty, twenty, ten };
             }
         }
+    }
+
+    private void setNoteSize(int size) {
+        WithdrawalInfo.getInstance().setNoteSize(size);
     }
 
     private void printWithdrawal(int[] payout) {

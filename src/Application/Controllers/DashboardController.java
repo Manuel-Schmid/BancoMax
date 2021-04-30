@@ -132,6 +132,7 @@ public class DashboardController {
                 dialog.close();
                 disableButtons(false);
                 tf.setStyle("-fx-prompt-text-fill: white");
+                root.requestFocus();
             }
         });
         buttonCancel.setOnAction(actionEvent -> {
@@ -139,6 +140,7 @@ public class DashboardController {
             tf.setStyle("-fx-prompt-text-fill: white");
             dialog.close();
             disableButtons(false);
+            root.requestFocus();
         });
         content.setActions(buttonCancel, buttonConf);
         dialog.show();
