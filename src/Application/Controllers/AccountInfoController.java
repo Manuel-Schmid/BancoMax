@@ -47,10 +47,10 @@ public class AccountInfoController {
 
     @FXML
     private void onPrintReceipt() {
-        PDFFile f2 = new PDFFile();
-        f2.createWithdrawOrInfo("Informationsbeleg", "information");
+        PDFFile f1 = new PDFFile();
+        f1.createWithdrawInfoDeposit("Informationsbeleg", "information");
 
-        OpenPDF oPdf = new OpenPDF(f2);
+        OpenPDF oPdf = new OpenPDF(f1);
     }
 
     @FXML

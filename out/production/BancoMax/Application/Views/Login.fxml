@@ -60,7 +60,7 @@
                   <Image url="@../Media/lettering.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblAdminError" alignment="CENTER" layoutX="159.0" layoutY="526.0" prefHeight="17.0" prefWidth="155.0" text="Passwort eingeben!" textFill="RED" visible="false" />
+            <Label fx:id="lblAdminError" alignment="CENTER" layoutX="170.0" layoutY="526.0" prefHeight="17.0" prefWidth="155.0" text="Passwort eingeben!" textFill="#f7003e" visible="false" />
             <HBox fx:id="cover" layoutX="17.0" layoutY="539.0" prefHeight="44.0" prefWidth="346.0" style="-fx-background-color: #090B10; -fx-background-radius: 200px;" />
          </children>
       </AnchorPane>
@@ -73,7 +73,7 @@
                   <Image url="@../Media/lock.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblError" alignment="CENTER" layoutX="215.0" layoutY="418.0" prefHeight="17.0" prefWidth="155.0" text="Bitte alle Felder ausfüllen!" textFill="RED" visible="false" />
+            <Label fx:id="lblError" alignment="CENTER" layoutX="215.0" layoutY="418.0" prefHeight="17.0" prefWidth="155.0" text="Bitte alle Felder ausfüllen!" textFill="#f7003e" visible="false" />
             <AnchorPane layoutX="232.0" layoutY="444.0" onMouseExited="#onLoginExited" onMouseMoved="#onLoginHover">
                <children>
                   <Rectangle fx:id="btnLogin" arcHeight="5.0" arcWidth="5.0" fill="#e6003c" height="38.0" onMouseClicked="#onLoginClick" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 38; -fx-arc-width: 38;" width="122.0" />

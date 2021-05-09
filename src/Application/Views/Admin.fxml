@@ -83,7 +83,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Label fx:id="lblError2" alignment="CENTER" layoutX="63.0" layoutY="341.0" prefHeight="17.0" prefWidth="183.0" text="Alle Felder müssen ausgefüllt sein!" textAlignment="CENTER" textFill="RED" visible="false" />
+            <Label fx:id="lblError2" alignment="CENTER" layoutX="63.0" layoutY="341.0" prefHeight="17.0" prefWidth="183.0" text="Alle Felder müssen ausgefüllt sein!" textAlignment="CENTER" textFill="#f7003e" visible="false" />
             <Label fx:id="lblSuccess2" alignment="CENTER" layoutX="61.0" layoutY="341.0" prefHeight="17.0" prefWidth="183.0" text="User erfolgreich erstellt" textFill="#00ff2c" visible="false" />
             <JFXButton layoutX="6.0" layoutY="528.0" onAction="#onBackToLogin" prefHeight="36.0" prefWidth="119.0" styleClass="btn" text="Logout" />
             <JFXButton layoutX="111.0" layoutY="367.0" onAction="#onCreateAccountClick" styleClass="btn" text="Erstellen" />
@@ -137,7 +137,7 @@
                   <TextField fx:id="tfAccountID" styleClass="list-btn" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
-            <Label fx:id="lblError" alignment="CENTER" layoutX="63.0" layoutY="340.0" prefHeight="17.0" prefWidth="183.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
+            <Label fx:id="lblError" alignment="CENTER" layoutX="63.0" layoutY="340.0" prefHeight="17.0" prefWidth="183.0" text="Alle Felder müssen ausgefüllt sein!" textFill="#f7003e" visible="false" />
             <Label fx:id="lblSuccess" alignment="CENTER" layoutX="62.0" layoutY="340.0" prefHeight="17.0" prefWidth="183.0" text="Karte erfolgreich erstellt" textFill="#00ff2c" visible="false" />
             <JFXButton layoutX="113.0" layoutY="365.0" onAction="#onCreateCardClick" styleClass="btn" text="Erstellen" />
             <JFXButton layoutX="135.0" layoutY="435.0" onAction="#clear" prefHeight="28.0" prefWidth="124.0" styleClass="btn" text="Clear All" />
@@ -210,7 +210,7 @@
                   <Font size="17.0" />
                </font>
             </Button>
-            <Label fx:id="lblError1" alignment="CENTER" layoutX="50.0" layoutY="341.0" prefHeight="17.0" prefWidth="183.0" text="Alle Felder müssen ausgefüllt sein!" textFill="RED" visible="false" />
+            <Label fx:id="lblError1" alignment="CENTER" layoutX="50.0" layoutY="341.0" prefHeight="17.0" prefWidth="183.0" text="Alle Felder müssen ausgefüllt sein!" textFill="#f7003e" visible="false" />
             <Label fx:id="lblSuccess1" alignment="CENTER" layoutX="48.0" layoutY="341.0" prefHeight="17.0" prefWidth="183.0" text="User erfolgreich erstellt" textFill="#00ff2c" visible="false" />
             <Button fx:id="btnRestockEuro" layoutX="136.0" layoutY="492.0" mnemonicParsing="false" onAction="#restockEuro" prefHeight="38.0" styleClass="btn" text="Euro auffüllen" visible="false">
                <font>

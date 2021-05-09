@@ -154,7 +154,7 @@ public class DashboardController {
 
     private void invalid(String msg) {
         tf.setText("");
-        tf.setStyle("-fx-prompt-text-fill: red");
+        tf.setStyle("-fx-prompt-text-fill: #f7003e");
         tf.setPromptText(msg);
     }
 

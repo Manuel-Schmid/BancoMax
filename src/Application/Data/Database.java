@@ -9,13 +9,11 @@ import java.util.Date;
 
 public class Database {
 
-    // static String jdbcURL = "jdbc:mariadb://83.77.103.210:3306/bancomax";
-    static String jdbcURL = "jdbc:mysql://127.0.0.1:3306/bancomax";
-    // 127.0.0.1:3306
-    // http://83.77.103.210:3306/bancomax
-    // http://83.77.103.210/phpmyadmin:3306/bancomax
-    static String username = "BMadmin";
-    static String password = "When83+wet++";
+//    static String jdbcURL = "jdbc:mysql://192.168.1.189:3307/bancomax"; // NAS
+//    static String jdbcURL = "jdbc:mysql://127.0.0.1:3306/bancomax"; // Local
+    static String jdbcURL = "jdbc:mysql://213.196.190.205:3306/bancomax"; // Ubuntu
+    static String username = "BancoAdmin";
+    static String password = "When83+xRedy-o6+";
 
     public static Connection conn = null;
 
@@ -23,13 +21,12 @@ public class Database {
         try {
             // Register JDBC Driver
             Main.class.forName("com.mysql.cj.jdbc.Driver");
-            // Main.class.forName("org.mariadb.jdbc.Driver");
             System.out.println("Connecting to  database ...");
             conn  = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println(ConsoleColors.GREEN + "Connection successful!" + ConsoleColors.RESET);
         } catch (Exception e) {
             System.out.println(ConsoleColors.RED + "Connection failed" + ConsoleColors.RESET);
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
@@ -421,4 +418,14 @@ public class Database {
         }
         return transactions;
     }
+
+    public static void close() {
+        try {
+            conn.close();
+            System.out.println(ConsoleColors.GREEN + "Connection closed!" + ConsoleColors.RESET);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

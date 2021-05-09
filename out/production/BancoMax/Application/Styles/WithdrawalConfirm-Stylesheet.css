@@ -16,11 +16,12 @@
     -fx-background-radius: 10px 0px 0px 10px;
 }
 
-.animated-thumb {
-    /*-fx-text-fill: #101a37 !important;*/
-}
-
 .jfx-slider>.animated-thumb {
     -fx-text-fill: black;
     -fx-background-color: -fx-custom-color;
+}
+
+/* color of animated-thumb text */
+.jfx-slider .slider-value {
+    -fx-stroke: white;
 }

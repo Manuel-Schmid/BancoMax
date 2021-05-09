@@ -15,8 +15,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 
+import java.io.File;
 import java.io.IOException;
 
 public class WithdrawalConfirmController {
@@ -66,7 +69,7 @@ public class WithdrawalConfirmController {
     private void confirmReceipt() throws Exception {
         if (withdraw()) {
             PDFFile f1 = new PDFFile();
-            f1.createWithdrawOrInfo("Bezugsbeleg", "withdraw");
+            f1.createWithdrawInfoDeposit("Bezugsbeleg", "withdraw");
             OpenPDF oPdf = new OpenPDF(f1);
         }
     }
@@ -78,7 +81,6 @@ public class WithdrawalConfirmController {
             case 66 -> setNoteSize(3);
             default -> setNoteSize(4);
         }
-
         lblError.setVisible(false);
         int[] banknotes = payout((int) WithdrawalInfo.getInstance().getAmount(), WithdrawalInfo.getInstance().getNoteSize());
         boolean enoughInStock = Database.checkMoneystock(banknotes, WithdrawalInfo.getInstance().getCurrency().toString()); // error handling if moneyStock allows the withdrawal

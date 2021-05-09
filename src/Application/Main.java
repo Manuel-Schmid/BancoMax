@@ -1,6 +1,8 @@
 package Application;
 
 import Application.Data.CurrencyAPI;
+import Application.PDF_Maker.OpenPDF;
+import Application.PDF_Maker.PDFFile;
 import Application.Utility.Security;
 import Application.Data.Database;
 import Application.Utility.Utils;
@@ -10,6 +12,9 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -38,7 +43,7 @@ public class Main extends Application {
     public static void main(String[] args) throws Exception {
         Database.connectToDatabase();
         launch(args);
-        Database.conn.close();
+        Database.close();
 
 //        System.out.println(CurrencyAPI.getExRate());
 

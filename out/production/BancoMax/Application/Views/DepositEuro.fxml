@@ -64,7 +64,7 @@
                   <TextField fx:id="tfFifty" alignment="CENTER" layoutX="725.0" layoutY="156.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
                   <TextField fx:id="tfTwenty" alignment="CENTER" layoutX="138.0" layoutY="340.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
                   <TextField fx:id="tfTen" alignment="CENTER" layoutX="410.0" layoutY="341.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
-                  <Label fx:id="lblError" alignment="CENTER" layoutX="736.0" layoutY="357.0" prefHeight="17.0" prefWidth="154.0" text="Nur Zahlen eingeben" textFill="RED" visible="false" />
+                  <Label fx:id="lblError" alignment="CENTER" layoutX="736.0" layoutY="357.0" prefHeight="17.0" prefWidth="154.0" text="Nur Zahlen eingeben" textFill="#f7003e" visible="false" />
                   <TextField fx:id="tfThousand" alignment="CENTER" editable="false" layoutX="653.0" layoutY="195.0" prefHeight="25.0" prefWidth="47.0" promptText="0" visible="false" />
                </children></AnchorPane>
          </children>

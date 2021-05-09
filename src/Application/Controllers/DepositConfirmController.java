@@ -1,6 +1,8 @@
 package Application.Controllers;
 
 import Application.Data.*;
+import Application.PDF_Maker.OpenPDF;
+import Application.PDF_Maker.PDFFile;
 import Application.Utility.Currency;
 import Application.Utility.Navigation;
 import Application.Utility.Operation;
@@ -17,7 +19,7 @@ public class DepositConfirmController {
     @FXML
     private Label lblAmount, lblText;
     @FXML
-    private Button btnBack;
+    private Button btnBack, btnConfirmReceipt;
     @FXML
     private BorderPane root;
 
@@ -25,6 +27,7 @@ public class DepositConfirmController {
     private void initialize() {
         if (DepositInfo.getInstance().isAdmin()) {
             lblText.setText("Sie sind dabei, den BancoMax-Automaten als Administrator um den folgenden Betrag aufzufüllen:");
+            btnConfirmReceipt.setVisible(false);
         } else {
             lblText.setText("Sie sind dabei, den folgenden Betrag auf das Konto " + Info.getIBAN() + " zu überweisen:");
         }
@@ -55,7 +58,19 @@ public class DepositConfirmController {
     }
 
     @FXML
-    private void confirm() throws Exception {
+    private void confirmReceipt() throws IOException {
+        deposit();
+        PDFFile f1 = new PDFFile();
+        f1.createWithdrawInfoDeposit("Einzahlungsbeleg", "deposit");
+        OpenPDF oPdf = new OpenPDF(f1);
+    }
+
+    @FXML
+    private void confirm() throws IOException {
+        deposit();
+    }
+
+    private void deposit() throws IOException {
         double amount = DepositInfo.getInstance().getAmount();
         double amountInCHF;
         if (DepositInfo.getInstance().getCurrency() == Currency.Euro) { // Euro -> CHF
@@ -75,4 +90,5 @@ public class DepositConfirmController {
             Navigation.switchToView("Admin");
         }
     }
+
 }

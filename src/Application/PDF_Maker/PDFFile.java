@@ -1,4 +1,6 @@
-package Application.PDF_Maker; /**
+package Application.PDF_Maker;
+
+/**
  * @author lewin
  * @date 27.04.2021
  * @Version 1.0
@@ -15,6 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import Application.Data.Database;
+import Application.Data.DepositInfo;
 import Application.Data.Info;
 import Application.Data.WithdrawalInfo;
 import Application.Utility.Utils;
@@ -38,7 +41,7 @@ public class PDFFile {
     private boolean isWithdraw;
     private Document document;
 
-    public void createWithdrawOrInfo(String fileName, String withdrawOrInfo) {
+    public void createWithdrawInfoDeposit(String fileName, String withdrawOrInfo) {
 
         this.fileName = fileName;
 
@@ -81,7 +84,8 @@ public class PDFFile {
                     PdfPCell cell5 = createAddCell("IBAN:", t1);
                     PdfPCell cell6 = createAddCell(Info.getIBAN(), t1);
                     PdfPCell cell7 = createAddCell("Bezugsbetrag:", t1);
-                    PdfPCell cell8 = createAddCell(Utils.formatMoney(WithdrawalInfo.getInstance().getAmount()) + " " + WithdrawalInfo.getInstance().getCurrency(), t1);
+                    PdfPCell cell8 = createAddCell(Utils.formatMoney(WithdrawalInfo.getInstance().getAmount()) + " "
+                            + WithdrawalInfo.getInstance().getCurrency(), t1);
                 }
                 document.add(t1);
                 document.add(new Paragraph(" "));
@@ -136,7 +140,8 @@ public class PDFFile {
                     PdfPCell cell5 = createAddCell("IBAN:", t1);
                     PdfPCell cell6 = createAddCell(Info.getIBAN(), t1);
                     PdfPCell cell7 = createAddCell("Kontostand:", t1);
-                    PdfPCell cell8 = createAddCell(Utils.formatMoney(Database.getBalance(Info.getAccountID())) + " CHF", t1);
+                    PdfPCell cell8 = createAddCell(Utils.formatMoney(Database.getBalance(Info.getAccountID())) + " CHF",
+                            t1);
                 }
                 document.add(t1);
                 document.add(new Paragraph(" "));
@@ -153,6 +158,67 @@ public class PDFFile {
             } catch (Exception e) {
                 System.out.println(e);
             }
+        } else {
+
+            if (withdrawOrInfo.equalsIgnoreCase("deposit")) {
+
+                isWithdraw = true;
+
+                fileAlreadyExistsReader();
+
+                try {
+
+                    // create an Deposit
+                    createPDF();
+
+                    document.open();
+                    Chunk c1 = new Chunk(Info.getBank());
+                    Paragraph p1 = new Paragraph(c1);
+                    document.add(p1);
+                    document.add(new Paragraph(" "));
+                    document.add(new Paragraph(" "));
+                    document.add(new Paragraph(
+                            "---------------------------------------------------------------------------------------------------------------------------------"));
+                    document.add(new Paragraph(" "));
+                    Paragraph p2 = new Paragraph();
+                    p2.add("Einzahlung " + DepositInfo.getInstance().getCurrency());
+                    document.add(p2);
+
+                    document.add(new Paragraph(" "));
+                    document.add(new Paragraph(" "));
+                    document.add(new Paragraph(" "));
+                    document.add(new Paragraph(" "));
+
+                    PdfPTable t1 = new PdfPTable(2);
+                    for (int aw = 0; aw < 1; aw++) {
+
+                        PdfPCell cell1 = createAddCell("Kartentyp:", t1);
+                        PdfPCell cell2 = createAddCell(Info.getCardtype(), t1);
+                        PdfPCell cell3 = createAddCell("Kartennummer:", t1);
+                        PdfPCell cell4 = createAddCell(Info.getCardNr(), t1);
+                        PdfPCell cell5 = createAddCell("IBAN:", t1);
+                        PdfPCell cell6 = createAddCell(Info.getIBAN(), t1);
+                        PdfPCell cell7 = createAddCell("Einzahlungsbetrag:", t1);
+                        PdfPCell cell8 = createAddCell(Utils.formatMoney(DepositInfo.getInstance().getAmount()) + " "
+                                + DepositInfo.getInstance().getCurrency(), t1);
+                    }
+                    document.add(t1);
+                    document.add(new Paragraph(" "));
+                    document.add(new Paragraph(" "));
+                    document.add(new Paragraph(
+                            "---------------------------------------------------------------------------------------------------------------------------------"));
+                    document.add(new Paragraph(" "));
+
+                    Paragraph p3 = new Paragraph();
+                    p3.add("Datum: " + Utils.getCurrentTimeStamp("dd.MM.yyyy HH:mm"));
+                    document.add(p3);
+                    document.close();
+
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+            }
+
         }
 
     }

@@ -7,6 +7,7 @@
       <root url="jar://$PROJECT_DIR$/../../../../javaFX/jfoenix-9.0.10.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../../../javaFX/lib/itextpdf-5.5.13.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../../../javaFX/fontawesomefx-8.1.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/mariadb-java-client-2.7.2 (1).jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
