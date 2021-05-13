@@ -84,6 +84,10 @@ public class WithdrawalConfirmController {
         lblError.setVisible(false);
         int[] banknotes = payout((int) WithdrawalInfo.getInstance().getAmount(), WithdrawalInfo.getInstance().getNoteSize());
         WithdrawalInfo.getInstance().setBanknotes(banknotes);
+        int noteCount = 0;
+        for(int i : banknotes) {
+            noteCount += i;
+        }
         boolean enoughInStock = Database.checkMoneystock(banknotes, WithdrawalInfo.getInstance().getCurrency().toString()); // error handling if moneyStock allows the withdrawal
         double amount = WithdrawalInfo.getInstance().getAmount();
         double amountInCHF;
@@ -94,7 +98,9 @@ public class WithdrawalConfirmController {
             amountInCHF = amount;
         }
         boolean enoughBalance = (Database.getBalance(Info.getAccountID()) >= amountInCHF);
-        if (!enoughInStock) {
+        if (noteCount > 20) {
+            return setError("Sie können sich nicht mehr als 20 Banknoten auf einmal auszahlen lassen.");
+        } else if (!enoughInStock) {
             return setError("Der Automat hat nicht mehr genügend Noten für Ihre Anfrage, probieren Sie es später erneut.         Wir entschuldigen uns für die Unannehmlichkeiten.");
         } else if (!enoughBalance) {
             return setError("Ihr Kontostand ist zu niedrig für diesen Bezug!");
