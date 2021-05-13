@@ -17,17 +17,12 @@ public class Database {
 
     public static Connection conn = null;
 
-    public static void connectToDatabase() throws Exception {
-        try {
-            // Register JDBC Driver
-            Main.class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Connecting to  database ...");
-            conn  = DriverManager.getConnection(jdbcURL, username, password);
-            System.out.println(ConsoleColors.GREEN + "Connection successful!" + ConsoleColors.RESET);
-        } catch (Exception e) {
-            System.out.println(ConsoleColors.RED + "Connection failed" + ConsoleColors.RESET);
-            e.printStackTrace();
-        }
+    public static void connectToDatabase() throws ClassNotFoundException, SQLException {
+        // Register JDBC Driver
+        Main.class.forName("com.mysql.cj.jdbc.Driver");
+        System.out.println("Connecting to  database ...");
+        conn  = DriverManager.getConnection(jdbcURL, username, password);
+        System.out.println(ConsoleColors.GREEN + "Connection successful!" + ConsoleColors.RESET);
     }
 
     // INSERTS
@@ -420,12 +415,13 @@ public class Database {
     }
 
     public static void close() {
-        try {
-            conn.close();
-            System.out.println(ConsoleColors.GREEN + "Connection closed!" + ConsoleColors.RESET);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (conn != null) {
+            try {
+                conn.close();
+                System.out.println(ConsoleColors.GREEN + "Connection closed!" + ConsoleColors.RESET);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
-
 }

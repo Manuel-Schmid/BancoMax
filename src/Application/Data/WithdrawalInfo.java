@@ -16,6 +16,7 @@ public class WithdrawalInfo { // Singleton
     private int noteSize = 0;
     private double amount = 0;
     private Currency currency = Currency.CHF;
+    private int[] banknotes;
 
     public double getAmount() {
         return amount;
@@ -39,5 +40,13 @@ public class WithdrawalInfo { // Singleton
 
     public void setNoteSize(int noteSize) {
         this.noteSize = noteSize;
+    }
+
+    public int[] getBanknotes() {
+        return banknotes;
+    }
+
+    public void setBanknotes(int[] banknotes) {
+        this.banknotes = banknotes;
     }
 }

@@ -98,12 +98,9 @@ public class MasterController {
     @FXML
     private void createFile() {
         root.setDisable(true);
-        final Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initOwner(Main.primaryStage);
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(Utils.extFilter);
-        File file = fileChooser.showSaveDialog(dialog);
+        File file = fileChooser.showSaveDialog(Main.primaryStage);
         root.setDisable(false);
         if (file != null) {
             Utils.saveTextToFile(Security.encrypt(Info.getCardNr()), file);

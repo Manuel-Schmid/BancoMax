@@ -85,10 +85,7 @@ public class LoginController {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().add(Utils.extFilter);
-        final Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initOwner(Main.primaryStage);
-        File file = fileChooser.showOpenDialog(dialog);
+        File file = fileChooser.showOpenDialog(Main.primaryStage);
         root.setDisable(false);
         if (file == null || !file.getName().contains(".txt")) {
             lblErrorFile.setVisible(true);

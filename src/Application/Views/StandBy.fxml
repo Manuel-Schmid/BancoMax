@@ -5,10 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 
-<AnchorPane maxHeight="600.0" maxWidth="900.0" style="-fx-background-color: #0F111A;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.StandByController">
+<AnchorPane maxHeight="600.0" maxWidth="900.0" style="-fx-background-color: #0F111A;" stylesheets="@../Styles/StandBy-Stylesheet.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controllers.StandByController">
    <children>
-      <BorderPane onMouseClicked="#openLoginView" prefHeight="600.0" prefWidth="900.0">
+      <BorderPane fx:id="root" onMouseClicked="#openLoginView" prefHeight="600.0" prefWidth="900.0">
          <bottom>
             <ImageView fitHeight="86.0" fitWidth="687.0" preserveRatio="true" BorderPane.alignment="TOP_CENTER">
                <image>
@@ -31,5 +32,6 @@
             </AnchorPane>
          </center>
       </BorderPane>
+      <StackPane fx:id="stackpane" layoutX="190.0" layoutY="206.0" prefHeight="141.0" prefWidth="515.0" />
    </children>
 </AnchorPane>

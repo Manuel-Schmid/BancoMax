@@ -83,6 +83,7 @@ public class WithdrawalConfirmController {
         }
         lblError.setVisible(false);
         int[] banknotes = payout((int) WithdrawalInfo.getInstance().getAmount(), WithdrawalInfo.getInstance().getNoteSize());
+        WithdrawalInfo.getInstance().setBanknotes(banknotes);
         boolean enoughInStock = Database.checkMoneystock(banknotes, WithdrawalInfo.getInstance().getCurrency().toString()); // error handling if moneyStock allows the withdrawal
         double amount = WithdrawalInfo.getInstance().getAmount();
         double amountInCHF;
@@ -103,7 +104,7 @@ public class WithdrawalConfirmController {
             Database.insertTransaction(Operation.withdraw, WithdrawalInfo.getInstance().getCurrency(), amount, Info.getCardID());
             // Auszahlung
             printWithdrawal(banknotes);
-            Navigation.switchToView("TransactionSuccess");
+            Navigation.switchToPayout();
             return true;
         }
     }
@@ -151,26 +152,26 @@ public class WithdrawalConfirmController {
         WithdrawalInfo.getInstance().setNoteSize(size);
     }
 
-    private void printWithdrawal(int[] payout) {
+    private void printWithdrawal(int[] notePayout) {
         System.out.println("Sie heben einen Betrag von " + formattedAmount + " " + WithdrawalInfo.getInstance().getCurrency() + " ab.");
         System.out.println("Notenausgabe: ");
-        if (payout[0] > 0){
-            System.out.println("1000er: " + payout[0]);
+        if (notePayout[0] > 0){
+            System.out.println("1000er: " + notePayout[0]);
         }
-        if (payout[1] > 0){
-            System.out.println("200er: " + payout[1]);
+        if (notePayout[1] > 0){
+            System.out.println("200er: " + notePayout[1]);
         }
-        if (payout[2] > 0){
-            System.out.println("100er: " + payout[2]);
+        if (notePayout[2] > 0){
+            System.out.println("100er: " + notePayout[2]);
         }
-        if (payout[3] > 0){
-            System.out.println("50er: " + payout[3]);
+        if (notePayout[3] > 0){
+            System.out.println("50er: " + notePayout[3]);
         }
-        if (payout[4] > 0){
-            System.out.println("20er: " + payout[4]);
+        if (notePayout[4] > 0){
+            System.out.println("20er: " + notePayout[4]);
         }
-        if (payout[5] > 0){
-            System.out.println("10er: " + payout[5]);
+        if (notePayout[5] > 0){
+            System.out.println("10er: " + notePayout[5]);
         }
     }
 }
