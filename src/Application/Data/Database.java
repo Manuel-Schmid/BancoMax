@@ -9,7 +9,6 @@ import java.util.Date;
 
 public class Database {
 
-//    static String jdbcURL = "jdbc:mysql://192.168.1.189:3307/bancomax"; // NAS
 //    static String jdbcURL = "jdbc:mysql://127.0.0.1:3306/bancomax"; // Local
     static String jdbcURL = "jdbc:mysql://213.196.190.205:3306/bancomax"; // Ubuntu
     static String username = "BancoAdmin";
@@ -18,9 +17,8 @@ public class Database {
     public static Connection conn = null;
 
     public static void connectToDatabase() throws ClassNotFoundException, SQLException {
-        // Register JDBC Driver
-        Main.class.forName("com.mysql.cj.jdbc.Driver");
         System.out.println("Connecting to  database ...");
+        Main.class.forName("com.mysql.cj.jdbc.Driver"); // Register JDBC Driver
         conn  = DriverManager.getConnection(jdbcURL, username, password);
         System.out.println(ConsoleColors.GREEN + "Connection successful!" + ConsoleColors.RESET);
     }

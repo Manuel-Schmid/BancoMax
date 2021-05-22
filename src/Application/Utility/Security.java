@@ -15,9 +15,6 @@ import java.util.Base64;
 
 public class Security {
 
-    private static final String ALGORITHM = "AES";
-    private static final byte[] keyValue = "73HDJ2K3JDU29SK3".getBytes();
-
     public static byte[] createSalt() {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[10];
@@ -57,6 +54,9 @@ public class Security {
             return "";
         }
     }
+
+    private static final String ALGORITHM = "AES";
+    private static final byte[] keyValue = "73HDJ2K3JDU29SK3".getBytes();
 
     private static Key generateKey() {
         return new SecretKeySpec(keyValue, ALGORITHM);

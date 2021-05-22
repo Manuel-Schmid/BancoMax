@@ -109,7 +109,6 @@ public class WithdrawalConfirmController {
             Database.updateMoneyStock(Operation.withdraw, banknotes, WithdrawalInfo.getInstance().getCurrency()); // Abzug vom MoneyStock
             Database.insertTransaction(Operation.withdraw, WithdrawalInfo.getInstance().getCurrency(), amount, Info.getCardID());
             // Auszahlung
-            printWithdrawal(banknotes);
             Navigation.switchToPayout();
             return true;
         }
@@ -158,7 +157,7 @@ public class WithdrawalConfirmController {
         WithdrawalInfo.getInstance().setNoteSize(size);
     }
 
-    private void printWithdrawal(int[] notePayout) {
+/*    private void printWithdrawal(int[] notePayout) {
         System.out.println("Sie heben einen Betrag von " + formattedAmount + " " + WithdrawalInfo.getInstance().getCurrency() + " ab.");
         System.out.println("Notenausgabe: ");
         if (notePayout[0] > 0){
@@ -179,5 +178,5 @@ public class WithdrawalConfirmController {
         if (notePayout[5] > 0){
             System.out.println("10er: " + notePayout[5]);
         }
-    }
+    }*/
 }

@@ -18,10 +18,10 @@ public class CurrencyAPI {
                 for (String line; (line = reader.readLine()) != null; ) {
                     res.append(line);
                 }
+                String result = String.valueOf(res);
+                JSONObject obj = new JSONObject(result);
+                return obj.getJSONObject("rates").getDouble("CHF");
             }
-            String result = String.valueOf(res);
-            JSONObject obj = new JSONObject(result);
-            return obj.getJSONObject("rates").getDouble("CHF");
         } catch (Exception e) {
             System.out.println("Aktueller Kurs kann nicht abgerufen werden, es wird mit einem CHF-Euro Kurs von 1.11 gerechnet.");
             return 1.11;

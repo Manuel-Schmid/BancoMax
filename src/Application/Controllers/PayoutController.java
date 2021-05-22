@@ -59,7 +59,6 @@ public class PayoutController {
             int imgWidth;
             if (noteCount <= 3) imgWidth = (832-(5*3))/3;
             else if (noteCount <= 16)  imgWidth = (832-(5*sizeLimit))/sizeLimit;
-//            else if (noteCount <= 16)  imgWidth = (832-(5*sizeLimit))/sizeLimit;
             else {
                 sizeLimit = 5;
                 imgWidth = (832 - (5 * sizeLimit)) / sizeLimit;
@@ -78,30 +77,32 @@ public class PayoutController {
     }
 
     private void paintNotes(int imgWidth) {
+        String imageCompressor = "png";
         if (WithdrawalInfo.getInstance().getCurrency() == Currency.CHF) {
+            imageCompressor = "jpg";
             for(int i = 0; i < banknotes[0]; i++) {
                 ImageView img = new ImageView(new Image("Application/Media/CHF/thousand.jpg", imgWidth, 0, true, false));
                 addNote(img);
             }
         }
         for(int i = 0; i < banknotes[1]; i++) {
-            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/twoHundred.jpg", imgWidth, 0, true, false));
+            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/twoHundred."+imageCompressor, imgWidth, 0, true, false));
             addNote(img);
         }
         for(int i = 0; i < banknotes[2]; i++) {
-            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/hundred.jpg", imgWidth, 0, true, false));
+            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/hundred."+imageCompressor, imgWidth, 0, true, false));
             addNote(img);
         }
         for(int i = 0; i < banknotes[3]; i++) {
-            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/fifty.jpg", imgWidth, 0, true, false));
+            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/fifty."+imageCompressor, imgWidth, 0, true, false));
             addNote(img);
         }
         for(int i = 0; i < banknotes[4]; i++) {
-            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/twenty.jpg", imgWidth, 0, true, false));
+            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/twenty."+imageCompressor, imgWidth, 0, true, false));
             addNote(img);
         }
         for(int i = 0; i < banknotes[5]; i++) {
-            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/ten.jpg", imgWidth, 0, true, false));
+            ImageView img = new ImageView(new Image("Application/Media/" + WithdrawalInfo.getInstance().getCurrency() +"/ten."+imageCompressor, imgWidth, 0, true, false));
             addNote(img);
         }
     }

@@ -11,3 +11,8 @@
     -fx-border-color: grey;
     -fx-border-radius: 2px;
 }
+
+.jfx-button .jfx-rippler {
+    -jfx-rippler-fill: white;
+}
+
