@@ -78,6 +78,7 @@ public class MasterController {
         WithdrawalInfo.getInstance().setCurrency(Currency.CHF);
         WithdrawalInfo.getInstance().setAmount(50);
         int[] banknotes = {0, 0, 0, 1, 0, 0};
+        WithdrawalInfo.getInstance().setBanknotes(banknotes);
         boolean enoughInStock = Database.checkMoneystock(banknotes, WithdrawalInfo.getInstance().getCurrency().toString()); // error handling if moneyStock allows the withdrawal
         double amountInCHF = WithdrawalInfo.getInstance().getAmount();
         boolean enoughBalance = (Database.getBalance(Info.getAccountID()) >= amountInCHF);
@@ -91,7 +92,7 @@ public class MasterController {
             Database.updateBalance(Operation.withdraw, amountInCHF, Info.getAccountID()); // Abzug vom Konto
             Database.updateMoneyStock(Operation.withdraw, banknotes, Currency.CHF); // Abzug vom MoneyStock
             Database.insertTransaction(Operation.withdraw, Currency.CHF, WithdrawalInfo.getInstance().getAmount(), Info.getCardID());
-            Navigation.switchToView("TransactionSuccess");
+            Navigation.switchToPayout();
         }
     }
 

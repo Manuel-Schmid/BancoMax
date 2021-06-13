@@ -26,6 +26,5 @@ public class CurrencyAPI {
             System.out.println("Aktueller Kurs kann nicht abgerufen werden, es wird mit einem CHF-Euro Kurs von 1.11 gerechnet.");
             return 1.11;
         }
-
     }
 }

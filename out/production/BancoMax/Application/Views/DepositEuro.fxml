@@ -36,27 +36,27 @@
                <children>
                   <ImageView id="200" fitHeight="157.0" fitWidth="307.0" layoutX="31.0" layoutY="-2.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Media/Euro/twoHundred.jpg" />
+                        <Image url="@../Media/Euro/twoHundred.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="50" fitHeight="134.0" fitWidth="244.0" layoutX="627.0" layoutY="16.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="50" fitHeight="134.0" fitWidth="244.0" layoutX="628.0" layoutY="26.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Media/Euro/fifty.jpg" />
+                        <Image url="@../Media/Euro/fifty.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="20" fitHeight="140.0" fitWidth="274.0" layoutX="32.0" layoutY="194.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="20" fitHeight="140.0" fitWidth="274.0" layoutX="31.0" layoutY="194.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Media/Euro/twenty.jpg" />
+                        <Image url="@../Media/Euro/twenty.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="10" fitHeight="137.0" fitWidth="256.0" layoutX="302.0" layoutY="201.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="10" fitHeight="137.0" fitWidth="256.0" layoutX="310.0" layoutY="201.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Media/Euro/ten.jpg" />
+                        <Image url="@../Media/Euro/ten.png" />
                      </image>
                   </ImageView>
-                  <ImageView id="100" fitHeight="147.0" fitWidth="273.0" layoutX="346.0" layoutY="6.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="100" fitHeight="147.0" fitWidth="273.0" layoutX="343.0" layoutY="11.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Media/Euro/hundred.jpg" />
+                        <Image url="@../Media/Euro/hundred.png" />
                      </image>
                   </ImageView>
                   <TextField fx:id="tfTwoHundred" alignment="CENTER" layoutX="158.0" layoutY="156.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />

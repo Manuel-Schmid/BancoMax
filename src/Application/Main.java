@@ -1,7 +1,7 @@
 package Application;
 
-import Application.Data.CurrencyAPI;
-import Application.Utility.Security;
+import Application.Utility.Currency;
+import Application.Utility.Operation;
 import Application.Data.Database;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +9,12 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import org.json.Test;
 
-import java.io.File;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -40,6 +38,7 @@ public class Main extends Application {
 
     public static void main(String[] args) throws Exception {
         launch(args);
+
         Database.close();
 
 //        System.out.println(CurrencyAPI.getExRate());

@@ -232,7 +232,6 @@ public class PDFFile {
     }
 
     private void createPDF() {
-
         try {
             if (isWithdraw) {
                 fileNameFull = fileName + "_" + counter_for_files_W + ".pdf";
@@ -241,26 +240,20 @@ public class PDFFile {
             }
             document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(fileNameFull));
-
         } catch (FileNotFoundException | DocumentException e) {
             e.printStackTrace();
         }
-
     }
 
     // Trying to find a file, which has already that exact name
     public void fileAlreadyExistsReader() {
-
         try {
-
             List<File> filesInFolder;
             filesInFolder = Files.walk(Paths.get(System.getProperty("user.dir"))).filter(Files::isRegularFile)
                     .map(Path::toFile).collect(Collectors.toList());
-
             for (File iterable_element : filesInFolder) {
                 if (iterable_element.getName().contains(fileName)) {
                     if (isWithdraw) {
-
                         counter_for_files_W = Integer.parseInt(iterable_element.getName().replaceAll("[^0-9]", ""));
                         counter_for_files_W += 1;
                     } else {

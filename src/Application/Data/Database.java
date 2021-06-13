@@ -5,18 +5,18 @@ import Application.Utility.*;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Database {
-
-//    static String jdbcURL = "jdbc:mysql://127.0.0.1:3306/bancomax"; // Local
-    static String jdbcURL = "jdbc:mysql://213.196.190.205:3306/bancomax"; // Ubuntu
-    static String username = "BancoAdmin";
-    static String password = "When83+xRedy-o6+";
 
     public static Connection conn = null;
 
     public static void connectToDatabase() throws ClassNotFoundException, SQLException {
+        final String jdbcURL = "jdbc:mysql://213.196.190.205:3306/bancomax";
+        final String username = "BancoAdmin";
+        final String password = "When83+xRedy-o6+";
         System.out.println("Connecting to  database ...");
         Main.class.forName("com.mysql.cj.jdbc.Driver"); // Register JDBC Driver
         conn  = DriverManager.getConnection(jdbcURL, username, password);
@@ -39,7 +39,7 @@ public class Database {
 
     public static void insertUser(String firstName, String lastName, Salutation salutation) {
         try {
-            String query = "INSERT INTO `bancomax`.`user` (`firstName`, `lastName`, `salutation`) VALUES ('"+firstName+"', '"+lastName+"', '"+salutation+"');";
+            String query = "INSERT INTO `bancomax`.`user` (`firstName`, `lastName`, `salutation`) " + "VALUES ('"+firstName+"', '"+lastName+"', '"+salutation+"');";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.execute();
         } catch (Exception e) {
@@ -60,13 +60,26 @@ public class Database {
     public static void insertTransaction(Operation operation, Currency currency, double amount, int cardID) {
         try {
             String action;
-            if (operation == Operation.withdraw) {
-                action = "Withdrawal";
-            } else {
-                action = "Deposit";
-            }
+            if (operation == Operation.withdraw) action = "Withdrawal";
+            else action = "Deposit";
             Date currentDate = new Date();
             Timestamp tmstmp = new Timestamp(currentDate.getTime());
+            String query = "INSERT INTO bancomax.transaction (timestamp, action, currency, amount, FK_cardID) VALUES ('"+tmstmp+"', '"+action+"', '"+currency+"', '"+amount+"', '"+cardID+"');";
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            pstmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void insertModifiedTransaction(int year, int month, int day, int hourOfDay, int minute, Operation operation, Currency currency, double amount, int cardID) {
+        try {
+            Calendar myCalendar = new GregorianCalendar(year, month, day, hourOfDay, minute);
+            Date myDate = myCalendar.getTime();
+            String action;
+            if (operation == Operation.withdraw) action = "Withdrawal";
+            else action = "Deposit";
+            Timestamp tmstmp = new Timestamp(myDate.getTime());
             String query = "INSERT INTO bancomax.transaction (timestamp, action, currency, amount, FK_cardID) VALUES ('"+tmstmp+"', '"+action+"', '"+currency+"', '"+amount+"', '"+cardID+"');";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.execute();
@@ -104,11 +117,8 @@ public class Database {
     public static void updateBalance(Operation operation, double amountInCHF, int accountID) {
         try {
             double newBalance;
-            if (operation == Operation.deposit) { // deposit
-                newBalance = getBalance(accountID) + amountInCHF;
-            } else { // withdraw
-                newBalance = getBalance(accountID) - amountInCHF;
-            }
+            if (operation == Operation.deposit) newBalance = getBalance(accountID) + amountInCHF; // Deposit
+            else newBalance = getBalance(accountID) - amountInCHF; // Withdraw
             String query = "UPDATE bancomax.account SET balanceInCHF = '"+newBalance+"' WHERE `accountID` = '"+accountID+"';";
             PreparedStatement pstmt = conn.prepareStatement(query);
             pstmt.execute();
