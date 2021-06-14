@@ -12,7 +12,6 @@ public class WithdrawalInfo { // Singleton
         return wd;
     }
 
-    // default values
     private int noteSize = 0;
     private double amount = 0;
     private Currency currency = Currency.CHF;

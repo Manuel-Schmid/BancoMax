@@ -1,7 +1,5 @@
 package Application;
 
-import Application.Utility.Currency;
-import Application.Utility.Operation;
 import Application.Data.Database;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +10,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -36,18 +31,9 @@ public class Main extends Application {
         primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 2); // center
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         launch(args);
-
         Database.close();
-
-//        System.out.println(CurrencyAPI.getExRate());
-
-//        byte[] salt = Security.createSalt();
-//        byte[] hash;
-//        hash = Security.hash("xxx", salt);
-//        Database.changeAdminPW(hash, salt);
-
     }
 
 }

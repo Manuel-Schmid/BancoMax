@@ -92,7 +92,7 @@
                   </LinearGradient>
                </focusColor>
             </JFXTextField>
-            <JFXButton fx:id="btnCustomAmount" layoutX="523.0" layoutY="222.0" onAction="#setCustomAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" style="-fx-font-size: 12px;" text="Definierter Betrag">
+            <JFXButton layoutX="523.0" layoutY="222.0" onAction="#setCustomAmount" onKeyPressed="#keyPressed" prefHeight="37.0" prefWidth="129.0" style="-fx-font-size: 12px;" text="Definierter Betrag">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="custom-btn" />

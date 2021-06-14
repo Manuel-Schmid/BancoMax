@@ -9,7 +9,6 @@ import javafx.stage.FileChooser;
 import javafx.util.StringConverter;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
@@ -99,7 +98,7 @@ public class Utils {
 
     public static String read(File file) {
         try {
-            Scanner sc = new Scanner(file); // "C:/Users/Many/Desktop/test.txt"
+            Scanner sc = new Scanner(file);
             StringBuilder sb = new StringBuilder();
             while(sc.hasNextLine()) {
                 sb.append(sc.nextLine());

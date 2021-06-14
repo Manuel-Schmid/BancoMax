@@ -21,7 +21,6 @@
     -fx-background-color: -fx-custom-color;
 }
 
-/* color of animated-thumb text */
 .jfx-slider .slider-value {
     -fx-stroke: white;
 }

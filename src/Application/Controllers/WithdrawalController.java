@@ -3,7 +3,6 @@ package Application.Controllers;
 import Application.Data.WithdrawalInfo;
 import Application.Utility.Navigation;
 import Application.Utility.Utils;
-import com.jfoenix.controls.JFXSlider;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,14 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-
 import java.io.IOException;
 
 public class WithdrawalController {
 
     @FXML
-    private Button btnConfirm, btnBack, btnCustomAmount;
+    private Button btnConfirm, btnBack;
     @FXML
     private Label lblSuccess, lblError, lblCurrency;
     @FXML

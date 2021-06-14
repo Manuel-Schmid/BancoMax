@@ -3,16 +3,10 @@ package Application.Controllers;
 import Application.Data.Database;
 import Application.Main;
 import Application.Utility.Navigation;
-import Application.Utility.Security;
 import com.jfoenix.controls.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -28,6 +22,7 @@ public class StandByController {
 
     @FXML
     private void initialize() {
+        Database.close();
         stackpane.setVisible(false);
     }
 

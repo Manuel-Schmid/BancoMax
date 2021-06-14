@@ -15,11 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-
-import java.io.File;
 import java.io.IOException;
 
 public class WithdrawalConfirmController {
@@ -156,27 +152,4 @@ public class WithdrawalConfirmController {
     private void setNoteSize(int size) {
         WithdrawalInfo.getInstance().setNoteSize(size);
     }
-
-/*    private void printWithdrawal(int[] notePayout) {
-        System.out.println("Sie heben einen Betrag von " + formattedAmount + " " + WithdrawalInfo.getInstance().getCurrency() + " ab.");
-        System.out.println("Notenausgabe: ");
-        if (notePayout[0] > 0){
-            System.out.println("1000er: " + notePayout[0]);
-        }
-        if (notePayout[1] > 0){
-            System.out.println("200er: " + notePayout[1]);
-        }
-        if (notePayout[2] > 0){
-            System.out.println("100er: " + notePayout[2]);
-        }
-        if (notePayout[3] > 0){
-            System.out.println("50er: " + notePayout[3]);
-        }
-        if (notePayout[4] > 0){
-            System.out.println("20er: " + notePayout[4]);
-        }
-        if (notePayout[5] > 0){
-            System.out.println("10er: " + notePayout[5]);
-        }
-    }*/
 }

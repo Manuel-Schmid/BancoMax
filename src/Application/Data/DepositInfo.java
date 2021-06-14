@@ -12,7 +12,6 @@ public class DepositInfo { // Singleton
         return dp;
     }
 
-    // default values
     private int amount = 0;
     private int[] banknotes = new int[6];
     private Currency currency = Currency.CHF;

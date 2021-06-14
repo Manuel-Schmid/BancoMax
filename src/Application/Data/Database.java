@@ -20,7 +20,7 @@ public class Database {
         System.out.println("Connecting to  database ...");
         Main.class.forName("com.mysql.cj.jdbc.Driver"); // Register JDBC Driver
         conn  = DriverManager.getConnection(jdbcURL, username, password);
-        System.out.println(ConsoleColors.GREEN + "Connection successful!" + ConsoleColors.RESET);
+        System.out.println("Connection successful!");
     }
 
     // INSERTS
@@ -426,7 +426,7 @@ public class Database {
         if (conn != null) {
             try {
                 conn.close();
-                System.out.println(ConsoleColors.GREEN + "Connection closed!" + ConsoleColors.RESET);
+                System.out.println("Connection closed!");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

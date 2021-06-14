@@ -1,18 +1,11 @@
 package Application.PDF_Maker;
 
-/**
- * @author lewin
- * @date 27.04.2021
- * @Version 1.0
- */
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,7 +27,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 public class PDFFile {
 
     private int counter_for_files_W = 0; // to count if files already exist and when creating them, that they don't get
-    // overwritten
     private int counter_for_files_I = 0;
     private String fileName;
     private static String fileNameFull;
@@ -42,18 +34,11 @@ public class PDFFile {
     private Document document;
 
     public void createWithdrawInfoDeposit(String fileName, String withdrawOrInfo) {
-
         this.fileName = fileName;
-
         if (withdrawOrInfo.equalsIgnoreCase("withdraw")) {
-
             isWithdraw = true;
-
             fileAlreadyExistsReader();
-
             try {
-
-                // create an Withdraw
                 createPDF();
 
                 document.open();
@@ -76,7 +61,6 @@ public class PDFFile {
 
                 PdfPTable t1 = new PdfPTable(2);
                 for (int aw = 0; aw < 1; aw++) {
-
                     PdfPCell cell1 = createAddCell("Kartentyp:", t1);
                     PdfPCell cell2 = createAddCell(Info.getCardtype(), t1);
                     PdfPCell cell3 = createAddCell("Kartennummer:", t1);
@@ -104,12 +88,8 @@ public class PDFFile {
             }
 
         } else if (withdrawOrInfo.equalsIgnoreCase("information")) {
-
             fileAlreadyExistsReader();
-
             try {
-
-                // create an Info
                 createPDF();
 
                 document.open();
@@ -161,14 +141,9 @@ public class PDFFile {
         } else {
 
             if (withdrawOrInfo.equalsIgnoreCase("deposit")) {
-
                 isWithdraw = true;
-
                 fileAlreadyExistsReader();
-
                 try {
-
-                    // create an Deposit
                     createPDF();
 
                     document.open();
@@ -218,9 +193,7 @@ public class PDFFile {
                     System.out.println(e);
                 }
             }
-
         }
-
     }
 
     private PdfPCell createAddCell(String string, PdfPTable table) {
@@ -268,13 +241,10 @@ public class PDFFile {
     }
 
     public static File getFileName() {
-
         try {
-
             List<File> filesInFolder;
             filesInFolder = Files.walk(Paths.get(System.getProperty("user.dir"))).filter(Files::isRegularFile)
                     .map(Path::toFile).collect(Collectors.toList());
-
             for (File iterable_element : filesInFolder) {
                 if (iterable_element.getName().contains(fileNameFull)) {
                     return iterable_element;
@@ -284,6 +254,5 @@ public class PDFFile {
             System.out.println(e);
         }
         return null;
-
     }
 }
