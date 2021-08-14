@@ -17,10 +17,10 @@ public class Database {
         final String jdbcURL = "jdbc:mysql://213.196.190.205:3306/bancomax";
         final String username = "BancoAdmin";
         final String password = "When83+xRedy-o6+";
-        System.out.println("Connecting to  database ...");
+        // System.out.println("Connecting to  database ...");
         Main.class.forName("com.mysql.cj.jdbc.Driver"); // Register JDBC Driver
         conn  = DriverManager.getConnection(jdbcURL, username, password);
-        System.out.println("Connection successful!");
+        // System.out.println("Connection successful!");
     }
 
     // INSERTS
@@ -72,9 +72,9 @@ public class Database {
         }
     }
 
-    public static void insertModifiedTransaction(int year, int month, int day, int hourOfDay, int minute, Operation operation, Currency currency, double amount, int cardID) {
+    public static void insertModifiedTransaction(int year, int monthZeroBased, int day, int hourOfDay, int minute, Operation operation, Currency currency, double amount, int cardID) {
         try {
-            Calendar myCalendar = new GregorianCalendar(year, month, day, hourOfDay, minute);
+            Calendar myCalendar = new GregorianCalendar(year, monthZeroBased, day, hourOfDay, minute);
             Date myDate = myCalendar.getTime();
             String action;
             if (operation == Operation.withdraw) action = "Withdrawal";
@@ -426,7 +426,7 @@ public class Database {
         if (conn != null) {
             try {
                 conn.close();
-                System.out.println("Connection closed!");
+                // System.out.println("Connection closed!");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
