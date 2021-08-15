@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,4 +15,7 @@
       </ImageView>
       <VBox fx:id="rootVBox" layoutX="34.0" layoutY="105.0" prefHeight="470.0" prefWidth="832.0" spacing="5.0" />
    </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </AnchorPane>

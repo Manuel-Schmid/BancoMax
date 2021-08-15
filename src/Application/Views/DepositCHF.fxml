@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -38,31 +39,49 @@
                      <image>
                         <Image url="@../Media/CHF/thousand.jpg" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <ImageView id="200" fitHeight="301.0" fitWidth="136.0" layoutX="183.0" layoutY="11.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/twoHundred.jpg" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <ImageView id="100" fitHeight="278.0" fitWidth="131.0" layoutX="330.0" layoutY="11.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/hundred.jpg" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <ImageView id="50" fitHeight="256.0" fitWidth="129.0" layoutX="474.0" layoutY="10.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/fifty.jpg" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <ImageView id="20" fitHeight="237.0" fitWidth="125.0" layoutX="615.0" layoutY="10.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/twenty.jpg" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <ImageView id="10" fitHeight="209.0" fitWidth="117.0" layoutX="751.0" layoutY="10.0" onMouseClicked="#addNote" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Media/CHF/ten.jpg" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <TextField fx:id="tfThousand" alignment="CENTER" layoutX="75.0" layoutY="331.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />
                   <TextField fx:id="tfTwoHundred" alignment="CENTER" layoutX="225.0" layoutY="314.0" prefHeight="25.0" prefWidth="47.0" promptText="0" styleClass="amount" />

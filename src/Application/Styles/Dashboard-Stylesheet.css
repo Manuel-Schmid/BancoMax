@@ -23,6 +23,7 @@
     -fx-background-color: #0F111A;
     -fx-text-fill: white;
     -fx-font-size: 10px;
+    -fx-cursor: hand !important;
 }
 
 .dialog-button:hover {

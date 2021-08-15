@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXSlider?>
 <?import java.net.URL?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -76,7 +77,10 @@
             </GridPane>
             <AnchorPane layoutX="347.0" layoutY="228.0">
                <children>
-                  <JFXSlider fx:id="slider" blockIncrement="33.3333333333" layoutX="1.0" majorTickUnit="33.3333333333" minorTickCount="0" prefHeight="37.0" prefWidth="193.0" showTickMarks="true" snapToTicks="true" value="100.0" />
+                  <JFXSlider fx:id="slider" blockIncrement="33.3333333333" layoutX="1.0" majorTickUnit="33.3333333333" minorTickCount="0" prefHeight="37.0" prefWidth="193.0" showTickMarks="true" snapToTicks="true" value="100.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></JFXSlider>
                   <Label layoutY="27.0" prefHeight="17.0" prefWidth="218.0" text="10er        + 20er        + 50er          Alle" textFill="WHITE" />
                </children>
             </AnchorPane>

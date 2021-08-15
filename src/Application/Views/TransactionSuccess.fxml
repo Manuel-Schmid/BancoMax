@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -40,4 +41,7 @@
          </children>
       </AnchorPane>
    </right>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
 </BorderPane>

@@ -6,6 +6,7 @@
     -fx-text-fill: #e7e1e1;
     -fx-border-color: #3f464c;
     -fx-border-radius: 2px;
+    -fx-cursor: hand !important;
 }
 
 /*.jfx-button .jfx-rippler {*/

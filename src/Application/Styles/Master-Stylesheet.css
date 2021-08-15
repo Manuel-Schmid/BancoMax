@@ -4,6 +4,7 @@
     -fx-font-weight: bold;
     -fx-background-radius: 10px;
     -fx-font-size: 14px;
+    -fx-cursor: hand !important;
 }
 
 .menu-btn:hover{
