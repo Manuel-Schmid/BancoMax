@@ -10,7 +10,7 @@
 
 We, the three listed contributers, are students in a Cantonal School in Switzerland. 
 In one of our classes we were given the opportunity to develop any Project we liked, as long as it was mainly written in Java.
-We decided to take on the challenge and code a ATM-system with a more modern interface than the usual ATMs we encounter here in switzerland. 
+We decided to take on the challenge and code an ATM-system with a more modern interface than the usual ATMs we encounter here in switzerland. 
 We also wanted to add more functionality to extend our coding-skills and to have fun. :)
 
 <br/>
