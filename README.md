@@ -15,7 +15,7 @@ We also wanted to add more functionality to extend our coding-skills and to have
 
 <br/>
 
-A Demonstration of the project along with some comments and explanations (in german) can be found <a href="http://www.youtube.com/watch?feature=player_embedded&v=PUbOALKY0D0
+A Demonstration of the project alongside with some comments and explanations (in german) can be found <a href="http://www.youtube.com/watch?feature=player_embedded&v=PUbOALKY0D0
 " target="_blank">here</a>
 
 We have written an in-depth project documentation (also in german) which you can find <a href="https://github.com/Manuel-Schmid/BancoMax/blob/main/src/Application/Media/BancoMax%20Project-Documentation.pdf" target="_blank">here</a>
