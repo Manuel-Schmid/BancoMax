@@ -48,16 +48,16 @@ public class Main extends Application {
         }
         Random r = new Random();
 
-        for (int i = 1; i <= 31; i++) { // number of days in month
+        for (int i = 1; i <= 30; i++) { // number of days in month
             int dailyTransactions = r.nextInt(14) + 4;
-            System.out.println(dailyTransactions);
+            System.out.println(i); // function is finished as soon as this hits the number of days in the month
             for (int j = 1; j <= dailyTransactions; j++) {
                 int op = r.nextInt(2);
                 int cur = r.nextInt(2);
                 int amt = r.nextInt(2000) + 1;
                 int cardID = r.nextInt(8) + 1;
                 int year = 2021;
-                int month = 7;
+                int month = 10; // zero based !
                 int day = i;
                 int hour = r.nextInt(24);
                 int minute = r.nextInt(60);
